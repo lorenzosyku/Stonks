@@ -3,6 +3,7 @@ import {useRef, useState, useEffect} from 'react';
 function Search({stonk, setStonk}) {
 
   const searchValue = useRef(null);  
+
   const fetchStonk = async () => {
     const response = await fetch(`https://yahoo-finance-api.vercel.app/${searchValue.current.value}`);
     return response.json();
@@ -19,7 +20,11 @@ function Search({stonk, setStonk}) {
     } catch (error) {
       console.log(error)
     }
-  } 
+  };
+
+  const reset = () => {
+    searchValue.current.value = "";
+  };
 
   return (
     <div>
@@ -28,7 +33,7 @@ function Search({stonk, setStonk}) {
           type="text" 
           ref={searchValue}
         />
-        <button onClick={()=> handleStonk()}>search stonk</button>
+        <button onClick={()=> {handleStonk(); reset()}}>search stonk</button>
       </div>
     </div>
   )
