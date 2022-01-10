@@ -6,7 +6,11 @@ import {useState} from 'react';
 
 function App() {
 
-  const [stonk, setStonk] = useState(null)
+  const [stonk, setStonk] = useState({
+    symbol: '-',
+    regularMarketPrice: '-.--',
+    marketTime: '-:--'
+  })
 
   return (
     <div className="App">
