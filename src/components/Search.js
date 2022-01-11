@@ -25,30 +25,28 @@ function Search({stonk, setStonk, setSeries, setSeriesBar}) {
       const arrPrices = stock.timestamp.map((timestamp, index)=>({
         x: new Date(timestamp * 1000),
         y: [quotes.open[index], quotes.high[index], quotes.low[index], quotes.close[index]].map((num)=> {
-          return num ? num.toFixed(2) : null
+          return num ? +num.toFixed(2) : null
         })
       }));
       const volumeData = quotes.volume.filter((item)=>item !== null)
 
-      console.log(stockName);
-      console.log(price);
-      console.log('----------------');
       //console.log(readableTime);
       //console.log(quotes);
-      //console.log(arrPrices);
-      console.log(volumeData)
+      console.log(arrPrices);
+      //console.log(volumeData)
       setStonk({
         symbol: stockName,
         regularMarketPrice: price,
         marketTime: time,
       });
+      
       setSeries([{
         data: arrPrices,
       }]);
-      setSeriesBar([{
+      /*setSeriesBar([{
         name: 'volume',
         data: volumeData
-      }])
+      }])*/
     } catch (error) {
       console.log(error)
     }
@@ -57,7 +55,7 @@ function Search({stonk, setStonk, setSeries, setSeriesBar}) {
   const reset = () => {
     searchValue.current.value = "";
   };
-
+  console.log(stonk)
   return (
     <div>
       <div className="">
