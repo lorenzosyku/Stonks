@@ -27,7 +27,7 @@ function Trade({stonk, portfolio, setPortfolio}) {
     const newPortfolio = {...portfolio};
     if(portfolio.cash-amountToInvest>0){
       newPortfolio.cash = portfolio.cash - amountToInvest;
-      newPortfolio.stocks = [...portfolio.stocks, stonk.symbol];
+      newPortfolio.stocks = [...portfolio.stocks, [shares, stonk.symbol]];
 
       setPortfolio(newPortfolio);
     } else {
