@@ -1,7 +1,7 @@
 import {useRef, useState, useEffect} from 'react';
 import moment from 'moment';
 
-function Search({stonk, setStonk}) {
+function Search({stonk, setStonk, setSeries, setSeriesBar}) {
 
   const searchValue = useRef(null);  
 
@@ -14,20 +14,41 @@ function Search({stonk, setStonk}) {
     try {
       const data = await fetchStonk(); 
       const stock = data.chart.result[0];
+
       console.log(stock);
+
       const stockName = stock.meta.symbol;
       const price = stock.meta.regularMarketPrice.toFixed(2);
-      const readableTime = moment.unix(new Date(stock.meta.regularMarketTime)).format('LLL')
+      const time = stock.meta.regularMarketTime;
+      //const readableTime = moment.unix(new Date(stock.meta.regularMarketTime)).format('LLL');
+      const quotes = stock.indicators.quote[0];
+      const arrPrices = stock.timestamp.map((timestamp, index)=>({
+        x: new Date(timestamp * 1000),
+        y: [quotes.open[index], quotes.high[index], quotes.low[index], quotes.close[index]].map((num)=> {
+          return num ? num.toFixed(2) : null
+        })
+      }));
+      const volumeData = quotes.volume.filter((item)=>item !== null)
 
       console.log(stockName);
-      console.log(price)
-      //console.log(time)
-
+      console.log(price);
+      console.log('----------------');
+      //console.log(readableTime);
+      //console.log(quotes);
+      //console.log(arrPrices);
+      console.log(volumeData)
       setStonk({
         symbol: stockName,
         regularMarketPrice: price,
-        marketTime: readableTime,
-      })
+        marketTime: time,
+      });
+      setSeries([{
+        data: arrPrices,
+      }]);
+      setSeriesBar([{
+        name: 'volume',
+        data: volumeData
+      }])
     } catch (error) {
       console.log(error)
     }

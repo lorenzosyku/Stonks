@@ -10,14 +10,21 @@ function App() {
     symbol: '-',
     regularMarketPrice: '-.--',
     marketTime: '-:--'
-  })
+  });
+  const [series, setSeries] = useState([{
+    data: [],
+  }]);
+  const [seriesBar, setSeriesBar] = useState([{
+    name: 'volume',
+    data: [],
+  }])
 
   return (
     <div className="App">
-      <Search stonk={stonk} setStonk={setStonk}/>
-      <Datagraph stonk={stonk}/>
+      <Search stonk={stonk} setStonk={setStonk} setSeries={setSeries} setSeriesBar={setSeriesBar}/>
+      <Datagraph series={series} seriesBar={seriesBar}/>
     </div>
   );
-}
+};
 
 export default App;
