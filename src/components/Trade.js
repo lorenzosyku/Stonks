@@ -27,15 +27,13 @@ function Trade({stonk, portfolio, setPortfolio}) {
     const newPortfolio = {...portfolio};
     if(portfolio.cash-amountToInvest>0){
       newPortfolio.cash = portfolio.cash - amountToInvest;
-      newPortfolio.stocks = [...portfolio.stocks, [shares, stonk.symbol]];
+      newPortfolio.stocks = [...portfolio.stocks, {stockName: stonk.symbol, shares}];
 
       setPortfolio(newPortfolio);
     } else {
       console.log('you dont have enough funds')
     }
     
-    
-
     noSharesToBuy.current.value = "";
   };
   console.log(portfolio);
@@ -52,7 +50,16 @@ function Trade({stonk, portfolio, setPortfolio}) {
       from: stonk.symbol,
       to: 'FakeUSD',
       amount: amountToSell
-    })
+    });
+
+    
+
+    const newPortfolio = {...portfolio};
+    newPortfolio.cash = portfolio.cash + amountToSell;
+    const newStockList = [...portfolio.stocks].filter((stock)=>stock.stockName !== stonk.symbol);
+    newPortfolio.stocks = newStockList;
+
+    setPortfolio(newPortfolio);
 
     noSharesToSell.current.value = "";
   };
