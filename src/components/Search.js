@@ -15,7 +15,7 @@ function Search({stonk, setStonk, setSeries, setSeriesBar}) {
       const data = await fetchStonk(); 
       const stock = data.chart.result[0];
 
-      console.log(stock);
+      //console.log(stock);
 
       const stockName = stock.meta.symbol;
       const price = stock.meta.regularMarketPrice.toFixed(2);
@@ -32,7 +32,7 @@ function Search({stonk, setStonk, setSeries, setSeriesBar}) {
 
       //console.log(readableTime);
       //console.log(quotes);
-      console.log(arrPrices);
+      //console.log(arrPrices);
       //console.log(volumeData)
       setStonk({
         symbol: stockName,
@@ -55,7 +55,7 @@ function Search({stonk, setStonk, setSeries, setSeriesBar}) {
   const reset = () => {
     searchValue.current.value = "";
   };
-  console.log(stonk)
+  //console.log(stonk)
   return (
     <div>
       <div className="">
