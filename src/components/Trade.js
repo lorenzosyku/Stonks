@@ -23,62 +23,41 @@ function Trade({ stonk, portfolio, setPortfolio }) {
       amount: amountToInvest,
     });
 
-    const list = [...portfolio.stocks];
     const newPortfolio = { ...portfolio };
 
-    if (portfolio.cash - amountToInvest > 0) {
-      newPortfolio.cash = portfolio.cash - amountToInvest;
+    const filterStocks = (arr) => {
+      let newStockArr = [...arr];
+      if (portfolio.cash - amountToInvest > 0) {
+        newStockArr = [{ stockName: stonk.symbol, shares }, ...newStockArr];
 
-      /*for(i=0;i<list.length;i++) {
-        if(stonk.symbol === list[i].stockName){
-          newPortfolio.stocks = noDuplicateList
-        }
-      }
-      newPortfolio.stocks = [{stockName: stonk.symbol, shares}, ...list];
-      
-      [
-        { stockName: "TSLA", shares: 21 },
-        { stockName: "W", shares: 11 },
-        { stockName: "WE", shares: 14 },
-        { stockName: "QQQ", shares: 17 },
-      ]
-         
-      */
-      
-      const noDuplicateList = list.map((stock) => {
-        let tot = shares;
-        if (stonk.symbol === stock.stockName) {
-          tot += stock.shares;
-          console.log(tot);
-          stock.shares = tot;
-          return { stockName: stonk.symbol, shares: tot };
-        }
-        return stock;
-      });
-      //newPortfolio.stocks = [ {stockName: stonk.symbol, shares}, ...noDuplicateList];
+        if (arr.length > 0) {
+          for (let i = 0; i < arr.length; i++) {
+            if (arr[i].stockName === stonk.symbol) {
+              const newAmountShares = arr[i].shares + shares;
+              newStockArr.splice(i, 2, {
+                stockName: stonk.symbol,
+                shares: newAmountShares,
+              });
 
-      const addStock = (newStock, oldArr) => {
-        const newArr = list;
-        for(let i=0; i<oldArr.length; i++){
-          if(newStock.symbol === oldArr[i].stockName){
-            newArr.concat(noDuplicateList)
+              return newStockArr;
+            }
           }
-          newArr.push(newStock);
         }
+
+        newPortfolio.cash = portfolio.cash - amountToInvest;
+        return newStockArr;
+        
+      } else {
+        console.log("you dont have enough funds");
       }
-      newPortfolio.stocks = addStock(stonk, list)
-      /*for(let i=0;i<list.length;i++) {
-        if(stonk.symbol === list[i].stockName){
-          newPortfolio.stocks = noDuplicateList
-        }
-        newPortfolio.stocks = [{stockName: stonk.symbol, shares}, ...list];
-      }*/
-      
-      
-      setPortfolio(newPortfolio);
-    } else {
-      console.log("you dont have enough funds");
-    }
+    };
+
+    const list = [...portfolio.stocks];
+
+    const newStockList = filterStocks(list);
+    newPortfolio.stocks = newStockList;
+
+    setPortfolio(newPortfolio);
 
     noSharesToBuy.current.value = "";
   };
