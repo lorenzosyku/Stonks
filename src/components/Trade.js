@@ -57,12 +57,22 @@ function Trade({ stonk, portfolio, setPortfolio }) {
       });
       //newPortfolio.stocks = [ {stockName: stonk.symbol, shares}, ...noDuplicateList];
 
-      for(let i=0;i<list.length;i++) {
+      const addStock = (newStock, oldArr) => {
+        const newArr = list;
+        for(let i=0; i<oldArr.length; i++){
+          if(newStock.symbol === oldArr[i].stockName){
+            newArr.concat(noDuplicateList)
+          }
+          newArr.push(newStock);
+        }
+      }
+      newPortfolio.stocks = addStock(stonk, list)
+      /*for(let i=0;i<list.length;i++) {
         if(stonk.symbol === list[i].stockName){
           newPortfolio.stocks = noDuplicateList
         }
         newPortfolio.stocks = [{stockName: stonk.symbol, shares}, ...list];
-      }
+      }*/
       
       
       setPortfolio(newPortfolio);
