@@ -4,6 +4,7 @@ import Search from "./components/Search";
 import { useState } from "react";
 import Trade from "./components/Trade";
 import Balance from "./components/Balance";
+import PortfolioGraph from "./components/PortfolioGraph";
 
 function App() {
   const [portfolio, setPortfolio] = useState({
@@ -39,6 +40,7 @@ function App() {
       <Datagraph series={series} seriesBar={seriesBar} />
       <Trade stonk={stonk} portfolio={portfolio} setPortfolio={setPortfolio} />
       <Balance portfolio={portfolio} />
+      <PortfolioGraph portfolio={portfolio}/>
     </div>
   );
 }

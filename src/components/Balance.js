@@ -1,6 +1,7 @@
 import PortfolioItem from "./PortfolioItem";
 
 function Balance({ portfolio }) {
+  //implement proper key
   return (
     <div>
       <div className="">
