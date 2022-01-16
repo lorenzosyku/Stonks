@@ -30,13 +30,14 @@ function Trade({ stonk, portfolio, setPortfolio }) {
         let newStockArr = [...arr];
 
         let newAmountShares = shares;
+        //const whenBought = stonk.marketTime; set the time for each stock to uptodate
         for (let i = 0; i < newStockArr.length; i++) {
           if (newStockArr[i].stockName === stonk.symbol) {
             newAmountShares = newStockArr[i].shares + newAmountShares;
             newStockArr.splice(i, 1);
           }
         }
-        newStockArr = [{ stockName: stonk.symbol, shares: newAmountShares }, ...newStockArr ];
+        newStockArr = [{ stockName: stonk.symbol, shares: newAmountShares, id: stonk.marketTime }, ...newStockArr ];
         newPortfolio.cash = portfolio.cash - amountToInvest;
 
         return newStockArr;
@@ -85,6 +86,7 @@ function Trade({ stonk, portfolio, setPortfolio }) {
             newStockArr.splice(i, 1, {
               stockName: stonk.symbol,
               shares: newAmountShares,
+              id: stonk.marketTime
             });
             newPortfolio.cash = portfolio.cash + amountToSell;
           }

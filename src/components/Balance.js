@@ -1,14 +1,18 @@
-import PortfolioItem from './PortfolioItem';
+import PortfolioItem from "./PortfolioItem";
 
-function Balance({portfolio, setPortfolio}) {
+function Balance({ portfolio }) {
   return (
     <div>
-      <h2>${portfolio.cash}</h2>
       <div className="">
-        {/*portfolio.stocks.map((item)=>(<PortfolioItem key={item.id} item={item} />))*/}
+        <h2>CASH BALANCE</h2>
+        <h3>{portfolio.cash}</h3>
+      </div>
+      <div className="">
+        <h2>STOCK LIST</h2>
+        {portfolio.stocks.map((stock)=>(<PortfolioItem key={stock.id} stock={stock.stockName} shares={stock.shares} />))}
       </div>
     </div>
-  )
+  );
 }
 
-export default Balance
+export default Balance;

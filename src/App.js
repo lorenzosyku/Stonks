@@ -38,7 +38,7 @@ function App() {
       />
       <Datagraph series={series} seriesBar={seriesBar} />
       <Trade stonk={stonk} portfolio={portfolio} setPortfolio={setPortfolio} />
-      <Balance portfolio={portfolio} setPortfolio={setPortfolio} />
+      <Balance portfolio={portfolio} />
     </div>
   );
 }
