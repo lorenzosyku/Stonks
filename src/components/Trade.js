@@ -26,27 +26,20 @@ function Trade({ stonk, portfolio, setPortfolio }) {
     const newPortfolio = { ...portfolio };
 
     const filterStocks = (arr) => {
-      let newStockArr = [...arr];
       if (portfolio.cash - amountToInvest > 0) {
-        newStockArr = [{ stockName: stonk.symbol, shares }, ...newStockArr];
+        let newStockArr = [...arr];
 
-        if (arr.length > 0) {
-          for (let i = 0; i < arr.length; i++) {
-            if (arr[i].stockName === stonk.symbol) {
-              const newAmountShares = arr[i].shares + shares;
-              newStockArr.splice(i, 2, {
-                stockName: stonk.symbol,
-                shares: newAmountShares,
-              });
-
-              return newStockArr;
-            }
+        let newAmountShares = shares;
+        for (let i = 0; i < newStockArr.length; i++) {
+          if (newStockArr[i].stockName === stonk.symbol) {
+            newAmountShares = newStockArr[i].shares + newAmountShares;
+            newStockArr.splice(i, 1);
           }
         }
-
+        newStockArr = [{ stockName: stonk.symbol, shares: newAmountShares }, ...newStockArr ];
         newPortfolio.cash = portfolio.cash - amountToInvest;
+
         return newStockArr;
-        
       } else {
         console.log("you dont have enough funds");
       }
