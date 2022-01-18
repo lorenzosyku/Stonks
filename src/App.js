@@ -8,7 +8,6 @@ import PortfolioGraph from "./components/PortfolioGraph";
 
 function App() {
   const [portfolio, setPortfolio] = useState({
-    //cash: [10000],
     cash: 10000,
     stocks: [],
   });

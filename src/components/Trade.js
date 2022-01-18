@@ -37,12 +37,13 @@ function Trade({ stonk, portfolio, setPortfolio }) {
             newStockArr.splice(i, 1);
           }
         }
-        newStockArr = [{ stockName: stonk.symbol, shares: newAmountShares, id: stonk.marketTime }, ...newStockArr ];
+        newStockArr = [{ stockName: stonk.symbol, shares: newAmountShares, id: new Date().getTime() }, ...newStockArr ];
         newPortfolio.cash = portfolio.cash - amountToInvest;
 
         return newStockArr;
       } else {
         console.log("you dont have enough funds");
+        {/*FIXME: you need to handle what to do because this block of code return undefined */}
       }
     };
 

@@ -1,7 +1,7 @@
 import PortfolioItem from "./PortfolioItem";
 
 function Balance({ portfolio }) {
-  //implement proper key
+  {/*TODO: implement proper key */}
   return (
     <div>
       <div className="">
@@ -10,7 +10,7 @@ function Balance({ portfolio }) {
       </div>
       <div className="">
         <h2>STOCK LIST</h2>
-        {portfolio.stocks.map((stock)=>(<PortfolioItem key={stock.id} stock={stock.stockName} shares={stock.shares} />))}
+        {portfolio?.stocks.map((stock)=>(<PortfolioItem key={stock.id} stock={stock.stockName} shares={stock.shares} />))}
       </div>
     </div>
   );
