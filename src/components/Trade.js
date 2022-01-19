@@ -37,7 +37,7 @@ function Trade({ stonk, portfolio, setPortfolio }) {
             newStockArr.splice(i, 1);
           }
         }
-        newStockArr = [{ stockName: stonk.symbol, shares: newAmountShares, id: new Date().getTime() }, ...newStockArr ];
+        newStockArr = [{ stockName: stonk.symbol, shares: newAmountShares, id: new Date().getTime(), currentPrice: parseFloat(price) }, ...newStockArr ];
         newPortfolio.cash = portfolio.cash - amountToInvest;
 
         return newStockArr;
@@ -87,7 +87,8 @@ function Trade({ stonk, portfolio, setPortfolio }) {
             newStockArr.splice(i, 1, {
               stockName: stonk.symbol,
               shares: newAmountShares,
-              id: stonk.marketTime
+              id: new Date().getTime(),
+              currentPrice: parseFloat(price),
             });
             newPortfolio.cash = portfolio.cash + amountToSell;
           }

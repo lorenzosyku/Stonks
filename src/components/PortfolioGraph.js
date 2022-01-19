@@ -1,15 +1,15 @@
 import Chart from "react-apexcharts";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function PortfolioGraph({ portfolio }) {
   let arr = [...portfolio.stocks];
 
   const [series, setSeries] = useState([]);
-  const [labels, setLabels] = useState([])
+  const [labels, setLabels] = useState([]);
 
   console.log(arr);
-  
-  let portfolioWorth = portfolio.cash + stockListValue; //you may need this line to calculate how much your up on your initial investment
+
+  //let portfolioWorth = portfolio.cash + stockListValue; //you may need this line to calculate how much your up on your initial investment
 
   const fetchStockPortfolioPrices = async () => {
     if (arr.length > 0) {
@@ -34,37 +34,53 @@ function PortfolioGraph({ portfolio }) {
       const stockSymbol = stock.meta.symbol;
       const price = stock.meta.regularMarketPrice.toFixed(2);
 
-      for(let j=0; j<arr.length; j++){
+      /*for(let j=0; j<arr.length; j++){
         if(arr[j].stockName === stockSymbol){
-
+          console.log(arr[j].currentPrice);
+          arr[j].currentPrice = price;
+          console.log(arr[j].currentPrice);
         }
       }
-      console.log(price);
+      console.log(price);*/
 
-
+      
     } catch (error) {
       console.log(error);
     }
   };
 
-  getLatestPrice();
+  useEffect(() => {
+    {
+      /*FIXME: Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. */
+    }
+    const handleData = () => {
+      let labelsArr = arr.map((stock) => stock.stockName);
+      labelsArr.unshift("cash");
+      console.log(labelsArr);
+    
+      setLabels(labelsArr);
+    
+      let seriesArr = arr.map((stock) => stock.shares * stock.currentPrice);
+      seriesArr.unshift(portfolio.cash);
+      console.log(seriesArr);
+    
+      setSeries(seriesArr);
+    }
+    handleData()
+  }, [])
+
+  
+
+  
 
   const chart = {
-    series: [44, 55, 13, 43, 22, 101, 88],
+    series: series,
     options: {
       chart: {
         width: 380,
         type: "pie",
       },
-      labels: [
-        "Team A",
-        "Team B",
-        "Team C",
-        "Team D",
-        "Team E",
-        "guxhi",
-        "muxhi",
-      ],
+      labels: labels,
       responsive: [
         {
           breakpoint: 480,
