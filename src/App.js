@@ -11,6 +11,10 @@ function App() {
     cash: 10000,
     stocks: [],
   });
+  const [transactions, setTransactions] = useState({
+    stocksBought: [],
+    stocksSold: [],
+  });
   const [stonk, setStonk] = useState({
     symbol: "-",
     regularMarketPrice: "-.--",
@@ -37,7 +41,7 @@ function App() {
         setSeriesBar={setSeriesBar}
       />
       <Datagraph series={series} seriesBar={seriesBar} />
-      <Trade stonk={stonk} portfolio={portfolio} setPortfolio={setPortfolio} />
+      <Trade stonk={stonk} portfolio={portfolio} setPortfolio={setPortfolio} transactions={transactions} setTransactions={setTransactions}/>
       <Balance portfolio={portfolio} />
       <PortfolioGraph portfolio={portfolio}/>
     </div>

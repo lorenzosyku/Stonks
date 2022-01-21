@@ -1,12 +1,19 @@
 import { useRef, useState } from "react";
 
-function Trade({ stonk, portfolio, setPortfolio }) {
+function Trade({
+  stonk,
+  portfolio,
+  setPortfolio,
+  transactions,
+  setTransactions,
+}) {
   const noSharesToBuy = useRef(null);
   const noSharesToSell = useRef(null);
   const [currentTrade, setCurrentTrade] = useState({
     from: "-",
     to: "-",
-    amount: 0,
+    amountSpent: 0,
+    amountGained: 0,
   });
 
   const buyShares = () => {
@@ -20,16 +27,35 @@ function Trade({ stonk, portfolio, setPortfolio }) {
     setCurrentTrade({
       from: "FakeUSD",
       to: stonk.symbol,
-      amount: amountToInvest,
+      //amountSpent: amountToInvest,
+      amountGained: 0,
     });
 
     const newPortfolio = { ...portfolio };
+    const newTrasactions = { ...transactions };
+
+    const transactionListStocksBought = newTrasactions.stocksBought;
+
+    if (portfolio.cash - amountToInvest > 0) {
+      newTrasactions.stocksBought = [
+        {
+          stockName: stonk.symbol,
+          shares: shares,
+          id: new Date().getTime(),
+          priceStock: parseFloat(price),
+          amountSpent: amountToInvest,
+        },
+        ...transactionListStocksBought,
+      ];
+    };
+
+    setTransactions(newTrasactions);
+    
 
     const filterStocks = (arr) => {
       let newStockArr = [...arr];
-      if (portfolio.cash - amountToInvest > 0) {   
+      if (portfolio.cash - amountToInvest > 0) {
         let newAmountShares = shares;
-//0: {stockName: 'W', shares: 13, id: 1642781318711, currentPrice: 142.65}
         for (let i = 0; i < newStockArr.length; i++) {
           if (newStockArr[i].stockName === stonk.symbol) {
             newAmountShares = newStockArr[i].shares + newAmountShares;
@@ -64,6 +90,7 @@ function Trade({ stonk, portfolio, setPortfolio }) {
     noSharesToBuy.current.value = "";
   };
   console.log(portfolio);
+  console.log(transactions)
 
   const sellShares = () => {
     const shares = noSharesToSell.current.value;
@@ -76,7 +103,8 @@ function Trade({ stonk, portfolio, setPortfolio }) {
     setCurrentTrade({
       from: stonk.symbol,
       to: "FakeUSD",
-      amount: amountToSell,
+      amountSpent: 0,
+      amountGained: amountToSell,
     });
 
     const newPortfolio = { ...portfolio };
@@ -113,7 +141,7 @@ function Trade({ stonk, portfolio, setPortfolio }) {
           newStockList.splice(j, 1);
         }
       }
-      return newStockList
+      return newStockList;
     };
     noZeroShares(newStockList);
 

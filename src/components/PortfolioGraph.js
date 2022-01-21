@@ -41,7 +41,11 @@ function PortfolioGraph({ portfolio }) {
     }
   };
 
-  let labelsArray = ['Cash'];
+  const updatePortfolio = () => {
+
+  }
+
+  let labelsArray = ['CASH'];
   let seriesArray = [portfolio.cash];
 
   const handleData = () => {
