@@ -26,11 +26,10 @@ function Trade({ stonk, portfolio, setPortfolio }) {
     const newPortfolio = { ...portfolio };
 
     const filterStocks = (arr) => {
-      if (portfolio.cash - amountToInvest > 0) {
-        let newStockArr = [...arr];
-
+      let newStockArr = [...arr];
+      if (portfolio.cash - amountToInvest > 0) {   
         let newAmountShares = shares;
-        //const whenBought = stonk.marketTime; set the time for each stock to uptodate
+
         for (let i = 0; i < newStockArr.length; i++) {
           if (newStockArr[i].stockName === stonk.symbol) {
             newAmountShares = newStockArr[i].shares + newAmountShares;
@@ -51,9 +50,7 @@ function Trade({ stonk, portfolio, setPortfolio }) {
         return newStockArr;
       } else {
         console.log("you dont have enough funds");
-        {
-          /*FIXME: you need to handle what to do because this block of code return undefined */
-        }
+        return newStockArr;
       }
     };
 
@@ -119,7 +116,7 @@ function Trade({ stonk, portfolio, setPortfolio }) {
       return newStockList
     };
     noZeroShares(newStockList);
-    
+
     newPortfolio.stocks = newStockList;
     setPortfolio(newPortfolio);
 
