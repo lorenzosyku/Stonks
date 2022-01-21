@@ -47,10 +47,9 @@ function Trade({
         },
         ...transactionListStocksBought,
       ];
-    };
+    }
 
     setTransactions(newTrasactions);
-    
 
     const filterStocks = (arr) => {
       let newStockArr = [...arr];
@@ -89,8 +88,7 @@ function Trade({
 
     noSharesToBuy.current.value = "";
   };
-  console.log(portfolio);
-  console.log(transactions)
+  
 
   const sellShares = () => {
     const shares = noSharesToSell.current.value;
@@ -108,6 +106,13 @@ function Trade({
     });
 
     const newPortfolio = { ...portfolio };
+    const newTrasactions = { ...transactions };
+
+    const transactionListStocksSold = newTrasactions.stocksSold;
+
+    
+
+    
 
     const filterStocks = (arr) => {
       const newStockArr = [...arr];
@@ -118,6 +123,20 @@ function Trade({
             console.log("you cant sell sheres you dont have");
           }
           if (shares <= arr[i].shares) {
+
+            newTrasactions.stocksSold = [
+              {
+                stockName: stonk.symbol,
+                shares: shares,
+                id: new Date().getTime(),
+                priceStock: parseFloat(price),
+                amountGained: amountToSell,
+              },
+              ...transactionListStocksSold,
+            ];
+
+            setTransactions(newTrasactions);
+
             const newAmountShares = arr[i].shares - shares;
             newStockArr.splice(i, 1, {
               stockName: stonk.symbol,
@@ -150,6 +169,9 @@ function Trade({
 
     noSharesToSell.current.value = "";
   };
+
+  console.log(portfolio);
+  console.log(transactions);
 
   return (
     <div>
