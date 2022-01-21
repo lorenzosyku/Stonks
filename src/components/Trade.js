@@ -37,13 +37,23 @@ function Trade({ stonk, portfolio, setPortfolio }) {
             newStockArr.splice(i, 1);
           }
         }
-        newStockArr = [{ stockName: stonk.symbol, shares: newAmountShares, id: new Date().getTime(), currentPrice: parseFloat(price) }, ...newStockArr ];
+        newStockArr = [
+          {
+            stockName: stonk.symbol,
+            shares: newAmountShares,
+            id: new Date().getTime(),
+            currentPrice: parseFloat(price),
+          },
+          ...newStockArr,
+        ];
         newPortfolio.cash = portfolio.cash - amountToInvest;
 
         return newStockArr;
       } else {
         console.log("you dont have enough funds");
-        {/*FIXME: you need to handle what to do because this block of code return undefined */}
+        {
+          /*FIXME: you need to handle what to do because this block of code return undefined */
+        }
       }
     };
 
@@ -99,8 +109,18 @@ function Trade({ stonk, portfolio, setPortfolio }) {
     const list = [...portfolio.stocks];
 
     const newStockList = filterStocks(list);
-    newPortfolio.stocks = newStockList;
 
+    const noZeroShares = () => {
+      for (let j = 0; j < newStockList.length; j++) {
+        if (newStockList[j].shares === 0) {
+          newStockList.splice(j, 1);
+        }
+      }
+      return newStockList
+    };
+    noZeroShares(newStockList);
+    
+    newPortfolio.stocks = newStockList;
     setPortfolio(newPortfolio);
 
     noSharesToSell.current.value = "";
