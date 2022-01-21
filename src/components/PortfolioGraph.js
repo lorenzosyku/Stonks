@@ -1,13 +1,8 @@
 import Chart from "react-apexcharts";
-import { useState, useEffect } from "react";
+//import { useState, useEffect, useMemo } from "react";
 
 function PortfolioGraph({ portfolio }) {
-  let arr = [...portfolio.stocks];
-
-  const [series, setSeries] = useState([]);
-  const [labels, setLabels] = useState([]);
-
-  console.log(arr);
+  const arr = [...portfolio.stocks];
 
   //let portfolioWorth = portfolio.cash + stockListValue; //you may need this line to calculate how much your up on your initial investment
 
@@ -29,8 +24,8 @@ function PortfolioGraph({ portfolio }) {
   const getLatestPrice = async () => {
     try {
       const data = await fetchStockPortfolioPrices();
-      const stock = data.chart.result[0];
 
+      const stock = data.chart.result[0];
       const stockSymbol = stock.meta.symbol;
       const price = stock.meta.regularMarketPrice.toFixed(2);
 
@@ -42,45 +37,31 @@ function PortfolioGraph({ portfolio }) {
         }
       }
       console.log(price);*/
-
-      
     } catch (error) {
       console.log(error);
     }
   };
+  let labelsArray = ['Cash'];
+  let seriesArray = [portfolio.cash];
 
-  useEffect(() => {
-    {
-      /*FIXME: Maximum update depth exceeded. This can happen when a component calls setState inside useEffect, but useEffect either doesn't have a dependency array, or one of the dependencies changes on every render. */
-    }
-    const handleData = () => {
-      let labelsArr = arr.map((stock) => stock.stockName);
-      labelsArr.unshift("cash");
-      console.log(labelsArr);
+  const handleData = () => {
+    let labelsArr = arr.map((stock) => stock.stockName);
+    let seriesArr = arr.map((stock) => stock.shares * stock.currentPrice);
     
-      setLabels(labelsArr);
-    
-      let seriesArr = arr.map((stock) => stock.shares * stock.currentPrice);
-      seriesArr.unshift(portfolio.cash);
-      console.log(seriesArr);
-    
-      setSeries(seriesArr);
-    }
-    handleData()
-  }, [])
+    labelsArray = labelsArray.concat(labelsArr);
+    seriesArray = seriesArray.concat(seriesArr);
+  };
 
-  
-
-  
+  handleData();
 
   const chart = {
-    series: series,
+    series: seriesArray,
     options: {
       chart: {
         width: 380,
         type: "pie",
       },
-      labels: labels,
+      labels: labelsArray,
       responsive: [
         {
           breakpoint: 480,
