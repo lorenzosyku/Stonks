@@ -29,18 +29,18 @@ function PortfolioGraph({ portfolio }) {
       const stockSymbol = stock.meta.symbol;
       const price = stock.meta.regularMarketPrice.toFixed(2);
 
-      /*for(let j=0; j<arr.length; j++){
+      for(let j=0; j<arr.length; j++){
         if(arr[j].stockName === stockSymbol){
           console.log(arr[j].currentPrice);
-          arr[j].currentPrice = price;
-          console.log(arr[j].currentPrice);
+          arr[j].currentPrice = parseFloat(price);
         }
       }
-      console.log(price);*/
+      console.log(price);
     } catch (error) {
       console.log(error);
     }
   };
+
   let labelsArray = ['Cash'];
   let seriesArray = [portfolio.cash];
 
@@ -80,6 +80,7 @@ function PortfolioGraph({ portfolio }) {
 
   return (
     <div>
+      <button onClick={getLatestPrice}>update</button>
       <Chart
         options={chart.options}
         series={chart.series}

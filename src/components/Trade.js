@@ -29,7 +29,7 @@ function Trade({ stonk, portfolio, setPortfolio }) {
       let newStockArr = [...arr];
       if (portfolio.cash - amountToInvest > 0) {   
         let newAmountShares = shares;
-
+//0: {stockName: 'W', shares: 13, id: 1642781318711, currentPrice: 142.65}
         for (let i = 0; i < newStockArr.length; i++) {
           if (newStockArr[i].stockName === stonk.symbol) {
             newAmountShares = newStockArr[i].shares + newAmountShares;
