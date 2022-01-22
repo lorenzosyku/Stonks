@@ -1,5 +1,4 @@
 import {useRef, useState, useEffect} from 'react';
-import moment from 'moment';
 
 function Search({stonk, setStonk, setSeries, setSeriesBar}) {
 

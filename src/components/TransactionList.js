@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 function TransactionList({ transactions }) {
   const listBoughtStocks = [...transactions.stocksBought];
   const listSoldStocks = [...transactions.stocksSold];
@@ -21,7 +23,7 @@ function TransactionList({ transactions }) {
               <tr key={rowData.id}>
                 <td>{rowData.stockName}</td>
                 <td>{rowData.shares}</td>
-                <td>{rowData.id}</td>
+                <td>{moment(rowData.id).format('MMMM Do YYYY, h:mm:ss a')}</td>
                 <td>{rowData.priceStock}</td>
                 <td>{rowData.amountSpent}</td>
               </tr>
@@ -46,7 +48,7 @@ function TransactionList({ transactions }) {
               <tr key={rowData.id}>
                 <td>{rowData.stockName}</td>
                 <td>{rowData.shares}</td>
-                <td>{rowData.id}</td>
+                <td>{moment(rowData.id).format('MMMM Do YYYY, h:mm:ss a')}</td>
                 <td>{rowData.priceStock}</td>
                 <td>{rowData.amountGained}</td>
               </tr>
