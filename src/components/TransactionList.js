@@ -24,8 +24,8 @@ function TransactionList({ transactions }) {
                 <td>{rowData.stockName}</td>
                 <td>{rowData.shares}</td>
                 <td>{moment(rowData.id).format('MMMM Do YYYY, h:mm:ss a')}</td>
-                <td>{rowData.priceStock}</td>
-                <td>{rowData.amountSpent}</td>
+                <td>${rowData.priceStock}</td>
+                <td>${rowData.amountSpent}</td>
               </tr>
             ))}
           </tbody>
@@ -49,8 +49,8 @@ function TransactionList({ transactions }) {
                 <td>{rowData.stockName}</td>
                 <td>{rowData.shares}</td>
                 <td>{moment(rowData.id).format('MMMM Do YYYY, h:mm:ss a')}</td>
-                <td>{rowData.priceStock}</td>
-                <td>{rowData.amountGained}</td>
+                <td>${rowData.priceStock}</td>
+                <td>${rowData.amountGained}</td>
               </tr>
             ))}
           </tbody>

@@ -1,4 +1,5 @@
 import {useRef, useState, useEffect} from 'react';
+import moment from 'moment';
 
 function Search({stonk, setStonk, setSeries, setSeriesBar}) {
 
@@ -19,7 +20,7 @@ function Search({stonk, setStonk, setSeries, setSeriesBar}) {
       const stockName = stock.meta.symbol;
       const price = stock.meta.regularMarketPrice.toFixed(2);
       const time = stock.meta.regularMarketTime;
-      //const readableTime = moment.unix(new Date(stock.meta.regularMarketTime)).format('LLL');
+      
       const quotes = stock.indicators.quote[0];
       const arrPrices = stock.timestamp.map((timestamp, index)=>({
         x: new Date(timestamp * 1000),
@@ -51,6 +52,8 @@ function Search({stonk, setStonk, setSeries, setSeriesBar}) {
     }
   };
 
+  const readableTime = moment(stonk.marketTime).format('MMMM Do YYYY, h:mm:ss a')
+
   const reset = () => {
     searchValue.current.value = "";
   };
@@ -66,7 +69,7 @@ function Search({stonk, setStonk, setSeries, setSeriesBar}) {
 
         <h1>stock symbol: {stonk.symbol}</h1>
         <h2>stock price: {stonk.regularMarketPrice}$</h2>
-        <h2>time: {stonk.marketTime}</h2>
+        <h2>time: {readableTime}</h2>
       </div>
     </div>
   )
