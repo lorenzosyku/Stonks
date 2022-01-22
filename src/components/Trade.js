@@ -22,15 +22,6 @@ function Trade({
     const price = stonk.regularMarketPrice;
     const amountToInvest = shares * price;
 
-    //console.log(amountToInvest);
-
-    setCurrentTrade({
-      from: "FakeUSD",
-      to: stonk.symbol,
-      //amountSpent: amountToInvest,
-      amountGained: 0,
-    });
-
     const newPortfolio = { ...portfolio };
     const newTrasactions = { ...transactions };
 
@@ -96,23 +87,10 @@ function Trade({
     const price = stonk.regularMarketPrice;
     const amountToSell = shares * price;
 
-    //console.log(amountToSell);
-
-    setCurrentTrade({
-      from: stonk.symbol,
-      to: "FakeUSD",
-      amountSpent: 0,
-      amountGained: amountToSell,
-    });
-
     const newPortfolio = { ...portfolio };
     const newTrasactions = { ...transactions };
 
     const transactionListStocksSold = newTrasactions.stocksSold;
-
-    
-
-    
 
     const filterStocks = (arr) => {
       const newStockArr = [...arr];

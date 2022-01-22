@@ -5,6 +5,7 @@ import { useState } from "react";
 import Trade from "./components/Trade";
 import Balance from "./components/Balance";
 import PortfolioGraph from "./components/PortfolioGraph";
+import TransactionList from "./components/TransactionList";
 
 function App() {
   const [portfolio, setPortfolio] = useState({
@@ -41,9 +42,16 @@ function App() {
         setSeriesBar={setSeriesBar}
       />
       <Datagraph series={series} seriesBar={seriesBar} />
-      <Trade stonk={stonk} portfolio={portfolio} setPortfolio={setPortfolio} transactions={transactions} setTransactions={setTransactions}/>
+      <Trade
+        stonk={stonk}
+        portfolio={portfolio}
+        setPortfolio={setPortfolio}
+        transactions={transactions}
+        setTransactions={setTransactions}
+      />
       <Balance portfolio={portfolio} />
-      <PortfolioGraph portfolio={portfolio}/>
+      <PortfolioGraph portfolio={portfolio} />
+      <TransactionList transactions={transactions} />
     </div>
   );
 }
