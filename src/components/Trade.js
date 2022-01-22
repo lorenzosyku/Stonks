@@ -28,7 +28,7 @@ function Trade({
           shares: shares,
           id: new Date().getTime(),
           priceStock: parseFloat(price),
-          amountSpent: amountToInvest,
+          amountSpent: amountToInvest.toFixed(2),
         },
         ...transactionListStocksBought,
       ];
@@ -40,9 +40,11 @@ function Trade({
       let newStockArr = [...arr];
       if (portfolio.cash - amountToInvest > 0) {
         let newAmountShares = shares;
+        let newPrice = parseFloat(price);
         for (let i = 0; i < newStockArr.length; i++) {
           if (newStockArr[i].stockName === stonk.symbol) {
             newAmountShares = newStockArr[i].shares + newAmountShares;
+            newPrice = parseFloat((newStockArr[i].currentPrice + newPrice)/2)
             newStockArr.splice(i, 1);
           }
         }
@@ -51,7 +53,7 @@ function Trade({
             stockName: stonk.symbol,
             shares: newAmountShares,
             id: new Date().getTime(),
-            currentPrice: parseFloat(price),
+            currentPrice: newPrice.toFixed(2),
           },
           ...newStockArr,
         ];
@@ -102,7 +104,7 @@ function Trade({
                 shares: shares,
                 id: new Date().getTime(),
                 priceStock: parseFloat(price),
-                amountGained: amountToSell,
+                amountGained: amountToSell.toFixed(2),
               },
               ...transactionListStocksSold,
             ];
@@ -143,7 +145,7 @@ function Trade({
   };
 
   console.log(portfolio);
-  console.log(transactions);
+  //console.log(transactions);
 
   return (
     <div>
