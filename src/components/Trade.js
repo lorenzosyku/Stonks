@@ -9,12 +9,6 @@ function Trade({
 }) {
   const noSharesToBuy = useRef(null);
   const noSharesToSell = useRef(null);
-  const [currentTrade, setCurrentTrade] = useState({
-    from: "-",
-    to: "-",
-    amountSpent: 0,
-    amountGained: 0,
-  });
 
   const buyShares = () => {
     const shares = parseInt(noSharesToBuy.current.value);
