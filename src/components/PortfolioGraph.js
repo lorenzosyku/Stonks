@@ -4,8 +4,6 @@ import Chart from "react-apexcharts";
 function PortfolioGraph({ portfolio }) {
   const arr = [...portfolio.stocks];
 
-  //let portfolioWorth = portfolio.cash + stockListValue; //you may need this line to calculate how much your up on your initial investment
-
   const fetchStockPortfolioPrices = async () => {
     if (arr.length > 0) {
       for (let i = 0; i < arr.length; i++) {
@@ -42,21 +40,30 @@ function PortfolioGraph({ portfolio }) {
   };
 
   const updatePortfolio = () => {
-
+    //getLatestPrice()
   }
 
   let labelsArray = ['CASH'];
   let seriesArray = [portfolio.cash];
 
   const handleData = () => {
-    let labelsArr = arr.map((stock) => stock.stockName);
-    let seriesArr = arr.map((stock) => stock.shares * stock.currentPrice);
+    let labelsArr = arr.map((stock) => {
+      console.log(stock.shares)
+      return stock.stockName});
+    let seriesArr = arr.map((stock) => {
+      console.log(stock.currentPrice)
+      //FIXME:when buying tha same stock again after you already bought some,the stock.currentPrice is undefined
+      return stock.shares * stock.currentPrice});
+    
+    
     
     labelsArray = labelsArray.concat(labelsArr);
     seriesArray = seriesArray.concat(seriesArr);
   };
 
   handleData();
+  console.log(labelsArray);
+  console.log(seriesArray)
 
   const chart = {
     series: seriesArray,

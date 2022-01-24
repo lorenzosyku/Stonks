@@ -1,11 +1,12 @@
 import PortfolioItem from "./PortfolioItem";
 
 function Balance({ portfolio }) {
+  const cashBalance = portfolio.cash
   return (
     <div>
       <div className="">
         <h2>CASH BALANCE</h2>
-        <h3>{portfolio.cash}</h3>
+        <h3>${cashBalance.toFixed(2)}</h3>
       </div>
       <div className="">
         <h2>STOCK LIST</h2>

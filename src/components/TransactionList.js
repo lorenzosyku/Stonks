@@ -5,7 +5,7 @@ function TransactionList({ transactions }) {
   const listSoldStocks = [...transactions.stocksSold];
 
   return (
-    <div>
+    <div style={{display:'flex', justifyContent:"space-between"}}>
       <div>
         <h1>Bought</h1>
         <table>

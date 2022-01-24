@@ -6,6 +6,7 @@ import Trade from "./components/Trade";
 import Balance from "./components/Balance";
 import PortfolioGraph from "./components/PortfolioGraph";
 import TransactionList from "./components/TransactionList";
+import TotalReturnsGraph from "./components/TotalReturnsGraph";
 
 function App() {
   const [portfolio, setPortfolio] = useState({
@@ -51,6 +52,7 @@ function App() {
       />
       <Balance portfolio={portfolio} />
       <PortfolioGraph portfolio={portfolio} />
+      <TotalReturnsGraph/>
       <TransactionList transactions={transactions} />
     </div>
   );
