@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useEffect } from "react";
 
 function Trade({
   stonk,
@@ -44,7 +44,7 @@ function Trade({
         for (let i = 0; i < newStockArr.length; i++) {
           if (newStockArr[i].stockName === stonk.symbol) {
             newAmountShares = newStockArr[i].shares + newAmountShares;
-            newPrice = parseFloat((newStockArr[i].currentPrice + newPrice)/2)
+            newPrice = parseFloat((newStockArr[i].currentPrice + newPrice) / 2);
             newStockArr.splice(i, 1);
           }
         }
@@ -58,7 +58,6 @@ function Trade({
           ...newStockArr,
         ];
         newPortfolio.cash = portfolio.cash - amountToInvest;
-
         return newStockArr;
       } else {
         console.log("you dont have enough funds");
@@ -67,15 +66,13 @@ function Trade({
     };
 
     const list = [...portfolio.stocks];
-
+    
     const newStockList = filterStocks(list);
     newPortfolio.stocks = newStockList;
-
     setPortfolio(newPortfolio);
 
     noSharesToBuy.current.value = "";
   };
-  
 
   const sellShares = () => {
     const shares = noSharesToSell.current.value;
@@ -97,7 +94,6 @@ function Trade({
             console.log("you cant sell sheres you dont have");
           }
           if (shares <= arr[i].shares) {
-
             newTrasactions.stocksSold = [
               {
                 stockName: stonk.symbol,
@@ -125,7 +121,7 @@ function Trade({
       return newStockArr;
     };
     const list = [...portfolio.stocks];
-
+    
     const newStockList = filterStocks(list);
 
     const noZeroShares = () => {
@@ -144,6 +140,18 @@ function Trade({
     noSharesToSell.current.value = "";
   };
 
+  useEffect(() => {
+    const temp = localStorage.getItem("portfolioAllocation")
+    if(temp) {
+      setPortfolio(JSON.parse(temp))
+    }
+  },[]);
+
+  useEffect(() => {
+    localStorage.setItem("portfolioAllocation", JSON.stringify(portfolio));
+  });
+
+  
   console.log(portfolio);
   //console.log(transactions);
 

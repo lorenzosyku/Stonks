@@ -22,6 +22,7 @@ function App() {
     regularMarketPrice: "-.--",
     marketTime: "-:--",
   });
+  
   const [series, setSeries] = useState([
     {
       data: [],
@@ -50,9 +51,11 @@ function App() {
         transactions={transactions}
         setTransactions={setTransactions}
       />
-      <Balance portfolio={portfolio} />
+      <Balance
+        portfolio={portfolio}
+      />
       <PortfolioGraph portfolio={portfolio} />
-      <TotalReturnsGraph/>
+      <TotalReturnsGraph />
       <TransactionList transactions={transactions} />
     </div>
   );
