@@ -41,10 +41,15 @@ function Trade({
       if (portfolio.cash - amountToInvest > 0) {
         let newAmountShares = shares;
         let newPrice = parseFloat(price);
+        //console.log(newPrice);
+        //console.log(typeof newPrice);
         for (let i = 0; i < newStockArr.length; i++) {
           if (newStockArr[i].stockName === stonk.symbol) {
             newAmountShares = newStockArr[i].shares + newAmountShares;
-            newPrice = parseFloat((newStockArr[i].currentPrice + newPrice) / 2);
+            //console.log(newStockArr[i].currentPrice);
+            newPrice = parseFloat((newStockArr[i].currentPrice + newPrice));
+            console.log(newPrice);
+            //FIXME: if you buy the same stock again it has to lower your total entry point
             newStockArr.splice(i, 1);
           }
         }
@@ -152,7 +157,7 @@ function Trade({
   });
 
   
-  console.log(portfolio);
+  //console.log(portfolio);
   //console.log(transactions);
 
   return (

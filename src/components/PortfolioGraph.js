@@ -33,7 +33,7 @@ function PortfolioGraph({ portfolio }) {
           arr[j].currentPrice = parseFloat(price);
         }
       }
-      console.log(price);
+      //console.log(price);
     } catch (error) {
       console.log(error);
     }
@@ -48,10 +48,10 @@ function PortfolioGraph({ portfolio }) {
 
   const handleData = () => {
     let labelsArr = arr.map((stock) => {
-      console.log(stock.shares)
+      //console.log(stock.shares)
       return stock.stockName});
     let seriesArr = arr.map((stock) => {
-      console.log(stock.currentPrice)
+      //console.log(stock.currentPrice)
       //FIXME:when buying tha same stock again after you already bought some,the stock.currentPrice is undefined
       return stock.shares * stock.currentPrice});
     
@@ -62,8 +62,8 @@ function PortfolioGraph({ portfolio }) {
   };
 
   handleData();
-  console.log(labelsArray);
-  console.log(seriesArray)
+  //console.log(labelsArray);
+  //console.log(seriesArray)
 
   const chart = {
     series: seriesArray,

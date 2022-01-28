@@ -3,7 +3,8 @@ import moment from 'moment';
 
 function Search({stonk, setStonk, setSeries, setSeriesBar}) {
 
-  const searchValue = useRef(null);  
+  const searchValue = useRef(null); 
+  const [readableTime, setReadableTime] = useState('-');
 
   const fetchStonk = async () => {
     const response = await fetch(`https://yahoo-finance-api.vercel.app/${searchValue.current.value}`);
@@ -15,11 +16,10 @@ function Search({stonk, setStonk, setSeries, setSeriesBar}) {
       const data = await fetchStonk(); 
       const stock = data.chart.result[0];
 
-      //console.log(stock);
-
       const stockName = stock.meta.symbol;
       const price = stock.meta.regularMarketPrice.toFixed(2);
-      const time = stock.meta.regularMarketTime;
+      const time = new Date(stock.meta.regularMarketTime * 1000);
+      setReadableTime(time);
       
       const quotes = stock.indicators.quote[0];
       const arrPrices = stock.timestamp.map((timestamp, index)=>({
@@ -52,12 +52,10 @@ function Search({stonk, setStonk, setSeries, setSeriesBar}) {
     }
   };
 
-  const readableTime = moment(stonk.marketTime).format('MMMM Do YYYY, h:mm:ss a')
-
   const reset = () => {
     searchValue.current.value = "";
   };
-  //console.log(stonk)
+
   return (
     <div>
       <div className="">
@@ -69,7 +67,7 @@ function Search({stonk, setStonk, setSeries, setSeriesBar}) {
 
         <h1>stock symbol: {stonk.symbol}</h1>
         <h2>stock price: {stonk.regularMarketPrice}$</h2>
-        <h2>time: {readableTime}</h2>
+        <h2>time: {moment(readableTime).format('MMMM Do YYYY, h:mm:ss a')}</h2>
       </div>
     </div>
   )
