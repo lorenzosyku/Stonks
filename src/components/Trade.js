@@ -10,7 +10,9 @@ function Trade({
   const noSharesToBuy = useRef(null);
   const noSharesToSell = useRef(null);
 
-  const [entry, setEntry] = useState();
+  const [enterTrade, setEnterTrade] = useState([]);
+  const [exitTrade, setExitTrade] = useState([]);
+
 
   const buyShares = () => {
     const shares = parseInt(noSharesToBuy.current.value);
@@ -35,12 +37,27 @@ function Trade({
         ...transactionListStocksBought,
       ];
     }
-
+    //FIXME: if you buy the same stock again it has to lower your total entry point which means you have to do totalSpentOnStock/totalAmountOfShares
     setTransactions(newTrasactions);
 
-    const helper = (prevVal, currVal) => {   
-      return parseFloat(prevVal+currVal)/2;
+    const defineEntryPoint = (a) => {  
+      let avaregedDownEntryPrice;
+      let totalSpentOnStock = amountToInvest;
+      let totalAmountOfShares = shares;
+      for(let i=0; i<a.length;i++){
+        if(stonk.symbol === a[i].stockName){
+          totalAmountOfShares = a[i].shares + totalAmountOfShares;
+          console.log(totalAmountOfShares)
+          totalSpentOnStock = parseFloat(a[i].amountSpent) + totalSpentOnStock
+          console.log(totalSpentOnStock);
+        }
+      }
+      avaregedDownEntryPrice = parseFloat(totalSpentOnStock/totalAmountOfShares);
+      return avaregedDownEntryPrice.toFixed(2);
     };
+
+    let loweredEntryPointOfTrade = defineEntryPoint(transactions.stocksBought);
+    console.log(loweredEntryPointOfTrade);
 
 
     const filterStocks = (arr) => {
@@ -51,10 +68,10 @@ function Trade({
         for (let i = 0; i < newStockArr.length; i++) {
           if (newStockArr[i].stockName === stonk.symbol) {
             newAmountShares = newStockArr[i].shares + newAmountShares;
-            //FIXME: if you buy the same stock again it has to lower your total entry point
             newStockArr.splice(i, 1);
           }
         }
+
         newStockArr = [
           {
             stockName: stonk.symbol,
