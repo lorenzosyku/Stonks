@@ -44,12 +44,12 @@ function Trade({
         let newAmountShares = shares;
         let newAmountSpentOnStock = parseFloat(amountToInvest);
         let newPrice = parseFloat(price);
-        let loweredEntryPointOfTrade = parseFloat(price);
+        let entryPointOfTrade = parseFloat(price);
         for (let i = 0; i < newStockArr.length; i++) {
           if (newStockArr[i].stockName === stonk.symbol) {
             newAmountShares = newStockArr[i].shares + newAmountShares;
             newAmountSpentOnStock = newStockArr[i].amountSpent + newAmountSpentOnStock;
-            loweredEntryPointOfTrade = newAmountSpentOnStock / newAmountShares;
+            entryPointOfTrade = newAmountSpentOnStock / newAmountShares;
             //console.log(loweredEntryPointOfTrade)
             newStockArr.splice(i, 1);
           }
@@ -62,7 +62,7 @@ function Trade({
             id: new Date().getTime(),
             currentPrice: newPrice,
             amountSpent: newAmountSpentOnStock,
-            entryPrice: loweredEntryPointOfTrade,
+            entryPrice: entryPointOfTrade,
           },
           ...newStockArr,
         ];
