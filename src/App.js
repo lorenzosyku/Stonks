@@ -22,6 +22,10 @@ function App() {
     regularMarketPrice: "-.--",
     marketTime: "-:--",
   });
+  const [trades, setTrades] = useState({
+    enterTrade: [],
+    exitTrade: [],
+  });
 
   const [series, setSeries] = useState([
     {
@@ -50,6 +54,8 @@ function App() {
         setPortfolio={setPortfolio}
         transactions={transactions}
         setTransactions={setTransactions}
+        trades={trades}
+        setTrades={setTrades}
       />
       <div style={{display:'flex', justifyContent:"left"}}>
         <Balance portfolio={portfolio} />

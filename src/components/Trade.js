@@ -6,12 +6,11 @@ function Trade({
   setPortfolio,
   transactions,
   setTransactions,
+  trades,
+  setTrades,
 }) {
   const noSharesToBuy = useRef(null);
   const noSharesToSell = useRef(null);
-
-  const [enterTrade, setEnterTrade] = useState([]);
-  const [exitTrade, setExitTrade] = useState([]);
 
 
   const buyShares = () => {
@@ -37,37 +36,21 @@ function Trade({
         ...transactionListStocksBought,
       ];
     }
-    //FIXME: if you buy the same stock again it has to lower your total entry point which means you have to do totalSpentOnStock/totalAmountOfShares
     setTransactions(newTrasactions);
-
-    const defineEntryPoint = (a) => {  
-      let avaregedDownEntryPrice;
-      let totalSpentOnStock = amountToInvest;
-      let totalAmountOfShares = shares;
-      for(let i=0; i<a.length;i++){
-        if(stonk.symbol === a[i].stockName){
-          totalAmountOfShares = a[i].shares + totalAmountOfShares;
-          console.log(totalAmountOfShares)
-          totalSpentOnStock = parseFloat(a[i].amountSpent) + totalSpentOnStock
-          console.log(totalSpentOnStock);
-        }
-      }
-      avaregedDownEntryPrice = parseFloat(totalSpentOnStock/totalAmountOfShares);
-      return avaregedDownEntryPrice.toFixed(2);
-    };
-
-    let loweredEntryPointOfTrade = defineEntryPoint(transactions.stocksBought);
-    console.log(loweredEntryPointOfTrade);
-
 
     const filterStocks = (arr) => {
       let newStockArr = [...arr];
       if (portfolio.cash - amountToInvest > 0) {
         let newAmountShares = shares;
+        let newAmountSpentOnStock = parseFloat(amountToInvest);
         let newPrice = parseFloat(price);
+        let loweredEntryPointOfTrade = parseFloat(price);
         for (let i = 0; i < newStockArr.length; i++) {
           if (newStockArr[i].stockName === stonk.symbol) {
             newAmountShares = newStockArr[i].shares + newAmountShares;
+            newAmountSpentOnStock = newStockArr[i].amountSpent + newAmountSpentOnStock;
+            loweredEntryPointOfTrade = newAmountSpentOnStock / newAmountShares;
+            //console.log(loweredEntryPointOfTrade)
             newStockArr.splice(i, 1);
           }
         }
@@ -77,7 +60,9 @@ function Trade({
             stockName: stonk.symbol,
             shares: newAmountShares,
             id: new Date().getTime(),
-            currentPrice: newPrice.toFixed(2),
+            currentPrice: newPrice,
+            amountSpent: newAmountSpentOnStock,
+            entryPrice: loweredEntryPointOfTrade,
           },
           ...newStockArr,
         ];
@@ -94,6 +79,19 @@ function Trade({
     const newStockList = filterStocks(list);
     newPortfolio.stocks = newStockList;
     setPortfolio(newPortfolio);
+
+    /*const initializedTrades = trades.enterTrade;
+    trades.enterTrade = [
+      {
+        stockName: stonk.symbol,
+        shares: shares,
+        id: new Date().getTime(),
+        priceStock: parseFloat(price),
+        amountSpent: amountToInvest.toFixed(2),
+      },
+      ...initializedTrades
+    ]
+    */
 
     noSharesToBuy.current.value = "";
   };
@@ -176,7 +174,7 @@ function Trade({
   });
 
   
-  //console.log(portfolio);
+  console.log(portfolio);
   //console.log(transactions);
 
   return (
