@@ -21,6 +21,7 @@ function Trade({
 
     const newPortfolio = { ...portfolio };
     const newTrasactions = { ...transactions };
+    //const newTrades = { ...trades};
 
     const transactionListStocksBought = newTrasactions.stocksBought;
 
@@ -80,18 +81,6 @@ function Trade({
     newPortfolio.stocks = newStockList;
     setPortfolio(newPortfolio);
 
-    /*const initializedTrades = trades.enterTrade;
-    trades.enterTrade = [
-      {
-        stockName: stonk.symbol,
-        shares: shares,
-        id: new Date().getTime(),
-        priceStock: parseFloat(price),
-        amountSpent: amountToInvest.toFixed(2),
-      },
-      ...initializedTrades
-    ]
-    */
 
     noSharesToBuy.current.value = "";
   };
