@@ -12,7 +12,6 @@ function Trade({
   const noSharesToBuy = useRef(null);
   const noSharesToSell = useRef(null);
 
-
   const buyShares = () => {
     const shares = parseInt(noSharesToBuy.current.value);
     if (shares <= 0) return;
@@ -45,13 +44,16 @@ function Trade({
         let newAmountShares = shares;
         let newAmountSpentOnStock = parseFloat(amountToInvest);
         let newPrice = parseFloat(price);
-        let entryPointOfTrade = parseFloat(price);
+        let entryPointOfTrade = newPrice;
+        //console.log(entryPointOfTrade);
         for (let i = 0; i < newStockArr.length; i++) {
           if (newStockArr[i].stockName === stonk.symbol) {
             newAmountShares = newStockArr[i].shares + newAmountShares;
+            //console.log(newAmountShares);
             newAmountSpentOnStock = newStockArr[i].amountSpent + newAmountSpentOnStock;
+            //console.log(newAmountSpentOnStock);
             entryPointOfTrade = newAmountSpentOnStock / newAmountShares;
-            //console.log(loweredEntryPointOfTrade)
+            //console.log(entryPointOfTrade);
             newStockArr.splice(i, 1);
           }
         }
@@ -76,11 +78,10 @@ function Trade({
     };
 
     const list = [...portfolio.stocks];
-    
+
     const newStockList = filterStocks(list);
     newPortfolio.stocks = newStockList;
     setPortfolio(newPortfolio);
-
 
     noSharesToBuy.current.value = "";
   };
@@ -119,11 +120,16 @@ function Trade({
             setTransactions(newTrasactions);
 
             const newAmountShares = arr[i].shares - shares;
+            //const entryPointOfTrade = arr[i].entryPrice;
             newStockArr.splice(i, 1, {
               stockName: stonk.symbol,
               shares: newAmountShares,
+              amountGained: amountToSell,
               id: new Date().getTime(),
               currentPrice: parseFloat(price),
+              amountSpent: arr[i].amountSpent,
+              entryPrice: arr[i].entryPrice,
+            
             });
             newPortfolio.cash = portfolio.cash + amountToSell;
           }
@@ -132,7 +138,7 @@ function Trade({
       return newStockArr;
     };
     const list = [...portfolio.stocks];
-    
+
     const newStockList = filterStocks(list);
 
     const noZeroShares = () => {
@@ -151,18 +157,46 @@ function Trade({
     noSharesToSell.current.value = "";
   };
 
-  useEffect(() => {
-    const temp = localStorage.getItem("portfolioAllocation")
-    if(temp) {
-      setPortfolio(JSON.parse(temp))
+  const arr = [...portfolio.stocks];
+  const arrOfStocks = arr.map((stock) => stock.stockName);
+
+  const fetchStockPortfolioPrices = async (symbol) => {
+    const response = await fetch(
+      `https://yahoo-finance-api.vercel.app/${symbol}`
+    );
+    return response.json();
+  };
+
+  const getLatestPrice = async () => {
+    try {
+      for (let i = 0; i < arrOfStocks.length; i++) {
+        const data = await fetchStockPortfolioPrices(arrOfStocks[i]);
+
+        const stock = data.chart.result[0];
+        const price = stock.meta.regularMarketPrice;
+
+        console.log(arr[i].stockName);
+        console.log(price);
+        arr[i].currentPrice = price;
+        portfolio.stocks = arr;
+        console.log(portfolio);
+      }
+    } catch (error) {
+      console.log(error);
     }
-  },[]);
+  };
+
+  useEffect(() => {
+    const temp = localStorage.getItem("portfolioAllocation");
+    if (temp) {
+      setPortfolio(JSON.parse(temp));
+    }
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("portfolioAllocation", JSON.stringify(portfolio));
   });
 
-  
   console.log(portfolio);
   //console.log(transactions);
 
@@ -183,6 +217,7 @@ function Trade({
           placeholder={`Sell ${stonk.symbol} shares`}
         />
         <button onClick={sellShares}>sell</button>
+        <button onClick={getLatestPrice}>updateToLatestPrices</button>
       </div>
     </div>
   );
