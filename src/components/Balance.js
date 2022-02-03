@@ -4,6 +4,12 @@ import { useEffect, useState } from "react";
 function Balance({ portfolio }) {
   const cashBalance = portfolio.cash;
 
+  const percentage = (prevPrice, currPrice) => {
+    return (currPrice-prevPrice)/prevPrice * 100
+  }
+
+  //console.log(percentage(100,160))
+
   return (
     <div>
       <div className="">
@@ -17,6 +23,9 @@ function Balance({ portfolio }) {
             key={stock.id}
             stock={stock.stockName}
             shares={stock.shares}
+            prev={stock.entryPrice}
+            curr={stock.currentPrice}
+            percentage={percentage}
           />
         ))}
       </div>
