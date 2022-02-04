@@ -1,6 +1,9 @@
 import ReactApexChart from "react-apexcharts";
+import {useState, useEffect} from 'react';
 
 function TotalReturnsGraph({ portfolio }) {
+
+  const [totalPortfolioValue, setTotalPortfolioValue] = useState([])
 
   let arrData = [10000];
   let portfolioWorth = arrData;
@@ -14,17 +17,30 @@ function TotalReturnsGraph({ portfolio }) {
     const cash = [portfolio.cash];
     const total = cash.concat(valueOfEachInvesment);
     const stockListValue = total.reduce((acc, val) => acc + val);
-    portfolioWorth.push(stockListValue);
-    
-    return portfolioWorth;
+    portfolioWorth.push(stockListValue.toFixed(2));
+
+    setTotalPortfolioValue(portfolioWorth);
   };
 
+  console.log(totalPortfolioValue)
+  
+  useEffect(() => {
+    const temp = localStorage.getItem("totalPortfolioValueAllocation");
+    if (temp) {
+      setTotalPortfolioValue(JSON.parse(temp));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("totalPortfolioValueAllocation", JSON.stringify(totalPortfolioValue));
+  });
+  
 
   const chart = {
     series: [
       {
         name: "Desktops",
-        data: portfolioWorth,
+        data: totalPortfolioValue,
       },
     ],
     options: {
@@ -42,7 +58,7 @@ function TotalReturnsGraph({ portfolio }) {
         curve: "straight",
       },
       title: {
-        text: "Product Trends by Month",
+        text: "Portfolio Value",
         align: "left",
       },
       grid: {
