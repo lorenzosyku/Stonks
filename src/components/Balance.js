@@ -1,5 +1,4 @@
 import PortfolioItem from "./PortfolioItem";
-import { useEffect, useState } from "react";
 
 function Balance({ portfolio }) {
   const cashBalance = portfolio.cash;
@@ -7,8 +6,6 @@ function Balance({ portfolio }) {
   const percentage = (prevPrice, currPrice) => {
     return (currPrice-prevPrice)/prevPrice * 100
   }
-
-  //console.log(percentage(100,160))
 
   return (
     <div>

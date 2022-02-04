@@ -1,10 +1,12 @@
 import ReactApexChart from "react-apexcharts";
 
 function TotalReturnsGraph({ portfolio }) {
-  //let portfolioWorth = portfolio.cash + stockListValue; //you may need this line to calculate how much your up on your initial investment
+
   let arrData = [10000];
   let portfolioWorth = arrData;
+
   const newDataPoints = () => {
+
     const arr = [...portfolio.stocks];
     const valueOfEachInvesment = arr.map(
       (stock) => stock.shares * stock.currentPrice
@@ -13,16 +15,16 @@ function TotalReturnsGraph({ portfolio }) {
     const total = cash.concat(valueOfEachInvesment);
     const stockListValue = total.reduce((acc, val) => acc + val);
     portfolioWorth.push(stockListValue);
+    
     return portfolioWorth;
   };
 
-  //console.log(portfolioWorth);
 
   const chart = {
     series: [
       {
         name: "Desktops",
-        data: [10000, 10345, 10488],
+        data: portfolioWorth,
       },
     ],
     options: {
