@@ -1,0 +1,3 @@
+## Trading App Clone
+
+This is my attempt at coding a trading app that trades stocks with fake money, the data is pulled from Yahoo Finance API. The graphs I used are all from ApexCharts. The top one is candlestick chart where the latest stock price is displayed, the pie chart shows the value of each stock and your cash position in your portfolio and the line chart shows the total value of your portfolio at the first render(still working on that)
