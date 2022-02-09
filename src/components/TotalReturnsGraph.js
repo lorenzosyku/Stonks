@@ -1,13 +1,19 @@
 import ReactApexChart from "react-apexcharts";
 import {useState, useEffect} from 'react';
+import moment from 'moment';
 
 function TotalReturnsGraph({ portfolio }) {
 
-  const [totalPortfolioValue, setTotalPortfolioValue] = useState([])
+  const [totalPortfolioValue, setTotalPortfolioValue] = useState([]);
+  const [time, setTime] = useState([]);
 
-  let arrData = [10000];
+  let arrData = ['10000'];
   let portfolioWorth = arrData;
+  //
+  let start = moment(new Date()).format('L')
+  let timestamps = [start];
 
+  let timeoutId;
   const newDataPoints = () => {
 
     const arr = [...portfolio.stocks];
@@ -20,9 +26,23 @@ function TotalReturnsGraph({ portfolio }) {
     portfolioWorth.push(stockListValue.toFixed(2));
 
     setTotalPortfolioValue(portfolioWorth);
+    //timeoutId = setTimeout(newDataPoints, 5000 * 2);
+    let d = moment(new Date()).format('L');
+    timestamps.push(d);
+    setTime(timestamps);
+    //console.log(timestamps)
   };
 
   console.log(totalPortfolioValue)
+  console.log(timestamps)
+
+  /*useEffect(() => {
+    newDataPoints()
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [])*/
   
   useEffect(() => {
     const temp = localStorage.getItem("totalPortfolioValueAllocation");

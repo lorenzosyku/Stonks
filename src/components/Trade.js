@@ -167,6 +167,7 @@ function Trade({
     return response.json();
   };
 
+  //let timeoutId;
   const getLatestPrice = async () => {
     try {
       for (let i = 0; i < arrOfStocks.length; i++) {
@@ -184,7 +185,17 @@ function Trade({
     } catch (error) {
       console.log(error);
     }
+    //timeoutId = setTimeout(getLatestPrice, 24000 * 2);
   };
+
+  /*useEffect(() => {
+    getLatestPrice()
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [])*/
+
 
   useEffect(() => {
     const temp = localStorage.getItem("portfolioAllocation");
