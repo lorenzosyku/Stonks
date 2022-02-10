@@ -7,6 +7,9 @@ import Balance from "./components/Balance";
 import PortfolioGraph from "./components/PortfolioGraph";
 import TransactionList from "./components/TransactionList";
 import TotalReturnsGraph from "./components/TotalReturnsGraph";
+import TransactionsPage from "./TransactionsPage";
+import LandingPage from "./LandingPage";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const [portfolio, setPortfolio] = useState({
@@ -40,7 +43,15 @@ function App() {
 
   return (
     <div className="App">
-      <Search
+      <Router>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+
+          <Route path="/transaction" element={<TransactionsPage />} />
+        </Routes>
+      </Router>
+
+      {/*  <Search
         stonk={stonk}
         setStonk={setStonk}
         setSeries={setSeries}
@@ -66,7 +77,7 @@ function App() {
       </div>
 
       <TotalReturnsGraph portfolio={portfolio} />
-      <TransactionList transactions={transactions} />
+      <TransactionList transactions={transactions} />*/}
     </div>
   );
 }
