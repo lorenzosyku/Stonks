@@ -37,7 +37,7 @@ function Banner() {
 
           <p className="text-2xl py-5">
             Well if that is the case sir, you just found the right place.{" "}
-            <span>TRADING_GUXHI</span> is a platform designed for inexpirienced
+            <span className="text-2xl font-semibold italic">TestNet-V1</span> is a platform designed for inexpirienced
             traders that would like to learn how to trade responsively
           </p>
         </div>
