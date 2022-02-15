@@ -18,7 +18,7 @@ function Banner() {
     <section className="min-h-screen bg-gray-100 text-gray-600">
       <div className="flex justify-center ">
         <div className="max-w-2xl pl-5 py-5">
-          <h1 className="text-3xl">
+          <h1 className="text-3xl font-poppins">
             Looking for a real chance at learning how to trade through your own
             trial and error, but you can not afford to loose money?
           </h1>
