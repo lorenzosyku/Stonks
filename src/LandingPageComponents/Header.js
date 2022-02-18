@@ -1,24 +1,50 @@
+import { Link } from "react-scroll";
+
 function Header() {
   return (
-    <div className="bg-gray-400 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100 flex justify-between p-5 shadow-md">
-      <p>
-        <h1 className="font-poppins">TestNet-V1</h1>
-      </p>
-      <div className="flex space-x-10">
-        <button className="bg-gradient-to-r from teal-400 to bg-cyan-700 hover:scale-105 transition-transform delay-250 hover:bg-sky-400 shadow-sm rounded-lg text-white p-3 ">
-          Features
-        </button>
-        <button className="bg-gradient-to-r from teal-400 to bg-cyan-700 hover:scale-105 transition-transform delay-250 hover:bg-sky-400 shadow-sm rounded-lg text-white p-3 ">
-          Products
-        </button>
-        <button className="bg-gradient-to-r from teal-400 to bg-cyan-700 hover:scale-105 transition-transform delay-250 hover:bg-sky-400 shadow-sm rounded-lg text-white p-3 ">
-          Contact us
-        </button>
-        <button className="bg-gradient-to-r from teal-400 to bg-cyan-700 hover:scale-105 transition-transform delay-250 hover:bg-sky-400 shadow-sm rounded-lg text-white p-3 ">
-          Login
-        </button>
-      </div>
-    </div>
+    <header className="bg-shade-grayblue" id="home">
+      <nav
+        className="flex p-5"
+        id="nav-wrap"
+      >
+        <div className="">
+          <h2 className="font-poppins text-xl text-white">TeztNet-v1</h2>
+        </div>
+        <ul
+          id="nav"
+          className="flex space-x-5 justify-end text-white "
+        >
+          <li>
+            <Link
+              to="about"
+              smooth={true}
+              className="cursor-pointer"
+            >
+              About
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="services"
+              smooth={true}
+              className="cursor-pointer"
+            >
+              Services
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="contact"
+              smooth={true}
+              className="cursor-pointer"
+            >
+              Contact Us
+            </Link>
+          </li>
+          <button className="">Login</button>
+        </ul>
+      </nav>
+    </header>
   );
 }
 
