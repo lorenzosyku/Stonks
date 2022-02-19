@@ -17,7 +17,7 @@ function Banner() {
   return (
     <section id="about" className="min-h-screen ">
       <img
-        className="min-h-screen w-full md:h-[770px]"
+        className="min-h-screen w-full md:h-[768px]"
         src="./img/bg-chart.png"
         alt=""
       />

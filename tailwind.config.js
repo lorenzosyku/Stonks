@@ -9,9 +9,9 @@ module.exports = {
         "shade-darkgrayblue": "#93B6D7",
         "shade-lightblue": "#528BC5",
       },
-      fontFamily:{
-        'poppins': "Poppins"
-      }
+      fontFamily: {
+        poppins: "Poppins",
+      },
     },
   },
   plugins: [],

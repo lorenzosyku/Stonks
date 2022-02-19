@@ -2,11 +2,11 @@ import { Link } from "react-scroll";
 
 function Header() {
   return (
-    <header className="bg-white flex items-center" id="home">
-      <nav className="flex p-5 justify-center items-center" id="nav-wrap">
+    <header className="bg-white flex items-center w-full " id="home">
+      <nav className="flex p-5 w-full justify-between items-center" id="nav-wrap">
         <div className="">
-          <h2 className="font-poppins text-xl text-black italic font-semibold">
-            TeztNet-V1
+          <h2 className="font-poppins text-xl text-shade-darkgrayblue italic font-semibold">
+            TeztNet<span className="text-amber-400">-V1</span>
           </h2>
         </div>
         <ul
