@@ -1,6 +1,9 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
+    backgroundImage: {
+      'pack-train': "url('../public/img/bg-chart.png')",
+    },
     extend: {
       colors: {
         "shade-white": "#FCFAFC",

@@ -15,15 +15,14 @@ function Banner() {
   }, []);
 
   return (
-    <section id="about" className="min-h-screen ">
-      <img
-        className="min-h-screen w-full md:h-[768px]"
-        src="./img/bg-chart.png"
-        alt=""
-      />
+    <section id="about" className="min-h-screen bg-pack-train">
+      
+      <div className="">
+        <h1 className="text-white">Test your ability to trade and uderstand the market</h1>
+      </div>
 
-      {/*<div className="flex ">
-        <div className="max-w-2xl mx-auto">
+      <div className="flex ">
+        <div className="max-w-2xl mx-auto text-white">
           <h1 className="text-3xl font-poppins font-semibold">
             Looking for a real chance at learning how to trade through your own
             trial and error, but you can not afford to loose money?
@@ -50,42 +49,41 @@ function Banner() {
         </div>
         <div className="flex items-center w-[700px] min-h-screen">
           <div className="z-10 grid justify-items-center">
-            <form className="w-[320px] h-[400px] flex flex-col max-w-2xl mx-auto bg-blue-100">
+            <form className="w-[320px] h-[400px] flex flex-col max-w-2xl mx-auto bg-shade-grayblue rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-40 ">
               <label className="block mb-5 px-5">
-                <span className="text-gray-700">name</span>
+                <span className="text-white">name</span>
                 <input
                   className="shadow border rounded py-2 px-3 form-input mt-1 block w-full ring-yellow-500 outline-none focus:ring"
                   type="text"
                 />
               </label>
               <label className="block mb-5 px-5">
-                <span className="text-gray-700">email</span>
+                <span className="text-white">email</span>
                 <input
                   className="shadow border rounded py-2 px-3 form-input mt-1 block w-full ring-yellow-500 outline-none focus:ring"
                   type="email"
                 />
               </label>
               <label className="block mb-5 px-5">
-                <span className="text-gray-700">password</span>
+                <span className="text-white">password</span>
                 <input
                   className="shadow border rounded py-2 px-3 form-input mt-1 block w-full ring-yellow-500 outline-none focus:ring"
                   type="password"
                 />
               </label>
               <label className="block mb-5 px-5">
-                <span className="text-gray-700">confirm password</span>
+                <span className="text-white">confirm password</span>
                 <input
                   className="shadow border rounded py-2 px-3 form-input mt-1 block w-full ring-yellow-500 outline-none focus:ring"
                   type="password"
                 />
               </label>
+              <button className="text-white p-1 border-2 ">Sign Up</button>
             </form>
           </div>
-
-          <img className="absolute min-h-screen object-contain" src="./img/bg-chart.png" alt="" />
         </div>
-        {/*<div ref={container}></div>
-      </div>*/}
+        {/*<div ref={container}></div>*/}
+      </div>
     </section>
   );
 }
