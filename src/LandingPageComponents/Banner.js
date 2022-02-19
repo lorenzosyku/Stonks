@@ -15,11 +15,14 @@ function Banner() {
   }, []);
 
   return (
-    <section
-      id="about"
-      className="min-h-screen bg-shade-grayblue text-gray-600"
-    >
-      <div className="flex ">
+    <section id="about" className="min-h-screen ">
+      <img
+        className="min-h-screen w-full md:h-[770px]"
+        src="./img/bg-chart.png"
+        alt=""
+      />
+
+      {/*<div className="flex ">
         <div className="max-w-2xl mx-auto">
           <h1 className="text-3xl font-poppins font-semibold">
             Looking for a real chance at learning how to trade through your own
@@ -45,8 +48,8 @@ function Banner() {
             learn how to trade responsively
           </p>
         </div>
-        <div className="w-[700px] min-h-screen">
-          <div className="grid justify-items-center">
+        <div className="flex items-center w-[700px] min-h-screen">
+          <div className="z-10 grid justify-items-center">
             <form className="w-[320px] h-[400px] flex flex-col max-w-2xl mx-auto bg-blue-100">
               <label className="block mb-5 px-5">
                 <span className="text-gray-700">name</span>
@@ -79,10 +82,10 @@ function Banner() {
             </form>
           </div>
 
-          <img className="top-0 min-h-screen" src="./img/bg-chart.png" alt="" />
+          <img className="absolute min-h-screen object-contain" src="./img/bg-chart.png" alt="" />
         </div>
-        {/*<div ref={container}></div>*/}
-      </div>
+        {/*<div ref={container}></div>
+      </div>*/}
     </section>
   );
 }
