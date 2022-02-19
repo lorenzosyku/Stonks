@@ -4,15 +4,15 @@ function Header() {
   return (
     <header className="bg-shade-grayblue" id="home">
       <nav
-        className="flex p-5"
+        className="flex p-5 justify-between"
         id="nav-wrap"
       >
         <div className="">
-          <h2 className="font-poppins text-xl text-white">TeztNet-v1</h2>
+          <h2 className="font-poppins text-xl text-white italic font-semibold">TeztNet-V1</h2>
         </div>
         <ul
           id="nav"
-          className="flex space-x-5 justify-end text-white "
+          className="flex space-x-5 justify-end text-white font-semibold"
         >
           <li>
             <Link
@@ -41,7 +41,7 @@ function Header() {
               Contact Us
             </Link>
           </li>
-          <button className="">Login</button>
+          <button className="cursor-pointer font-semibold">Login</button>
         </ul>
       </nav>
     </header>

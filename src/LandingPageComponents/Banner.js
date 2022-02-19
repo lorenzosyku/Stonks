@@ -47,7 +47,7 @@ function Banner() {
         </div>
         <div className="w-[700px] min-h-screen">
           <div className="grid justify-items-center">
-            <form className="relative top-1/2 w-[320px] h-[400px] flex flex-col max-w-2xl mx-auto bg-blue-100">
+            <form className="w-[320px] h-[400px] flex flex-col max-w-2xl mx-auto bg-blue-100">
               <label className="block mb-5 px-5">
                 <span className="text-gray-700">name</span>
                 <input
@@ -79,7 +79,7 @@ function Banner() {
             </form>
           </div>
 
-          <img className="relative top-0 min-h-screen" src="./img/bg-chart.jpeg" alt="" />
+          <img className="top-0 min-h-screen" src="./img/bg-chart.png" alt="" />
         </div>
         {/*<div ref={container}></div>*/}
       </div>
