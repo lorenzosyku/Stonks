@@ -12,8 +12,8 @@ function LandingPage() {
       <Header />
       <OnlineSupport />
       <Banner />
-      <LandingSecOne />
       <LandingSecTwo />
+      <LandingSecOne />
       <Footer />
     </div>
   );
