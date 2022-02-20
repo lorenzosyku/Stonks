@@ -16,38 +16,34 @@ function Banner() {
 
   return (
     <section id="about" className="min-h-screen bg-pack-train">
-      
-      <div className="">
-        <h1 className="text-white">Test your ability to trade and uderstand the market</h1>
-      </div>
-
-      <div className="flex ">
-        <div className="max-w-2xl mx-auto text-white">
-          <h1 className="text-3xl font-poppins font-semibold">
-            Looking for a real chance at learning how to trade through your own
-            trial and error, but you can not afford to loose money?
+      <div className="md:flex">
+        <div className="max-w-4xl mx-auto text-white p-10">
+          <h1 className="text-6xl max-w-xl mx-auto font-poppins font-semibold pt-5">
+            Test your ability to trade and uderstand the market
           </h1>
           <br />
-          <h2 className="text-2xl">
-            Do you want to test different{" "}
-            <span className="text-emerald-700 font-semibold text-3xl">
+          <br />
+          <br />
+          <h2 className="text-lg max-w-xl mx-auto font-poppins">
+            Looking for a real chance at learning how to trade through your own
+            trial and error, but you can not afford to loose money? Do you want
+            to test different{" "}
+            <span className="text-shade-lightblue font-semibold italic text-lg">
               trading strategies
             </span>{" "}
             without worrying about the{" "}
-            <span className="text-red-400 font-semibold text-3xl">
+            <span className="text-amber-400 font-semibold italic text-lg">
               potential mistakes
             </span>{" "}
             you might do along the way?
           </h2>
 
-          <p className="text-2xl py-5">
-            Well if that is the case sir, you just found the right place.{" "}
-            <span className="text-2xl font-semibold italic">TestNet-V1</span> is
-            a platform designed for inexpirienced traders that would like to
-            learn how to trade responsively
+          <p className="text-lg py-5 max-w-xl mx-auto font-poppins">
+            <span className="text-2xl font-semibold italic text-shade-lightblue">TestNet-V1 </span> is
+            a platform designed for inexpirienced and experienced traders that would like to learn how to approach the markets more responsively
           </p>
         </div>
-        <div className="flex items-center w-[700px] min-h-screen">
+        <div className="md:flex items-center justify-center w-[700px] min-h-screen">
           <div className="z-10 grid justify-items-center">
             <form className="w-[320px] h-[400px] flex flex-col max-w-2xl mx-auto bg-shade-grayblue rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-40 ">
               <label className="block mb-5 px-5">

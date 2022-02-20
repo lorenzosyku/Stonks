@@ -1,6 +1,6 @@
 function OnlineSupport() {
   return (
-    <div className="bg-shade-darkgrayblue">
+    <div className="bg-shade-lightblue">
       <div className="flex flex-col items-center max-w-3xl mx-auto space-y-2 py-3 text-white">
         <h2 className="font-semibold px-3">Online support</h2>
         <h3 className="text-sm font-semibold px-3">
