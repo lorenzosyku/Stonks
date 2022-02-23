@@ -15,17 +15,17 @@ function Header() {
           className="hidden md:flex space-x-5 items-center text-black font-semibold"
         >
           <li>
-            <Link to="about" smooth={true} className="cursor-pointer hover:border-b-2 border-shade-lightblue py-2">
+            <Link to="about" smooth={true} className="cursor-pointer hover:border-b-2 border-shade-lightblue py-2 hover:text-shade-lightblue">
               Home
             </Link>
           </li>
           <li>
-            <Link to="services" smooth={true} className="cursor-pointer hover:border-b-2 border-shade-lightblue py-2">
+            <Link to="services" smooth={true} className="cursor-pointer hover:border-b-2 border-shade-lightblue py-2 hover:text-shade-lightblue">
               Services
             </Link>
           </li>
           <li>
-            <Link to="contact" smooth={true} className="cursor-pointer hover:border-b-2 border-shade-lightblue py-2">
+            <Link to="contact" smooth={true} className="cursor-pointer hover:border-b-2 border-shade-lightblue py-2 hover:text-shade-lightblue">
               Contact Us
             </Link>
           </li>

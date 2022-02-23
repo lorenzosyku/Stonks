@@ -1,23 +1,10 @@
-import lottie from "lottie-web";
-import { useEffect, useRef } from "react";
 
 function Banner() {
-  const container = useRef(null);
-
-  useEffect(() => {
-    lottie.loadAnimation({
-      container: container.current,
-      renderer: "svg",
-      loop: true,
-      autoplay: true,
-      animationData: require("./working.json"),
-    });
-  }, []);
-
+  
   return (
     <section id="about" className="min-h-screen bg-pack-train">
-      <div className="md:flex">
-        <div className="max-w-4xl mx-auto text-white p-10">
+      <div className="md:flex ">
+        <div className="max-w-4xl mx-auto text-white p-10 pr-24">
           <h1 className="text-6xl max-w-xl mx-auto font-poppins font-semibold pt-5">
             Test your ability to trade and uderstand the market
           </h1>
@@ -43,9 +30,9 @@ function Banner() {
             a platform designed for inexpirienced and experienced traders that would like to learn how to approach the markets more responsively
           </p>
         </div>
-        <div className="md:flex items-center justify-center w-[700px] min-h-screen">
+        <div className="md:flex items-center justify-center min-h-screen pr-28">
           <div className="z-10 grid justify-items-center">
-            <form className="w-[320px] h-[400px] flex flex-col max-w-2xl mx-auto bg-shade-grayblue rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-40 ">
+            <form className="md:flex flex-col max-w-2xl mx-auto bg-shade-grayblue rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-40 ">
               <label className="block mb-5 px-5">
                 <span className="text-white">name</span>
                 <input
@@ -78,7 +65,7 @@ function Banner() {
             </form>
           </div>
         </div>
-        {/*<div ref={container}></div>*/}
+       
       </div>
     </section>
   );

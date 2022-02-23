@@ -23,7 +23,7 @@ function LandingSecTwo() {
     try {
       const data = await fetchStonk();
       const stock = data.chart.result[0];
-
+      console.log(data);
       const stockName = stock.meta.symbol;
       const price = stock.meta.regularMarketPrice.toFixed(2);
       const time = new Date(stock.meta.regularMarketTime * 1000);
@@ -94,12 +94,14 @@ function LandingSecTwo() {
         </h1>
       </div>
       <div className="md:flex">
-        <div className="md:w-3/5">
-          <Chart options={chart.options} series={series} type="candlestick" />
-          <div className="flex items-center justify-center py-5">
-            <h2>{moment(readableTime).format("MMMM Do YYYY, h:mm:ss a")}</h2>
+        {stonk.symbol && (
+          <div className="md:w-3/5">
+            <Chart options={chart.options} series={series} type="candlestick" />
+            <div className="flex items-center justify-center py-5">
+              <h2>{moment(readableTime).format("MMMM Do YYYY, h:mm:ss a")}</h2>
+            </div>
           </div>
-        </div>
+        )}
         <div className="py-10 md:flex flex-col justify-center md:w-2/5">
           <div className="flex justify-center px-5">
             <input
@@ -131,12 +133,12 @@ function LandingSecTwo() {
               </svg>
             </button>
           </div>
-          <div className="px-5 py-10">
+          {stonk.symbol && <div className="px-5 py-10">
             <div className="flex justify-between border-t-2 border-b-2 py-2 px-3">
               <h2>{stonk.symbol}</h2>
               <h2>{stonk.regularMarketPrice}$</h2>
             </div>
-          </div>
+          </div>}
         </div>
       </div>
     </section>
