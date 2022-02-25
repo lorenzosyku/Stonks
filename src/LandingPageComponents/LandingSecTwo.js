@@ -88,20 +88,20 @@ function LandingSecTwo() {
 
   return (
     <section className="min-h-screen " id="services">
-      <div className="flex items-center justify-center py-10">
-        <h1 className="text-4xl font-poppins font-semibold">
+      <div className="flex items-center justify-center px-3 py-10">
+        <h1 className="text-4xl font-poppins font-semibold ">
           Welcome back to the markets
         </h1>
       </div>
       <div className="md:flex">
-        {stonk.symbol && (
+        {
           <div className="md:w-3/5">
             <Chart options={chart.options} series={series} type="candlestick" />
             <div className="flex items-center justify-center py-5">
               <h2>{moment(readableTime).format("MMMM Do YYYY, h:mm:ss a")}</h2>
             </div>
           </div>
-        )}
+        }
         <div className="py-10 md:flex flex-col justify-center md:w-2/5">
           <div className="flex justify-center px-5">
             <input

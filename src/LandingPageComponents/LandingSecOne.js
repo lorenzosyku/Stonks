@@ -4,16 +4,16 @@ import { useEffect, useRef } from "react";
 function LandingSecOne() {
   const container = useRef(null);
   const pie = useRef(null);
-  const bars = useRef(null); 
+  const bars = useRef(null);
 
   useEffect(() => {
-    lottie.loadAnimation({
+    /*lottie.loadAnimation({
       container: container.current,
       renderer: "svg",
       loop: true,
       autoplay: true,
       animationData: require("./working.json"),
-    });
+    });*/
     lottie.loadAnimation({
       container: pie.current,
       renderer: "svg",
@@ -32,10 +32,14 @@ function LandingSecOne() {
 
   return (
     <section className="min-h-screen bg-shade-lightblue flex items-center">
-      <div className="md:flex flex-col justify-center items-center py-12 space-y-5">
-        <div className="flex justify-between px-12">
-          <div className="hidden md:flex w-1/4">
-            <div className=""></div>
+      <div className="max-w-5xl mx-auto md:flex flex-col space-y-5">
+      <div className="flex items-center justify-center">
+        <h1 className="text-4xl text-slate-200 font-poppins font-semibold px-3">
+          Analytics and data menagement
+        </h1>
+      </div>
+        {/*<div className="flex justify-between items-center px-12">
+          <div className="md:w-1/4">
             <div ref={container}></div>
           </div>
           <div className="md:w-1/2 flex items-center md:px-5 border">
@@ -46,24 +50,22 @@ function LandingSecOne() {
               rem nulla culpa
             </p>
           </div>
-        </div>
-        <div className="flex justify-between px-12">
+        </div>*/}
+        <div className="flex justify-between items-center px-12">
           <div className="md:w-1/2 flex items-center md:px-5 border">
-            <div className=""></div>
             <p className="text-slate-200">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
               quidem non harum consectetur sed voluptates dolore pariatur eaque
-              repudiandae. Tadklslsllssssm aut ratione vel excepturi rem nulla culpa
+              repudiandae. Tadklslsllssssm aut ratione vel excepturi rem nulla
+              culpa
             </p>
           </div>
-          <div className="hidden md:flex w-1/4">
-            <div className=""></div>
+          <div className="md:w-1/4">
             <div ref={pie}></div>
           </div>
         </div>
-        <div className="flex justify-between px-12">
-          <div className="hidden md:flex w-1/4">
-            <div className=""></div>
+        <div className="flex justify-between items-center px-12">
+          <div className="md:w-1/4">
             <div ref={bars}></div>
           </div>
           <div className="md:w-1/2 flex items-center md:px-5 border">

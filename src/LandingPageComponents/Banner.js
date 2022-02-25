@@ -30,7 +30,7 @@ function Banner() {
             a platform designed for inexpirienced and experienced traders that would like to learn how to approach the markets more responsively
           </p>
         </div>
-        <div className="md:flex items-center justify-center min-h-screen pr-28">
+        <div className="hidden md:flex items-center justify-center min-h-screen pr-28">
           <div className="z-10 grid justify-items-center">
             <form className="md:flex flex-col max-w-2xl mx-auto bg-shade-grayblue rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-40 ">
               <label className="block mb-5 px-5">
