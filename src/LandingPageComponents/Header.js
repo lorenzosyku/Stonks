@@ -62,7 +62,7 @@ function Header() {
               Contact Us
             </Link>
           </li>
-          <button className="cursor-pointer font-semibold mx-5 bg-shade-lightblue px-3 py-1 text-white hover:bg-blue-400">
+          <button className="cursor-pointer font-semibold mx-5 bg-shade-lightblue px-3 py-1 text-white hover:bg-blue-400 rounded-sm">
             Login
           </button>
         </ul>

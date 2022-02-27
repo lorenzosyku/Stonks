@@ -4,6 +4,7 @@ import Header from "./LandingPageComponents/Header";
 import LandingSecTwo from "./LandingPageComponents/LandingSecTwo";
 import Footer from "./LandingPageComponents/Footer";
 import OnlineSupport from "./LandingPageComponents/OnlineSupport";
+import Copyright from "./LandingPageComponents/Copyright";
 
 function LandingPage() {
 
@@ -15,6 +16,7 @@ function LandingPage() {
       <LandingSecTwo />
       <LandingSecOne />
       <Footer />
+      <Copyright />
     </div>
   );
 }

@@ -1,3 +1,5 @@
+
+
 function Footer() {
   return (
     <div id="contact" className="grid grid-cols-1 md:grid-cols-4 gap-y-10 bg-gray-100 px-32 py-14 border-t text-gray-600 ">
@@ -36,6 +38,8 @@ function Footer() {
         <p>Easter Eggs</p>
         <p>For the Win</p>
       </div>
+
+      
     </div>
 
   )
