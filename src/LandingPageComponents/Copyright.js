@@ -13,7 +13,7 @@ function Copyright() {
           TeztNet<span className="text-amber-400">-V1</span>
         </Link>
       </div>
-      <div className="flex items-center justify-center py-2">
+      <div className="flex items-center justify-center py-2 font-poppins">
         <span>All Rights Reserved, © 2022 Teztnet-V1, Inc.</span>
       </div>
 
