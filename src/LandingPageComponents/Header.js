@@ -36,7 +36,7 @@ function Header() {
         </div>
         <ul
           id="nav"
-          className="hidden md:flex space-x-5 items-center text-black font-semibold"
+          className="md:flex space-x-5 items-center text-black font-semibold"
         >
           <li>
             <Link
