@@ -1,9 +1,11 @@
+import Sidebar from "./dashboard/Sidebar";
+
 function TransactionsPage() {
   return (
-    <div>
-      <h1>hello world</h1>
+    <div className="">
+      <Sidebar />
     </div>
-  )
+  );
 }
 
-export default TransactionsPage
+export default TransactionsPage;

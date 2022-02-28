@@ -47,7 +47,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
 
-          <Route path="/transaction" element={<TransactionsPage />} />
+          <Route path="/dashboard" element={<TransactionsPage />} />
         </Routes>
       </Router>
 
