@@ -19,7 +19,7 @@ function Sidebar() {
         </span>
       </button>
 
-      <div className="z-20 fixed top-0 -left-96 lg:left-0 h-screen w-9/12 lg:w-72 bg-white shadow-2xl peer-focus:left-0 peer:transition ease-out delay-150 duration-200">
+      <div className="z-20 fixed top-0 -left-96 md:left-0 h-screen w-9/12 md:w-72 bg-white shadow-2xl peer-focus:left-0 peer:transition ease-out delay-150 duration-200">
         <nav role="navigation" class="p-6">
           <div className="flex items-center gap-4 pb-4">
             <h2 className="font-poppins text-xl text-shade-lightblue italic font-semibold">
@@ -31,7 +31,7 @@ function Sidebar() {
             <ul className="space-y-4 mb-12 px-4 mt-8">
               <li>
                 <a
-                  href=""
+                  href="#"
                   className="flex gap-4 text-gray-600 hover:text-gray-800 transition"
                 >
                   <svg
@@ -52,7 +52,7 @@ function Sidebar() {
               </li>
               <li>
                 <a
-                  href=""
+                  href="#"
                   className="flex gap-4 text-gray-600 hover:text-gray-800 transition"
                 >
                   <svg
@@ -74,7 +74,7 @@ function Sidebar() {
               </li>
               <li>
                 <a
-                  href=""
+                  href="#"
                   className="flex gap-4 text-gray-600 hover:text-gray-800 transition"
                 >
                   <svg
@@ -91,7 +91,7 @@ function Sidebar() {
               </li>
               <li>
                 <a
-                  href=""
+                  href="#"
                   className="flex gap-4 text-gray-600 hover:text-gray-800 transition"
                 >
                   <svg
