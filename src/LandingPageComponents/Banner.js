@@ -1,6 +1,4 @@
-
 function Banner() {
-  
   return (
     <section id="about" className="min-h-screen bg-pack-train">
       <div className="min-h-screen flex items-center">
@@ -26,46 +24,66 @@ function Banner() {
           </h2>
 
           <p className="text-md md:text-lg py-5 max-w-xl mx-auto font-poppins">
-            <span className="text-lg md:text-2xl font-semibold italic text-shade-lightblue">TestNet-V1 </span> is
-            a platform designed for inexpirienced and experienced traders that would like to learn how to approach the markets more responsively
+            <span className="text-lg md:text-2xl font-semibold italic text-shade-lightblue">
+              TeztNet<span className="text-amber-300">-V1</span>{" "}
+            </span>{" "}
+            is a platform designed for inexpirienced and experienced traders
+            that would like to learn how to approach the markets more
+            responsively
           </p>
         </div>
         <div className="hidden md:flex items-center justify-center min-h-screen pr-5 md:w-1/3">
           <div className="z-10 grid justify-items-center">
-            <form className="md:flex flex-col max-w-2xl mx-auto bg-shade-grayblue rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-40 ">
-              <label className="block mb-5 px-5">
-                <span className="text-white">name</span>
+            <form className="md:flex flex-col max-w-2xl mx-auto bg-shade-grayblue rounded-md">
+              <div className="bg-shade-lightblue h-[60px]">
+                <h2 className="p-3 text-xl font-semibold text-gray-100">
+                  Register
+                </h2>
+              </div>
+              <label className="block mb-5 mt-5 px-5">
                 <input
-                  className="shadow border rounded py-2 px-3 form-input mt-1 block w-full ring-yellow-500 outline-none focus:ring"
+                  className="shadow border rounded py-2 px-3 form-input mt-1 block w-full outline-none"
                   type="text"
+                  placeholder="Name"
                 />
               </label>
               <label className="block mb-5 px-5">
-                <span className="text-white">email</span>
                 <input
-                  className="shadow border rounded py-2 px-3 form-input mt-1 block w-full ring-yellow-500 outline-none focus:ring"
+                  className="shadow border rounded py-2 px-3 form-input mt-1 block w-full outline-none"
                   type="email"
+                  placeholder="Email"
                 />
               </label>
               <label className="block mb-5 px-5">
-                <span className="text-white">password</span>
                 <input
-                  className="shadow border rounded py-2 px-3 form-input mt-1 block w-full ring-yellow-500 outline-none focus:ring"
+                  className="shadow border rounded py-2 px-3 form-input mt-1 block w-full outline-none"
                   type="password"
+                  placeholder="Password"
                 />
               </label>
               <label className="block mb-5 px-5">
-                <span className="text-white">confirm password</span>
                 <input
-                  className="shadow border rounded py-2 px-3 form-input mt-1 block w-full ring-yellow-500 outline-none focus:ring"
+                  className="shadow border rounded py-2 px-3 form-input mt-1 block w-full outline-none"
                   type="password"
+                  placeholder="Confirm password"
                 />
               </label>
-              <button className="text-white p-1 border-2 ">Sign Up</button>
+              <div className="flex justify-start items-center px-5">
+                <p>
+                  Have an account??
+                  <span className="text-blue-500 px-1 cursor-pointer hover:underline">
+                    Login
+                  </span>
+                </p>
+              </div>
+              <div className="flex justify-end p-5">
+                <button className="bg-shade-lightblue text-gray-100 font-semibold p-2 shadow-lg rounded-md">
+                  Register
+                </button>
+              </div>
             </form>
           </div>
         </div>
-       
       </div>
     </section>
   );
