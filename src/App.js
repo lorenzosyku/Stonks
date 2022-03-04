@@ -10,6 +10,9 @@ import TotalReturnsGraph from "./components/TotalReturnsGraph";
 import TransactionsPage from "./TransactionsPage";
 import LandingPage from "./LandingPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import LoginPage from "./LoginPage";
+import SignupPage from "./SignupPage";
+import ResetPass from "./ResetPass";
 
 function App() {
   const [portfolio, setPortfolio] = useState({
@@ -46,8 +49,11 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<LandingPage />} />
-
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />}/>
+          <Route path="/resetpass" element={<ResetPass />}/>
           <Route path="/dashboard" element={<TransactionsPage />} />
+
         </Routes>
       </Router>
 

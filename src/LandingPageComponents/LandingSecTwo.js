@@ -87,7 +87,7 @@ function LandingSecTwo() {
   };
 
   return (
-    <section className="min-h-screen flex flex-col justify-center" id="services">
+    <section className="min-h-screen flex flex-col justify-center" id="markets">
       <div className="flex items-center justify-center px-3 py-10">
         <h1 className="text-3xl md:text-4xl font-poppins font-semibold ">
           Welcome back to the markets

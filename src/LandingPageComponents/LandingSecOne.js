@@ -23,7 +23,10 @@ function LandingSecOne() {
   }, []);
 
   return (
-    <section className="min-h-screen bg-shade-lightblue flex items-center">
+    <section
+      className="min-h-screen bg-shade-lightblue flex items-center"
+      id="services"
+    >
       <div className="max-w-5xl mx-auto md:flex flex-col space-y-5 justify-center">
         <div className="flex items-center justify-center">
           <h1 className="text-4xl text-slate-200 font-poppins font-semibold px-3">
