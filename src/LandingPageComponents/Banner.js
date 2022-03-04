@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 function Banner() {
+  const navigate = useNavigate();
   return (
     <section id="about" className="min-h-screen bg-pack-train">
       <div className="min-h-screen flex items-center">
@@ -71,7 +74,12 @@ function Banner() {
               <div className="flex justify-start items-center px-5">
                 <p>
                   Have an account??
-                  <span className="text-blue-500 px-1 cursor-pointer hover:underline">
+                  <span
+                    className="text-blue-500 px-1 cursor-pointer hover:underline"
+                    onClick={() => {
+                      navigate("/login");
+                    }}
+                  >
                     Login
                   </span>
                 </p>

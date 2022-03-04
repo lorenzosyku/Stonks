@@ -2,8 +2,10 @@ import { Link } from "react-scroll";
 import { useState, useRef } from "react";
 import { Transition } from "@headlessui/react";
 import { signUp, useAuth, logout, login } from "../firebase";
+import { useNavigate } from 'react-router-dom'
 
 function Header() {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
   const emailRef = useRef();
@@ -70,21 +72,21 @@ function Header() {
 
                 <li className=" hover:bg-gray-300 px-3 py-2 rounded-md text-sm font-medium">
                   <Link
-                    to="services"
-                    smooth={true}
-                    className="cursor-pointer py-2 hover:text-shade-lightblue"
-                  >
-                    Services
-                  </Link>
-                </li>
-
-                <li className=" hover:bg-gray-300 px-3 py-2 rounded-md text-sm font-medium">
-                  <Link
                     to="markets"
                     smooth={true}
                     className="cursor-pointer py-2 hover:text-shade-lightblue"
                   >
                     Markets
+                  </Link>
+                </li>
+
+                <li className=" hover:bg-gray-300 px-3 py-2 rounded-md text-sm font-medium">
+                  <Link
+                    to="services"
+                    smooth={true}
+                    className="cursor-pointer py-2 hover:text-shade-lightblue"
+                  >
+                    Services
                   </Link>
                 </li>
 
@@ -101,7 +103,9 @@ function Header() {
                 <div className="">
                   <button
                     className="cursor-pointer font-semibold bg-shade-lightblue px-3 mx-5 py-1 text-white hover:bg-blue-400 rounded-sm"
-                    onClick={handleLogin}
+                    onClick={() => {
+                      navigate("/login")
+                    }}
                   >
                     Login
                   </button>
@@ -211,7 +215,9 @@ function Header() {
               <div className="">
                 <button
                   className="cursor-pointer font-semibold bg-shade-lightblue px-3 mx-3 py-1 my-4 text-white hover:bg-blue-400 rounded-sm"
-                  onClick={handleLogin}
+                  onClick={() => {
+                    navigate("/login")
+                  }}
                 >
                   Login
                 </button>
