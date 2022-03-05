@@ -1,9 +1,36 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TeztnetLogo from "./LandingPageComponents/TeztnetLogo";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  auth,
+} from "../src/firebase";
 
 function SignupPage() {
   const navigate = useNavigate();
+
+  const emailRef = useRef();
+  const nameRef = useRef();
+  const passwordRef = useRef();
+  const confirmPasswordRef = useRef();
+  const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(false);
+
+  const register = async () => {
+      try {
+        const user = await createUserWithEmailAndPassword(
+          auth,
+          emailRef,
+          nameRef,
+          passwordRef
+        );
+        console.log(user);
+      } catch (error) {
+        console.log(error.message);
+      }
+    
+  };
   return (
     <div className="min-h-screen ">
       <TeztnetLogo />
@@ -16,6 +43,7 @@ function SignupPage() {
           </div>
           <label className="block mb-5 px-5 mt-5">
             <input
+              ref={nameRef}
               className="shadow bg-gray-200 border rounded py-2 px-3 form-input mt-1 block w-full outline-none"
               type="text"
               placeholder="Name"
@@ -23,6 +51,7 @@ function SignupPage() {
           </label>
           <label className="block mb-5 px-5">
             <input
+              ref={emailRef}
               className="shadow bg-gray-200 border rounded py-2 px-3 form-input mt-1 block w-full outline-none"
               type="email"
               placeholder="Email"
@@ -30,6 +59,7 @@ function SignupPage() {
           </label>
           <label className="block mb-5 px-5">
             <input
+              ref={passwordRef}
               className="shadow bg-gray-200 border rounded py-2 px-3 form-input mt-1 block w-full outline-none"
               type="password"
               placeholder="Password"
@@ -37,6 +67,7 @@ function SignupPage() {
           </label>
           <label className="block mb-5 px-5">
             <input
+              ref={confirmPasswordRef}
               className="shadow bg-gray-200 border rounded py-2 px-3 form-input mt-1 block w-full outline-none"
               type="password"
               placeholder="Confirm password"
@@ -56,7 +87,10 @@ function SignupPage() {
             </p>
           </div>
           <div className="flex justify-end p-5">
-            <button className="bg-shade-lightblue text-gray-100 font-semibold p-2 shadow-lg rounded-md cursor-pointer">
+            <button
+              className="bg-shade-lightblue text-gray-100 font-semibold p-2 shadow-lg rounded-md cursor-pointer"
+              onClick={register}
+            >
               Register
             </button>
           </div>

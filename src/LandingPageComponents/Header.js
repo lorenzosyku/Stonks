@@ -1,49 +1,11 @@
 import { Link } from "react-scroll";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { Transition } from "@headlessui/react";
-import { signUp, useAuth, logout, login } from "../firebase";
 import { useNavigate } from 'react-router-dom'
 
 function Header() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
-
-  const emailRef = useRef();
-  const passwordRef = useRef();
-  const [loading, setLoading] = useState(false);
-  const currentUser = useAuth();
-
-  const handleSubmit = async () => {
-    try {
-      setLoading(true);
-      await signUp(emailRef.current.value, passwordRef.current.value);
-    } catch (error) {
-      alert("error");
-    }
-
-    setLoading(false);
-  };
-
-  const handleLogin = async () => {
-    try {
-      setLoading(true);
-      await login(emailRef.current.value, passwordRef.current.value);
-    } catch (error) {
-      alert("error");
-    }
-
-    setLoading(false);
-  };
-
-  const handleLogout = async () => {
-    try {
-      setLoading(true);
-      await logout();
-    } catch (error) {
-      alert("error");
-    }
-    setLoading(false);
-  };
 
   return (
     <nav className="">
@@ -102,7 +64,7 @@ function Header() {
 
                 <div className="">
                   <button
-                    className="cursor-pointer font-semibold bg-shade-lightblue px-3 mx-5 py-1 text-white hover:bg-blue-400 rounded-sm"
+                    className="cursor-pointer font-semibold bg-shade-lightblue px-3 mx-5 py-1 text-white hover:bg-shade-darkgrayblue rounded-sm"
                     onClick={() => {
                       navigate("/login")
                     }}

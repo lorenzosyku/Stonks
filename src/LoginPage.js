@@ -1,10 +1,27 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import TeztnetLogo from "./LandingPageComponents/TeztnetLogo";
+import { useAuth } from "../src/firebase";
+import { useRef, useState } from "react";
 
 function LoginPage() {
   const navtoSignup = useNavigate();
   const navtoresetpass = useNavigate();
+
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const [loading, setLoading] = useState(false);
+
+  /*const handleLogin = async () => {
+    try {
+      setLoading(true);
+      await login(emailRef.current.value, passwordRef.current.value);
+    } catch (error) {
+      alert("error");
+    }
+
+    setLoading(false);
+  };*/
   return (
     <div className="min-h-screen">
       <TeztnetLogo />
@@ -51,7 +68,10 @@ function LoginPage() {
             </div>
           </div>
           <div className="flex justify-end p-5">
-            <button className="bg-shade-lightblue font-semibold text-gray-100 p-2 shadow-lg rounded-md">
+            <button
+              onClick={null}
+              className="bg-shade-lightblue font-semibold text-gray-100 p-2 shadow-lg rounded-md"
+            >
               Login
             </button>
           </div>
