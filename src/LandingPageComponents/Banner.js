@@ -1,7 +1,32 @@
 import { useNavigate } from "react-router-dom";
+import {
+  createUserWithEmailAndPassword,
+  auth,
+} from "../firebase";
+import { useState } from "react";
 
 function Banner() {
   const navigate = useNavigate();
+
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const signUp = (e) => {
+    e.preventDefault();
+    if (password === confirmPassword) {
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((user) => {
+          console.log(user);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      alert('password not matching')
+    }
+  };
   return (
     <section id="about" className="min-h-screen bg-pack-train">
       <div className="min-h-screen flex items-center">
@@ -45,6 +70,7 @@ function Banner() {
               </div>
               <label className="block mb-5 mt-5 px-5">
                 <input
+                  onChange={(e)=>setName(e.target.value)}
                   className="shadow border rounded py-2 px-3 form-input mt-1 block w-full outline-none"
                   type="text"
                   placeholder="Name"
@@ -52,6 +78,7 @@ function Banner() {
               </label>
               <label className="block mb-5 px-5">
                 <input
+                  onChange={(e)=>setEmail(e.target.value)}
                   className="shadow border rounded py-2 px-3 form-input mt-1 block w-full outline-none"
                   type="email"
                   placeholder="Email"
@@ -59,6 +86,7 @@ function Banner() {
               </label>
               <label className="block mb-5 px-5">
                 <input
+                  onChange={(e)=>setPassword(e.target.value)}
                   className="shadow border rounded py-2 px-3 form-input mt-1 block w-full outline-none"
                   type="password"
                   placeholder="Password"
@@ -66,6 +94,7 @@ function Banner() {
               </label>
               <label className="block mb-5 px-5">
                 <input
+                  onChange={(e)=>setConfirmPassword(e.target.value)}
                   className="shadow border rounded py-2 px-3 form-input mt-1 block w-full outline-none"
                   type="password"
                   placeholder="Confirm password"
@@ -85,7 +114,7 @@ function Banner() {
                 </p>
               </div>
               <div className="flex justify-end p-5">
-                <button className="bg-shade-lightblue text-gray-100 font-semibold p-2 shadow-lg rounded-md">
+                <button className="bg-shade-lightblue text-gray-100 font-semibold p-2 shadow-lg rounded-md" onClick={signUp}>
                   Register
                 </button>
               </div>

@@ -1,35 +1,32 @@
-import React, { useRef, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TeztnetLogo from "./LandingPageComponents/TeztnetLogo";
 import {
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
   auth,
 } from "../src/firebase";
 
 function SignupPage() {
   const navigate = useNavigate();
 
-  const emailRef = useRef();
-  const nameRef = useRef();
-  const passwordRef = useRef();
-  const confirmPasswordRef = useRef();
-  const [user, setUser] = useState({});
-  const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
-  const register = async () => {
-      try {
-        const user = await createUserWithEmailAndPassword(
-          auth,
-          emailRef,
-          nameRef,
-          passwordRef
-        );
-        console.log(user);
-      } catch (error) {
-        console.log(error.message);
-      }
-    
+  const signUp = (e) => {
+    e.preventDefault();
+    if (password === confirmPassword) {
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((user) => {
+          console.log(user);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      alert('password not matching')
+    }
   };
   return (
     <div className="min-h-screen ">
@@ -43,7 +40,7 @@ function SignupPage() {
           </div>
           <label className="block mb-5 px-5 mt-5">
             <input
-              ref={nameRef}
+              onChange={(e) => setName(e.target.value)}
               className="shadow bg-gray-200 border rounded py-2 px-3 form-input mt-1 block w-full outline-none"
               type="text"
               placeholder="Name"
@@ -51,7 +48,7 @@ function SignupPage() {
           </label>
           <label className="block mb-5 px-5">
             <input
-              ref={emailRef}
+              onChange={(e) => setEmail(e.target.value)}
               className="shadow bg-gray-200 border rounded py-2 px-3 form-input mt-1 block w-full outline-none"
               type="email"
               placeholder="Email"
@@ -59,7 +56,7 @@ function SignupPage() {
           </label>
           <label className="block mb-5 px-5">
             <input
-              ref={passwordRef}
+              onChange={(e) => setPassword(e.target.value)}
               className="shadow bg-gray-200 border rounded py-2 px-3 form-input mt-1 block w-full outline-none"
               type="password"
               placeholder="Password"
@@ -67,7 +64,7 @@ function SignupPage() {
           </label>
           <label className="block mb-5 px-5">
             <input
-              ref={confirmPasswordRef}
+              onChange={(e) => setConfirmPassword(e.target.value)}
               className="shadow bg-gray-200 border rounded py-2 px-3 form-input mt-1 block w-full outline-none"
               type="password"
               placeholder="Confirm password"
@@ -89,7 +86,7 @@ function SignupPage() {
           <div className="flex justify-end p-5">
             <button
               className="bg-shade-lightblue text-gray-100 font-semibold p-2 shadow-lg rounded-md cursor-pointer"
-              onClick={register}
+              onClick={signUp}
             >
               Register
             </button>
