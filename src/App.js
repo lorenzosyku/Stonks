@@ -7,7 +7,6 @@ import Balance from "./components/Balance";
 import PortfolioGraph from "./components/PortfolioGraph";
 import TransactionList from "./components/TransactionList";
 import TotalReturnsGraph from "./components/TotalReturnsGraph";
-import TransactionsPage from "./TransactionsPage";
 import LandingPage from "./LandingPage";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import LoginPage from "./LoginPage";
@@ -15,6 +14,7 @@ import SignupPage from "./SignupPage";
 import ResetPass from "./ResetPass";
 import Header from "./LandingPageComponents/Header";
 import TeztnetLogo from "./LandingPageComponents/TeztnetLogo";
+import DashboardPage from "./DashboardPage";
 
 function App() {
   const [portfolio, setPortfolio] = useState({
@@ -54,7 +54,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/resetpass" element={<ResetPass />} />
-          <Route path="/dashboard" element={<TransactionsPage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
         </Routes>
       </Router>
 

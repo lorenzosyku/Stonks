@@ -5,9 +5,9 @@ import {
   signInWithEmailAndPassword,
   auth,
   useAuth,
-  signOut,
 } from "../src/firebase";
 import { useRef } from "react";
+import DashboardPage from "./DashboardPage";
 
 function LoginPage() {
   const navtoSignup = useNavigate();
@@ -31,16 +31,13 @@ function LoginPage() {
       .catch((err) => {
         console.log(err);
       });
-  };
-
-  const handleLogout = () => {
-    return signOut(auth);
+      //console.log(emailRef.current.value)
+      //console.log(passwordRef.current.value)
   };
 
   return (
     <div className="">
-      {!currentUser && (
-        <div className="min-h-screen">
+        {!currentUser ? (<div className="min-h-screen">
           <TeztnetLogo />
           <div className="flex justify-center items-center">
             <form className="md:flex flex-col shadow-lg rounded-md py-5 w-1/4">
@@ -54,6 +51,7 @@ function LoginPage() {
                   className="shadow bg-gray-200 border rounded py-2 px-3 form-input mt-1 block w-full outline-none"
                   type="email"
                   placeholder="email"
+                  ref={emailRef}
                 />
               </label>
               <label className="block mb-5 px-5">
@@ -61,6 +59,7 @@ function LoginPage() {
                   className="shadow bg-gray-200 border rounded py-2 px-3 form-input mt-1 block w-full outline-none"
                   type="password"
                   placeholder="password"
+                  ref={passwordRef}
                 />
               </label>
               <div className="flex flex-col justify-center items-center px-5">
@@ -95,18 +94,9 @@ function LoginPage() {
                 </button>
               </div>
             </form>
-            <div className="">
-              <h1>current user:{currentUser?.email}</h1>
-              <button
-                onClick={handleLogout}
-                className="bg-shade-lightblue font-semibold text-gray-100 p-2 shadow-lg rounded-md"
-              >
-                LogOut
-              </button>
-            </div>
+            
           </div>
-        </div>
-      )}
+        </div>) : <DashboardPage />}
     </div>
   );
 }
