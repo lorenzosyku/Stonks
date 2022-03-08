@@ -1,15 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import TeztnetLogo from "./LandingPageComponents/TeztnetLogo";
-import {
-  signInWithEmailAndPassword,
-  auth,
-  useAuth,
-} from "../src/firebase";
+import { signInWithEmailAndPassword, auth, useAuth } from "../src/firebase";
 import { useRef } from "react";
 import DashboardPage from "./DashboardPage";
 
-function LoginPage() {
+function LoginPage({trades, setTrades, portfolio}) {
   const navtoSignup = useNavigate();
   const navtoresetpass = useNavigate();
 
@@ -31,13 +27,14 @@ function LoginPage() {
       .catch((err) => {
         console.log(err);
       });
-      //console.log(emailRef.current.value)
-      //console.log(passwordRef.current.value)
+    //console.log(emailRef.current.value)
+    //console.log(passwordRef.current.value)
   };
 
   return (
     <div className="">
-        {!currentUser ? (<div className="min-h-screen">
+      {!currentUser ? (
+        <div className="min-h-screen">
           <TeztnetLogo />
           <div className="flex justify-center items-center">
             <form className="md:flex flex-col shadow-lg rounded-md py-5 w-1/4">
@@ -94,9 +91,15 @@ function LoginPage() {
                 </button>
               </div>
             </form>
-            
           </div>
-        </div>) : <DashboardPage />}
+        </div>
+      ) : (
+        <DashboardPage
+          portfolio={portfolio}
+          trades={trades}
+          setTrades={setTrades}
+        />
+      )}
     </div>
   );
 }

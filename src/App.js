@@ -51,7 +51,18 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/login"
+            element={
+              <LoginPage
+                portfolio={portfolio}
+                trades={trades}
+                setTrades={setTrades}
+                seriesBar={seriesBar}
+                series={series}
+              />
+            }
+          />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/resetpass" element={<ResetPass />} />
           <Route path="/dashboard" element={<DashboardPage />} />
