@@ -91,8 +91,8 @@ function Search({ stonk, setStonk, setSeries, setSeriesBar }) {
           </svg>
         </button>
         <div className="">
-          <h1>stock symbol: {stonk.symbol}</h1>
-          <h2>stock price: {stonk.regularMarketPrice}$</h2>
+          <h1>stock symbol: {stonk?.symbol}</h1>
+          <h2>stock price: {stonk?.regularMarketPrice}$</h2>
           <h2>
             time: {moment(readableTime).format("MMMM Do YYYY, h:mm:ss a")}
           </h2>

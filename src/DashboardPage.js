@@ -5,8 +5,18 @@ import { useState } from "react";
 import SideBarBtn from "./SideBarBtn";
 import PortfolioGraph from "./components/PortfolioGraph";
 import Datagraph from "./components/Datagraph";
+import Search from "./components/Search";
 
-function DashboardPage({ portfolio, trades, setTrades, series, seriesBar }) {
+function DashboardPage({
+  portfolio,
+  trades,
+  setTrades,
+  series,
+  seriesBar,
+  stonk,
+  setStonk,
+  setSeries,
+}) {
   const handleLogout = () => {
     return signOut(auth);
   };
@@ -27,7 +37,11 @@ function DashboardPage({ portfolio, trades, setTrades, series, seriesBar }) {
           />
         </div>
         <div className="flex">
-          <SearchBar />
+          <Search
+            stonk={stonk}
+            setStonk={setStonk}
+            setSeries={setSeries}
+          />
         </div>
         <div className="flex flex-col justify-end items-center">
           <h1>current user:{currentUser?.email}</h1>
@@ -46,7 +60,7 @@ function DashboardPage({ portfolio, trades, setTrades, series, seriesBar }) {
           setTrades={setTrades}
         />
       </div>
-      <div className="">
+      <div className="ml-64">
         <Datagraph series={series} seriesBar={seriesBar} />
       </div>
     </div>

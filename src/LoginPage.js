@@ -5,7 +5,7 @@ import { signInWithEmailAndPassword, auth, useAuth } from "../src/firebase";
 import { useRef } from "react";
 import DashboardPage from "./DashboardPage";
 
-function LoginPage({trades, setTrades, portfolio}) {
+function LoginPage({trades, setTrades, portfolio, stonk, setStonk, setSeries, series}) {
   const navtoSignup = useNavigate();
   const navtoresetpass = useNavigate();
 
@@ -98,6 +98,10 @@ function LoginPage({trades, setTrades, portfolio}) {
           portfolio={portfolio}
           trades={trades}
           setTrades={setTrades}
+          stonk={stonk}
+          setStonk={setStonk}
+          series={series}
+          setSeries={setSeries}
         />
       )}
     </div>

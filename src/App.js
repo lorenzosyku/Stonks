@@ -60,6 +60,9 @@ function App() {
                 setTrades={setTrades}
                 seriesBar={seriesBar}
                 series={series}
+                stonk={stonk}
+                setStonk={setStonk}
+                setSeries={setSeries}
               />
             }
           />
