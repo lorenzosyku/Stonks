@@ -157,8 +157,7 @@ const links = [
   },
 ];
 
-const Sidebar = ({isSidebarOpen, setIsSidebarOpen}) => {
-
+const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
   return (
     <div
       className={`transition-all  duration-500  fixed top-0 ${
@@ -196,7 +195,24 @@ const Sidebar = ({isSidebarOpen, setIsSidebarOpen}) => {
           <label
             className="absolute inset-y-0 left-0 pl-3 flex items-center "
             htmlFor="searchP"
-          ></label>
+          >
+            <button className="bg-zinc-400 text-white p-1 rounded-md">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </button>
+          </label>
           <input
             id="searchP"
             type="text"
@@ -296,7 +312,6 @@ const Sidebar = ({isSidebarOpen, setIsSidebarOpen}) => {
             href="/color-shade-generator"
             className="flex items-center px-4 py-2 mt-5 rounded-md text-gray-600 hover:text-gray-700 hover:bg-gray-200 transition-colors transform"
           >
-            
             <span className="mx-4 font-medium">Ticket</span>
           </a>
           <a

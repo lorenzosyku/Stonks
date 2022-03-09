@@ -19,13 +19,15 @@ function DashboardPage({ portfolio, trades, setTrades, series, seriesBar }) {
         setIsSidebarOpen={setIsSidebarOpen}
         isSidebarOpen={isSidebarOpen}
       />
-      {/*<SearchBar />*/}
-      <div className="flex items-center justify-between">
+      <div className="grid grid-cols-3">
         <div className="">
           <SideBarBtn
             setIsSidebarOpen={setIsSidebarOpen}
             isSidebarOpen={isSidebarOpen}
           />
+        </div>
+        <div className="flex">
+          <SearchBar />
         </div>
         <div className="flex flex-col justify-end items-center">
           <h1>current user:{currentUser?.email}</h1>
@@ -37,7 +39,7 @@ function DashboardPage({ portfolio, trades, setTrades, series, seriesBar }) {
           </button>
         </div>
       </div>
-      <div className="">
+      <div className="ml-64">
         <PortfolioGraph
           portfolio={portfolio}
           trades={trades}
