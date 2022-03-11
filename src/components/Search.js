@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import moment from "moment";
+import { auth, useAuth, signOut } from "../firebase";
 
 function Search({ stonk, setStonk, setSeries, setSeriesBar }) {
   const searchValue = useRef(null);
@@ -64,8 +65,13 @@ function Search({ stonk, setStonk, setSeries, setSeriesBar }) {
     searchValue.current.value = "";
   };
 
+  const handleLogout = () => {
+    return signOut(auth);
+  };
+  const currentUser = useAuth();
+
   return (
-    <div>
+    <div className="flex justify-between">
       <div className="">
         <input type="text" ref={searchValue} placeholder="Stock Ticker" />
         <button
@@ -98,6 +104,15 @@ function Search({ stonk, setStonk, setSeries, setSeriesBar }) {
           </h2>
         </div>
       </div>
+      <div className="flex flex-col justify-end items-center">
+          <h1>current user:{currentUser?.email}</h1>
+          <button
+            onClick={handleLogout}
+            className="bg-shade-lightblue font-semibold text-gray-100 p-2 shadow-lg rounded-md"
+          >
+            LogOut
+          </button>
+        </div>
     </div>
   );
 }

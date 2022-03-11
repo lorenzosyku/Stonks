@@ -1,6 +1,4 @@
 import "./App.css";
-import Datagraph from "./components/Datagraph";
-import Search from "./components/Search";
 import { useState } from "react";
 import Trade from "./components/Trade";
 import Balance from "./components/Balance";
@@ -8,12 +6,10 @@ import PortfolioGraph from "./components/PortfolioGraph";
 import TransactionList from "./components/TransactionList";
 import TotalReturnsGraph from "./components/TotalReturnsGraph";
 import LandingPage from "./LandingPage";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoginPage from "./LoginPage";
 import SignupPage from "./SignupPage";
 import ResetPass from "./ResetPass";
-import Header from "./LandingPageComponents/Header";
-import TeztnetLogo from "./LandingPageComponents/TeztnetLogo";
 import DashboardPage from "./DashboardPage";
 
 function App() {
@@ -72,13 +68,7 @@ function App() {
         </Routes>
       </Router>
 
-      {/*  <Search
-        stonk={stonk}
-        setStonk={setStonk}
-        setSeries={setSeries}
-        setSeriesBar={setSeriesBar}
-      />
-      <Datagraph series={series} seriesBar={seriesBar} />
+      {/*  
       <Trade
         stonk={stonk}
         portfolio={portfolio}

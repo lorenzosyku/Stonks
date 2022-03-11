@@ -1,11 +1,10 @@
-import SearchBar from "./dashboard/SearchBar";
 import Sidebar from "./dashboard/Sidebar";
-import { auth, useAuth, signOut } from "../src/firebase";
 import { useState } from "react";
 import SideBarBtn from "./SideBarBtn";
 import PortfolioGraph from "./components/PortfolioGraph";
 import Datagraph from "./components/Datagraph";
 import Search from "./components/Search";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function DashboardPage({
   portfolio,
@@ -17,10 +16,6 @@ function DashboardPage({
   setStonk,
   setSeries,
 }) {
-  const handleLogout = () => {
-    return signOut(auth);
-  };
-  const currentUser = useAuth();
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   return (
@@ -43,23 +38,9 @@ function DashboardPage({
             setSeries={setSeries}
           />
         </div>
-        <div className="flex flex-col justify-end items-center">
-          <h1>current user:{currentUser?.email}</h1>
-          <button
-            onClick={handleLogout}
-            className="bg-shade-lightblue font-semibold text-gray-100 p-2 shadow-lg rounded-md"
-          >
-            LogOut
-          </button>
-        </div>
+        
       </div>
-      <div className="ml-64">
-        <PortfolioGraph
-          portfolio={portfolio}
-          trades={trades}
-          setTrades={setTrades}
-        />
-      </div>
+      
       <div className="ml-64">
         <Datagraph series={series} seriesBar={seriesBar} />
       </div>
