@@ -35,6 +35,7 @@ function App() {
       data: [],
     },
   ]);
+  const [details, setDetails] = useState({});
   const [seriesBar, setSeriesBar] = useState([
     {
       name: "volume",
@@ -59,6 +60,8 @@ function App() {
                 stonk={stonk}
                 setStonk={setStonk}
                 setSeries={setSeries}
+                details={details}
+                setDetails={setDetails}
               />
             }
           />

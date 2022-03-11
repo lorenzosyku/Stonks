@@ -1,39 +1,8 @@
-
-//import { useGlobalContext } from './context';
-const links = [
-  {
-    id: 1,
-    url: "/color-shade-generator",
-    text: "home",
-    icon: "", //<FaHome className="w-5 h-5" />,
-  },
-  {
-    id: 2,
-    url: "/grocery-bud",
-    text: "team",
-    icon: "", //<FaUserFriends className="w-5 h-5" />,
-  },
-  {
-    id: 3,
-    url: "/navbar",
-    text: "projects",
-    icon: "", //<FaFolderOpen className="w-5 h-5" />,
-  },
-  {
-    id: 4,
-    url: "/sidebar",
-    text: "calendar",
-    icon: "", //<FaCalendarAlt className="w-5 h-5" />,
-  },
-  {
-    id: 5,
-    url: "/sidebar",
-    text: "documents",
-    icon: "", //<HiDocument className="w-5 h-5" />,
-  },
-];
+import { auth, useAuth, signOut } from '../firebase';
 
 const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
+
+  const currentUser = useAuth();
   return (
     <div
       className={`transition-all  duration-500  fixed top-0 ${
@@ -41,37 +10,42 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
       }`}
     >
       <div className="flex h-screen overflow-y-auto flex-col bg-white  w-64 px-4 py-8 border-r min-h-screen relative">
-        <button
-          onClick={() => {
-            setIsSidebarOpen(false);
-          }}
-          className="absolute top-1 right-1  text-gray-600 w-8 h-8 rounded-full flex items-center justify-center active:bg-gray-300 focus:outline-none ml-6 hover:bg-gray-200 hover:text-gray-800"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="2"
+        <div className="flex justify-between items-center">
+          <button
+            onClick={() => {
+              setIsSidebarOpen(false);
+            }}
+            className="md:hidden absolute top-8 right-1  text-gray-600 w-8 h-8 rounded-full flex items-center justify-center active:bg-gray-300 focus:outline-none ml-6 hover:bg-gray-200 hover:text-gray-800"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
-        <div className="flex items-center gap-4 pb-4">
-          <h2 className="font-poppins text-xl text-shade-lightblue italic font-semibold">
-            TeztNet<span className="text-amber-400">-V1</span>
-          </h2>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+          <div className="flex flex-col items-center">
+            <h2 className="font-poppins text-xl text-shade-lightblue italic font-semibold">
+              TeztNet<span className="text-amber-400">-V1</span>
+            </h2>
+            <h4 className="italic font-poppins font-semibold text-xs">
+              Beta Version
+            </h4>
+          </div>
         </div>
-        
+
         <nav role="navigation" class="p-6">
-          <div className="mt-4 -mx-4 relative overflow-y-auto overflow-x-hidden h-[85vh]">
-            <ul className="space-y-4 mb-12 px-4 mt-8">
-              <li className="hover:bg-gray-200 hover:text-gray-800 px-4 py-2 rounded-md">
+          <div className="mt-4 -mx-4 relative overflow-y-auto overflow-x-hidden h-[65vh]">
+            <ul className="space-y-4 mb-6 mt-8">
+              <li className="hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md">
                 <a
                   href="#"
                   className="flex gap-4 text-gray-600 hover:text-gray-800 transition"
@@ -92,7 +66,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                   WatchList
                 </a>
               </li>
-              <li className="hover:bg-gray-200 hover:text-gray-800 px-4 py-2 rounded-md">
+              <li className="hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md">
                 <a
                   href="#"
                   className="flex gap-4 text-gray-600 hover:text-gray-800 transition"
@@ -114,7 +88,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                   Buy/Sell
                 </a>
               </li>
-              <li className="hover:bg-gray-200 hover:text-gray-800 px-4 py-2 rounded-md">
+              <li className="hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md">
                 <a
                   href="#"
                   className="flex gap-4 text-gray-600 hover:text-gray-800 transition"
@@ -131,7 +105,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                   Portfolio
                 </a>
               </li>
-              <li className="hover:bg-gray-200 hover:text-gray-800 px-4 py-2 rounded-md">
+              <li className="hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md">
                 <a
                   href="#"
                   className="flex gap-4 text-gray-600 hover:text-gray-800 transition"
@@ -155,30 +129,17 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
               </li>
             </ul>
           </div>
-          <hr className="my-6" />
-          <a
-            href="/color-shade-generator"
-            className="flex items-center px-4 py-2 mt-5 rounded-md text-gray-600 hover:text-gray-700 hover:bg-gray-200 transition-colors transform"
-          >
-            <span className="mx-4 font-medium">Ticket</span>
-          </a>
-          <a
-            href="/color-shade-generator"
-            className="flex items-center px-4 py-2 mt-5 rounded-md text-gray-600 hover:text-gray-700 hover:bg-gray-200 transition-colors transform"
-          >
-            <span className="mx-4 font-medium">Settings</span>
-          </a>
         </nav>
-        {/*<div className="flex items-center px-4 -mx-2 mt-5">
+        <div className="flex items-center px-4 -mx-2 mt-5">
           <img
             src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
             alt="avatar"
             className="h-9 w-9 mx-2 object-center object-cover rounded-full"
           />
           <h4 className="mx-2 font-medium text-gray-800 hover:underline cursor-pointer">
-            John Doe
+            {currentUser?.email}
           </h4>
-        </div>*/}
+        </div>
       </div>
     </div>
   );
