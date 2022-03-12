@@ -36,11 +36,11 @@ function DashboardPage({
         </div>
         <Search stonk={stonk} setStonk={setStonk} setSeries={setSeries} setDetails={setDetails}/>
       </div>
-      <div className="flex p-5 justify-between">
-        <div className="ml-64 w-3/5 bg-gray-100 m-5 rounded-md">
+      <div className="md:flex p-5 ">
+        <div className="md:ml-64 md:w-3/5 bg-gray-100 m-5 rounded-md">
           <Datagraph series={series} seriesBar={seriesBar} />
         </div>
-        <div className="bg-gray-100 w-1/5 m-5 rounded-md">
+        <div className="bg-gray-100 md:w-1/5 m-5 rounded-md">
           <Details 
             details={details}
           />

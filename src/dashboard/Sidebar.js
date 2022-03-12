@@ -9,7 +9,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
         isSidebarOpen ? "left-0" : "-left-64"
       }`}
     >
-      <div className="flex h-screen overflow-y-auto flex-col bg-white  w-64 px-4 py-8 border-r min-h-screen relative">
+      <div className="flex z-50 h-screen overflow-y-auto flex-col bg-white  w-64 px-4 py-8 border-r min-h-screen relative">
         <div className="flex justify-between items-center">
           <button
             onClick={() => {
