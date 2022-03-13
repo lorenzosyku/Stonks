@@ -1,34 +1,27 @@
 import Chart from "react-apexcharts";
 
-
-function Datagraph({series, seriesBar}) {
-
+function Datagraph({ series }) {
   const chart = {
     options: {
       chart: {
-        type: 'candlestick',
-        height: 350
+        type: "candlestick",
+        height: 350,
       },
       title: {
-        text: 'CandleStick Chart',
-        align: 'left'
+        text: "CandleStick Chart",
+        align: "left",
       },
       xaxis: {
-        type: 'datetime'
+        type: "datetime",
       },
     },
-    
   };
 
   return (
     <div>
-      <Chart
-        options={chart.options}
-        series={series}
-        type="candlestick"
-      />
+      <Chart options={chart.options} series={series} type="candlestick" />
     </div>
-  )
+  );
 }
 
-export default Datagraph
+export default Datagraph;

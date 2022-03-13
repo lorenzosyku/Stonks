@@ -36,12 +36,6 @@ function App() {
     },
   ]);
   const [details, setDetails] = useState({});
-  const [seriesBar, setSeriesBar] = useState([
-    {
-      name: "volume",
-      data: [],
-    },
-  ]);
 
   return (
     <div className="">
@@ -55,7 +49,6 @@ function App() {
                 portfolio={portfolio}
                 trades={trades}
                 setTrades={setTrades}
-                seriesBar={seriesBar}
                 series={series}
                 stonk={stonk}
                 setStonk={setStonk}

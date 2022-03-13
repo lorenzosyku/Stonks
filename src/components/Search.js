@@ -1,8 +1,7 @@
-import { useRef, useState, useEffect } from "react";
-import moment from "moment";
+import { useRef, useState } from "react";
 import { auth, useAuth, signOut } from "../firebase";
 
-function Search({ stonk, setStonk, setSeries, setSeriesBar, setDetails }) {
+function Search({ setStonk, setSeries, setDetails }) {
   const searchValue = useRef(null);
   const [readableTime, setReadableTime] = useState("-");
 
@@ -39,12 +38,7 @@ function Search({ stonk, setStonk, setSeries, setSeriesBar, setDetails }) {
           return num ? +num.toFixed(2) : null;
         }),
       }));
-      const volumeData = quotes.volume.filter((item) => item !== null);
 
-      //console.log(readableTime);
-      //console.log(quotes);
-      //console.log(arrPrices);
-      //console.log(volumeData)
       setStonk({
         symbol: stockName,
         regularMarketPrice: price,
@@ -67,10 +61,6 @@ function Search({ stonk, setStonk, setSeries, setSeriesBar, setDetails }) {
           data: arrPrices,
         },
       ]);
-      /*setSeriesBar([{
-        name: 'volume',
-        data: volumeData
-      }])*/
     } catch (error) {
       console.log(error);
     }
@@ -111,13 +101,6 @@ function Search({ stonk, setStonk, setSeries, setSeriesBar, setDetails }) {
             />
           </svg>
         </button>
-        {/*<div className="">
-          <h1>stock symbol: {stonk?.symbol}</h1>
-          <h2>stock price: {stonk?.regularMarketPrice}$</h2>
-          <h2>
-            time: {moment(readableTime).format("MMMM Do YYYY, h:mm:ss a")}
-          </h2>
-        </div>*/}
       </div>
       <div className="flex flex-col justify-end items-center">
         <button
