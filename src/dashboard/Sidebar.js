@@ -1,8 +1,13 @@
-import { auth, useAuth, signOut } from '../firebase';
+import { auth, useAuth, signOut } from "../firebase";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
-
   const currentUser = useAuth();
+  const navToTrx = useNavigate();
+  const navToWatchList = useNavigate();
+  const navToPortfolio = useNavigate();
+  const navToBuySell = useNavigate();
+
   return (
     <div
       className={`transition-all  duration-500  fixed top-0 ${
@@ -45,7 +50,12 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
         <nav role="navigation" class="p-6">
           <div className="mt-4 -mx-4 relative overflow-y-auto overflow-x-hidden h-[65vh]">
             <ul className="space-y-4 mb-6 mt-8">
-              <li className="hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md">
+              <li
+                onClick={() => {
+                  navToWatchList("/watchlist");
+                }}
+                className="hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md"
+              >
                 <a
                   href="#"
                   className="flex gap-4 text-gray-600 hover:text-gray-800 transition"
@@ -66,7 +76,12 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                   WatchList
                 </a>
               </li>
-              <li className="hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md">
+              <li
+                onClick={() => {
+                  navToBuySell("/trade");
+                }}
+                className="hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md"
+              >
                 <a
                   href="#"
                   className="flex gap-4 text-gray-600 hover:text-gray-800 transition"
@@ -88,7 +103,12 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                   Buy/Sell
                 </a>
               </li>
-              <li className="hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md">
+              <li
+                onClick={() => {
+                  navToPortfolio("/portfolio");
+                }}
+                className="hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md"
+              >
                 <a
                   href="#"
                   className="flex gap-4 text-gray-600 hover:text-gray-800 transition"
@@ -105,7 +125,12 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                   Portfolio
                 </a>
               </li>
-              <li className="hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md">
+              <li
+                onClick={() => {
+                  navToTrx("/transactions");
+                }}
+                className="hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md"
+              >
                 <a
                   href="#"
                   className="flex gap-4 text-gray-600 hover:text-gray-800 transition"

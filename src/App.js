@@ -55,6 +55,7 @@ function App() {
                 setSeries={setSeries}
                 details={details}
                 setDetails={setDetails}
+                transactions={transactions}
               />
             }
           />

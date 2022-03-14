@@ -6,6 +6,7 @@ import Datagraph from "./components/Datagraph";
 import Search from "./components/Search";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Details from "./dashboard/Details";
+import TransactionList from "./components/TransactionList";
 
 function DashboardPage({
   portfolio,
