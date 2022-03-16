@@ -7,18 +7,20 @@ import Search from "./components/Search";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Details from "./dashboard/Details";
 import TransactionList from "./components/TransactionList";
+import WatchlistSegment from "./dashboard/WatchlistSegment";
 
 function DashboardPage({
   portfolio,
   trades,
   setTrades,
   series,
-  seriesBar,
   stonk,
   setStonk,
   setSeries,
   details,
   setDetails,
+  watchlist,
+  setWatchlist,
 }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
@@ -38,6 +40,8 @@ function DashboardPage({
           setStonk={setStonk}
           setSeries={setSeries}
           setDetails={setDetails}
+          setWatchlist={setWatchlist}
+          watchlist={watchlist}
         />
       </div>
       <div
@@ -45,6 +49,9 @@ function DashboardPage({
           isSidebarOpen ? "left-64" : "left-0"
         }`}
       >
+        <div className="">
+          <WatchlistSegment watchlist={watchlist} setWatchlist={setWatchlist} />
+        </div>
         <div className="md:flex p-5 ">
           <div className="md:ml-64 md:w-3/5 bg-gray-100 m-5 rounded-md">
             <Datagraph series={series} />

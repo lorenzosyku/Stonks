@@ -36,6 +36,7 @@ function App() {
     },
   ]);
   const [details, setDetails] = useState({});
+  const [watchlist, setWatchlist] = useState([])
 
   return (
     <div className="">
@@ -56,6 +57,8 @@ function App() {
                 details={details}
                 setDetails={setDetails}
                 transactions={transactions}
+                watchlist={watchlist}
+                setWatchlist={setWatchlist}
               />
             }
           />

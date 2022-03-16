@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { auth, useAuth, signOut } from "../firebase";
 
-function Search({ setStonk, setSeries, setDetails }) {
+function Search({ setStonk, setSeries, setDetails, setWatchist, watchlist }) {
   const searchValue = useRef(null);
   const [readableTime, setReadableTime] = useState("-");
 
@@ -66,6 +66,15 @@ function Search({ setStonk, setSeries, setDetails }) {
     }
   };
 
+  const addToWatchlist = (e) => {
+    e.preventDefault()
+
+    const newStock = {
+      symbol: searchValue.current.value
+    }
+    setWatchist([newStock, ...watchlist])
+  }
+
   const reset = () => {
     searchValue.current.value = "";
   };
@@ -76,38 +85,56 @@ function Search({ setStonk, setSeries, setDetails }) {
   const currentUser = useAuth();
 
   return (
-    <div className="bg-gray-100 grid grid-cols-2 ml-64 w-full">
-      <div className="flex justify-center items-center p-5">
-        <button 
-          className="bg-zinc-400 md:inline-flex text-white rounded-full p-2 cursor-pointer md:mx-2"
-          onClick={() => {
-            handleStonk();
-            reset();
-          }}
-        >
+    <div className="bg-white grid grid-cols-2 ml-64 p-5 w-full">
+      <div className="flex justify-between items-center">
+        <div className="flex justify-center items-center border-2 rounded-md flex-grow">
+          <button
+            className="bg-zinc-400 md:inline-flex text-white rounded-full p-2 cursor-pointer md:mx-2"
+            onClick={
+              handleStonk
+            }
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-3 w-3"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </button>
+
+          <input
+            className="p-2 rounded-md flex-grow bg-transparent outline-none text-sm text-grey-400 placeholder-gray-400"
+            type="text"
+            ref={searchValue}
+            placeholder="Stock Ticker"
+          />
+        </div>
+        <button onClick={addToWatchlist} className="flex justify-end bg-zinc-400 md:inline-flex text-white rounded-full p-2 cursor-pointer md:mx-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-3 w-3"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
+            stroke-width="2"
           >
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
-              stroke-width="2"
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              d="M12 4v16m8-8H4"
             />
           </svg>
         </button>
-
-        <input
-          className="p-2 rounded-md flex-grow bg-transparent outline-none text-sm text-grey-400 placeholder-gray-400"
-          type="text"
-          ref={searchValue}
-          placeholder="Stock Ticker"
-        />
       </div>
+
       <div className="flex justify-end items-center pr-5">
         <button
           onClick={handleLogout}
