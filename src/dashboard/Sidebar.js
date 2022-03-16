@@ -1,4 +1,4 @@
-import { auth, useAuth, signOut } from "../firebase";
+import { useAuth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 
 const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
@@ -54,10 +54,9 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                 onClick={() => {
                   navToWatchList("/watchlist");
                 }}
-                className="hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md"
+                className="hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md cursor-pointer"
               >
-                <a
-                  href="#"
+                <div
                   className="flex gap-4 text-gray-600 hover:text-gray-800 transition"
                 >
                   <svg
@@ -74,16 +73,15 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                     />
                   </svg>
                   WatchList
-                </a>
+                </div>
               </li>
               <li
                 onClick={() => {
                   navToBuySell("/trade");
                 }}
-                className="hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md"
+                className="hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md cursor-pointer"
               >
-                <a
-                  href="#"
+                <div
                   className="flex gap-4 text-gray-600 hover:text-gray-800 transition"
                 >
                   <svg
@@ -101,16 +99,15 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                     />
                   </svg>
                   Buy/Sell
-                </a>
+                </div>
               </li>
               <li
                 onClick={() => {
                   navToPortfolio("/portfolio");
                 }}
-                className="hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md"
+                className="hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md cursor-pointer"
               >
-                <a
-                  href="#"
+                <div
                   className="flex gap-4 text-gray-600 hover:text-gray-800 transition"
                 >
                   <svg
@@ -123,16 +120,15 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                     <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
                   </svg>
                   Portfolio
-                </a>
+                </div>
               </li>
               <li
                 onClick={() => {
                   navToTrx("/transactions");
                 }}
-                className="hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md"
+                className="hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md cursor-pointer"
               >
-                <a
-                  href="#"
+                <div
                   className="flex gap-4 text-gray-600 hover:text-gray-800 transition"
                 >
                   <svg
@@ -150,7 +146,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                     />
                   </svg>
                   Transactions
-                </a>
+                </div>
               </li>
             </ul>
           </div>

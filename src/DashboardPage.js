@@ -28,13 +28,12 @@ function DashboardPage({
         setIsSidebarOpen={setIsSidebarOpen}
         isSidebarOpen={isSidebarOpen}
       />
-      <div className="grid grid-cols-2">
-        <div className="">
-          <SideBarBtn
-            setIsSidebarOpen={setIsSidebarOpen}
-            isSidebarOpen={isSidebarOpen}
-          />
-        </div>
+      <div className="flex">
+        <SideBarBtn
+          setIsSidebarOpen={setIsSidebarOpen}
+          isSidebarOpen={isSidebarOpen}
+        />
+
         <Search
           setStonk={setStonk}
           setSeries={setSeries}
@@ -48,9 +47,7 @@ function DashboardPage({
       >
         <div className="md:flex p-5 ">
           <div className="md:ml-64 md:w-3/5 bg-gray-100 m-5 rounded-md">
-            <Datagraph
-              series={series}
-            />
+            <Datagraph series={series} />
           </div>
           <div className="bg-gray-100 md:w-1/5 m-5 rounded-md">
             <Details details={details} />

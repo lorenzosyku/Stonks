@@ -76,11 +76,10 @@ function Search({ setStonk, setSeries, setDetails }) {
   const currentUser = useAuth();
 
   return (
-    <div className="flex justify-between">
-      <div className="">
-        <input type="text" ref={searchValue} placeholder="Stock Ticker" />
-        <button
-          className="bg-zinc-400 text-white p-1 rounded-md"
+    <div className="bg-gray-100 grid grid-cols-2 ml-64 w-full">
+      <div className="flex justify-center items-center p-5">
+        <button 
+          className="bg-zinc-400 md:inline-flex text-white rounded-full p-2 cursor-pointer md:mx-2"
           onClick={() => {
             handleStonk();
             reset();
@@ -88,7 +87,7 @@ function Search({ setStonk, setSeries, setDetails }) {
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
+            class="h-3 w-3"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -101,8 +100,15 @@ function Search({ setStonk, setSeries, setDetails }) {
             />
           </svg>
         </button>
+
+        <input
+          className="p-2 rounded-md flex-grow bg-transparent outline-none text-sm text-grey-400 placeholder-gray-400"
+          type="text"
+          ref={searchValue}
+          placeholder="Stock Ticker"
+        />
       </div>
-      <div className="flex flex-col justify-end items-center">
+      <div className="flex justify-end items-center pr-5">
         <button
           onClick={handleLogout}
           className="bg-shade-lightblue font-semibold text-gray-100 p-2 shadow-lg rounded-md"
