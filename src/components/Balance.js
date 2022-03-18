@@ -9,12 +9,17 @@ function Balance({ portfolio }) {
 
   return (
     <div>
-      <div className="">
-        <h2>CASH BALANCE</h2>
-        <h3>${cashBalance.toFixed(2)}</h3>
+      <div className="flex justify-between">
+        <h2 className="font-semibold">CASH BALANCE</h2>
+        <h3 className="font-bold italic">${cashBalance.toFixed(2)}</h3>
       </div>
-      <div className="">
-        <h2>STOCK LIST</h2>
+      <div className="mt-5">
+        <div className="grid grid-cols-3">
+          <h2>Stock List</h2>
+          <h2 className="flex justify-center">Shares</h2>
+          <h2 className="flex justify-end">Percentage</h2>
+        </div>
+        
         {portfolio?.stocks.map((stock) => (
           <PortfolioItem
             key={stock.id}
