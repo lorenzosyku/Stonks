@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import MainContent from "./dashboard/MainContent";
 import BuySell from "./dashboard/BuySell";
+import PortfolioSection from "./dashboard/PortfolioSection";
 
 function DashboardPage({
   portfolio,
@@ -23,12 +24,30 @@ function DashboardPage({
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   return (
-    <div className="min-h-screen bg-gray-300">
+    <div className="min-h-screen bg-gray-200">
       <Sidebar
         setIsSidebarOpen={setIsSidebarOpen}
         isSidebarOpen={isSidebarOpen}
       />
-      <MainContent
+      {/*<MainContent
+        setIsSidebarOpen={setIsSidebarOpen}
+        isSidebarOpen={isSidebarOpen}
+        setStonk={setStonk}
+        setSeries={setSeries}
+        setDetails={setDetails}
+        setWatchlist={setWatchlist}
+        watchlist={watchlist}
+        details={details}
+        series={series}
+        setTrades={setTrades}
+        stonk={stonk}
+        portfolio={portfolio}
+        setPortfolio={setPortfolio}
+        setTransactions={setTransactions}
+        transactions={transactions}
+        trades={trades}
+      />*/}
+      <BuySell
         setIsSidebarOpen={setIsSidebarOpen}
         isSidebarOpen={isSidebarOpen}
         setStonk={setStonk}
@@ -46,20 +65,8 @@ function DashboardPage({
         transactions={transactions}
         trades={trades}
       />
-      {/*<BuySell
-        setIsSidebarOpen={setIsSidebarOpen}
-        isSidebarOpen={isSidebarOpen}
-        setStonk={setStonk}
-        stonk={stonk}
-        setSeries={setSeries}
-        series={series}
-        portfolio={portfolio}
-        setPortfolio={setPortfolio}
-        transactions={transactions}
-        setTransactions={setTransactions}
-        trades={trades}
-        setTrades={setTrades}
-      />*/}
+      <PortfolioSection portfolio={portfolio}/>
+      
     </div>
   );
 }

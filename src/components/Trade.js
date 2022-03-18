@@ -211,23 +211,25 @@ function Trade({
   //console.log(transactions);
 
   return (
-    <div className="flex justify-between items-center border-2">
+    <div className="flex justify-between items-center border-2 p-5">
       <div className="flex items-center">
         <input
           type="number"
           ref={noSharesToBuy}
           placeholder={`Buy ${stonk.symbol} shares`}
+          className="border-2 bg-transparent border-cyan-600 rounded-md p-1 text-sm font-semibold outline-none"
         />
-        <button onClick={buyShares}>buy</button>
+        <button className="p-1 bg-orange-300 rounded-md text-sm text-white font-bold ml-2" onClick={buyShares}>buy</button>
       </div>
       <div className="flex items-center">
         <input
           type="number"
           ref={noSharesToSell}
           placeholder={`Sell ${stonk.symbol} shares`}
+          className="border-2 bg-transparent border-cyan-600 rounded-md p-1 text-sm font-semibold outline-none"
         />
-        <button onClick={sellShares}>sell</button>
-        <button onClick={getLatestPrice}>updateToLatestPrices</button>
+        <button className="p-1 bg-orange-300 rounded-md text-sm text-white font-bold ml-2" onClick={sellShares}>sell</button>
+        {/*<button onClick={getLatestPrice}>updateToLatestPrices</button>*/}
       </div>
     </div>
   );

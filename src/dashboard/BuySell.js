@@ -45,7 +45,7 @@ function BuySell({
           <div className="p-5 bg-gray-100 md:3/4 m-5 rounded-md">
             <Datagraph series={series} />
           </div>
-          <div className="md:ml-64">
+          <div className="">
             <Trade
               stonk={stonk}
               portfolio={portfolio}
