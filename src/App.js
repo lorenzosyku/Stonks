@@ -1,10 +1,5 @@
 import "./App.css";
 import { useState } from "react";
-import Trade from "./components/Trade";
-import Balance from "./components/Balance";
-import PortfolioGraph from "./components/PortfolioGraph";
-import TransactionList from "./components/TransactionList";
-import TotalReturnsGraph from "./components/TotalReturnsGraph";
 import LandingPage from "./LandingPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoginPage from "./LoginPage";
@@ -65,32 +60,10 @@ function App() {
             }
           />
           <Route path="/signup" element={<SignupPage />} />
-          <Route path="/resetpass" element={<ResetPass />} />
-          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/resetpass" element={<ResetPass />} />{/*
+          <Route path="/dashboard" element={<DashboardPage />} />*/}
         </Routes>
       </Router>
-
-      {/*  
-      <Trade
-        stonk={stonk}
-        portfolio={portfolio}
-        setPortfolio={setPortfolio}
-        transactions={transactions}
-        setTransactions={setTransactions}
-        trades={trades}
-        setTrades={setTrades}
-      />
-      <div style={{ display: "flex", justifyContent: "left" }}>
-        <Balance portfolio={portfolio} />
-        <PortfolioGraph
-          portfolio={portfolio}
-          trades={trades}
-          setTrades={setTrades}
-        />
-      </div>
-
-      <TotalReturnsGraph portfolio={portfolio} />
-      <TransactionList transactions={transactions} />*/}
     </div>
   );
 }
