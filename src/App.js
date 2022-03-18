@@ -48,6 +48,7 @@ function App() {
             element={
               <LoginPage
                 portfolio={portfolio}
+                setPortfolio={setPortfolio}
                 trades={trades}
                 setTrades={setTrades}
                 series={series}
@@ -57,6 +58,7 @@ function App() {
                 details={details}
                 setDetails={setDetails}
                 transactions={transactions}
+                setTransactions={setTransactions}
                 watchlist={watchlist}
                 setWatchlist={setWatchlist}
               />

@@ -50,7 +50,8 @@ function Trade({
           if (newStockArr[i].stockName === stonk.symbol) {
             newAmountShares = newStockArr[i].shares + newAmountShares;
             //console.log(newAmountShares);
-            newAmountSpentOnStock = newStockArr[i].amountSpent + newAmountSpentOnStock;
+            newAmountSpentOnStock =
+              newStockArr[i].amountSpent + newAmountSpentOnStock;
             //console.log(newAmountSpentOnStock);
             entryPointOfTrade = newAmountSpentOnStock / newAmountShares;
             //console.log(entryPointOfTrade);
@@ -129,7 +130,6 @@ function Trade({
               currentPrice: parseFloat(price),
               amountSpent: arr[i].amountSpent,
               entryPrice: arr[i].entryPrice,
-            
             });
             newPortfolio.cash = portfolio.cash + amountToSell;
           }
@@ -196,7 +196,6 @@ function Trade({
     };
   }, [])*/
 
-
   useEffect(() => {
     const temp = localStorage.getItem("portfolioAllocation");
     if (temp) {
@@ -212,8 +211,8 @@ function Trade({
   //console.log(transactions);
 
   return (
-    <div>
-      <div className="">
+    <div className="flex justify-between items-center border-2">
+      <div className="flex items-center">
         <input
           type="number"
           ref={noSharesToBuy}
@@ -221,7 +220,7 @@ function Trade({
         />
         <button onClick={buyShares}>buy</button>
       </div>
-      <div className="">
+      <div className="flex items-center">
         <input
           type="number"
           ref={noSharesToSell}

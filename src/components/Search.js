@@ -67,13 +67,13 @@ function Search({ setStonk, setSeries, setDetails, setWatchist, watchlist }) {
   };
 
   const addToWatchlist = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     const newStock = {
-      symbol: searchValue.current.value
-    }
-    setWatchist([newStock, ...watchlist])
-  }
+      symbol: searchValue.current.value,
+    };
+    setWatchist([newStock, ...watchlist]);
+  };
 
   const reset = () => {
     searchValue.current.value = "";
@@ -90,9 +90,7 @@ function Search({ setStonk, setSeries, setDetails, setWatchist, watchlist }) {
         <div className="flex justify-center items-center border-2 rounded-md flex-grow">
           <button
             className="bg-zinc-400 md:inline-flex text-white rounded-full p-2 cursor-pointer md:mx-2"
-            onClick={
-              handleStonk
-            }
+            onClick={handleStonk}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -117,7 +115,10 @@ function Search({ setStonk, setSeries, setDetails, setWatchist, watchlist }) {
             placeholder="Stock Ticker"
           />
         </div>
-        <button onClick={addToWatchlist} className="flex justify-end bg-zinc-400 md:inline-flex text-white rounded-full p-2 cursor-pointer md:mx-2">
+        <button
+          onClick={addToWatchlist}
+          className="flex justify-end bg-zinc-400 md:inline-flex text-white rounded-full p-2 cursor-pointer md:mx-2"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-3 w-3"
