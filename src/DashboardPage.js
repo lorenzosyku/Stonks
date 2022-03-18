@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import MainContent from "./dashboard/MainContent";
 import BuySell from "./dashboard/BuySell";
 import PortfolioSection from "./dashboard/PortfolioSection";
+import TransactionsSection from "./dashboard/TransactionsSection";
 
 function DashboardPage({
   portfolio,
@@ -66,7 +67,7 @@ function DashboardPage({
         trades={trades}
       />
       <PortfolioSection portfolio={portfolio}/>
-      
+      <TransactionsSection transactions={transactions} />
     </div>
   );
 }

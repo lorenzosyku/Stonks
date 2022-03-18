@@ -1,10 +1,15 @@
 import PortfolioGraph from "../components/PortfolioGraph";
+import PortfolioItem from "../components/PortfolioItem";
 import TotalReturnsGraph from "../components/TotalReturnsGraph";
 
 function PortfolioSection({ portfolio }) {
   return (
     <div className="md:ml-64 ">
-      <PortfolioGraph portfolio={portfolio} />
+      <div className="">
+        <PortfolioGraph portfolio={portfolio} />
+        
+      </div>
+      
       <TotalReturnsGraph portfolio={portfolio} />
     </div>
   );
