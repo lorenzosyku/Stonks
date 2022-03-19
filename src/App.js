@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoginPage from "./LoginPage";
 import SignupPage from "./SignupPage";
 import ResetPass from "./ResetPass";
-import DashboardPage from "./DashboardPage";
 
 function App() {
   const [portfolio, setPortfolio] = useState({
@@ -31,7 +30,7 @@ function App() {
     },
   ]);
   const [details, setDetails] = useState({});
-  const [watchlist, setWatchlist] = useState([])
+  const [watchlist, setWatchlist] = useState([]);
 
   return (
     <div className="">
@@ -39,7 +38,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route
-            path="/login"
+            path="/login/*"
             element={
               <LoginPage
                 portfolio={portfolio}
@@ -59,9 +58,9 @@ function App() {
               />
             }
           />
+
           <Route path="/signup" element={<SignupPage />} />
-          <Route path="/resetpass" element={<ResetPass />} />{/*
-          <Route path="/dashboard" element={<DashboardPage />} />*/}
+          <Route path="/resetpass" element={<ResetPass />} />
         </Routes>
       </Router>
     </div>

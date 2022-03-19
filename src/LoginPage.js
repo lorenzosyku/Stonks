@@ -1,11 +1,26 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import TeztnetLogo from "./LandingPageComponents/TeztnetLogo";
 import { signInWithEmailAndPassword, auth, useAuth } from "../src/firebase";
 import { useRef } from "react";
 import DashboardPage from "./DashboardPage";
 
-function LoginPage({trades, setTrades, portfolio, stonk, setStonk, setSeries, series, details, setDetails, transactions, watchlist, setWatchlist, setPortfolio, setTransactions }) {
+function LoginPage({
+  trades,
+  setTrades,
+  portfolio,
+  stonk,
+  setStonk,
+  setSeries,
+  series,
+  details,
+  setDetails,
+  transactions,
+  watchlist,
+  setWatchlist,
+  setPortfolio,
+  setTransactions,
+}) {
   const navtoSignup = useNavigate();
   const navtoresetpass = useNavigate();
 
@@ -94,22 +109,29 @@ function LoginPage({trades, setTrades, portfolio, stonk, setStonk, setSeries, se
           </div>
         </div>
       ) : (
-        <DashboardPage
-          portfolio={portfolio}
-          setPortfolio={setPortfolio}
-          trades={trades}
-          setTrades={setTrades}
-          stonk={stonk}
-          setStonk={setStonk}
-          series={series}
-          setSeries={setSeries}
-          details={details}
-          setDetails={setDetails}
-          transactions={transactions}
-          setTransactions={setTransactions}
-          watchlist={watchlist}
-          setWatchlist={setWatchlist}
-        />
+        <Routes>
+          <Route
+            path="dashboard/*"
+            element={
+              <DashboardPage
+                portfolio={portfolio}
+                setPortfolio={setPortfolio}
+                trades={trades}
+                setTrades={setTrades}
+                stonk={stonk}
+                setStonk={setStonk}
+                series={series}
+                setSeries={setSeries}
+                details={details}
+                setDetails={setDetails}
+                transactions={transactions}
+                setTransactions={setTransactions}
+                watchlist={watchlist}
+                setWatchlist={setWatchlist}
+              />
+            }
+          />
+        </Routes>
       )}
     </div>
   );

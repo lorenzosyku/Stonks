@@ -5,6 +5,10 @@ import MainContent from "./dashboard/MainContent";
 import BuySell from "./dashboard/BuySell";
 import PortfolioSection from "./dashboard/PortfolioSection";
 import TransactionsSection from "./dashboard/TransactionsSection";
+import Prov from "./Prov";
+import Sellbuy from "./Sellbuy";
+import Wl from "./Wl";
+import Pipi from "./Pipi";
 
 function DashboardPage({
   portfolio,
@@ -48,7 +52,7 @@ function DashboardPage({
         transactions={transactions}
         trades={trades}
       />*/}
-      <BuySell
+      {/*<BuySell
         setIsSidebarOpen={setIsSidebarOpen}
         isSidebarOpen={isSidebarOpen}
         setStonk={setStonk}
@@ -67,7 +71,13 @@ function DashboardPage({
         trades={trades}
       />
       <PortfolioSection portfolio={portfolio}/>
-      <TransactionsSection transactions={transactions} />
+      <TransactionsSection transactions={transactions} />*/}
+      <Routes>
+        <Route path="watchlist" element={<Prov />}/>
+        <Route path="trade" element={<Sellbuy />} />
+        <Route path="portfolio" element={<Wl/>} />
+        <Route path="transactions" element={<Pipi />} />
+      </Routes>
     </div>
   );
 }

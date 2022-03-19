@@ -1,8 +1,11 @@
 import moment from "moment";
+import {useState} from 'react';
 
 function TransactionList({ transactions }) {
   const listBoughtStocks = [...transactions.stocksBought];
   const listSoldStocks = [...transactions.stocksSold];
+
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="flex flex-col m-5 space-y-5">

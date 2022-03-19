@@ -52,7 +52,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
             <ul className="space-y-4 mb-6 mt-8">
               <li
                 onClick={() => {
-                  navToWatchList("/watchlist");
+                  navToWatchList("watchlist");
                 }}
                 className="hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md cursor-pointer"
               >
@@ -77,7 +77,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
               </li>
               <li
                 onClick={() => {
-                  navToBuySell("/trade");
+                  navToBuySell("trade");
                 }}
                 className="hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md cursor-pointer"
               >
@@ -103,7 +103,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
               </li>
               <li
                 onClick={() => {
-                  navToPortfolio("/portfolio");
+                  navToPortfolio("portfolio");
                 }}
                 className="hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md cursor-pointer"
               >
@@ -124,7 +124,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
               </li>
               <li
                 onClick={() => {
-                  navToTrx("/transactions");
+                  navToTrx("transactions");
                 }}
                 className="hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md cursor-pointer"
               >
