@@ -2,9 +2,9 @@ import "./App.css";
 import { useState } from "react";
 import LandingPage from "./LandingPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import LoginPage from "./LoginPage";
-import SignupPage from "./SignupPage";
-import ResetPass from "./ResetPass";
+import LoginPage from "./authorizationComponents/LoginPage";
+import SignupPage from "./authorizationComponents/SignupPage";
+import ResetPass from "./authorizationComponents/ResetPass";
 
 function App() {
   const [portfolio, setPortfolio] = useState({

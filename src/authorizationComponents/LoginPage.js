@@ -1,9 +1,9 @@
 import React from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import TeztnetLogo from "./LandingPageComponents/TeztnetLogo";
-import { signInWithEmailAndPassword, auth, useAuth } from "../src/firebase";
+import TeztnetLogo from "../LandingPageComponents/TeztnetLogo";
+import { signInWithEmailAndPassword, auth, useAuth } from "../firebase";
 import { useRef } from "react";
-import DashboardPage from "./DashboardPage";
+import DashboardPage from "../DashboardPage";
 
 function LoginPage({
   trades,

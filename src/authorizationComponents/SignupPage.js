@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import TeztnetLogo from "./LandingPageComponents/TeztnetLogo";
+import TeztnetLogo from "../LandingPageComponents/TeztnetLogo";
 import {
   createUserWithEmailAndPassword,
   auth,
-} from "../src/firebase";
+} from "../firebase";
 
 function SignupPage() {
   const navigate = useNavigate();

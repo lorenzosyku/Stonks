@@ -8,7 +8,7 @@ function TransactionList({ transactions }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="flex flex-col m-5 space-y-5">
+    <div className="flex flex-col p-5 space-y-5">
       <div className="flex flex-col">
         <div className="overflow-x-auto shadow-md sm:rounded-lg">
           <div className="inline-block min-w-full align-middle">

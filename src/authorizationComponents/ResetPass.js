@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
-import TeztnetLogo from "./LandingPageComponents/TeztnetLogo";
+import TeztnetLogo from "../LandingPageComponents/TeztnetLogo";
 
 function ResetPass() {
   const navigate = useNavigate();

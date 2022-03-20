@@ -48,9 +48,33 @@ function DashboardPage({
         setTransactions={setTransactions}
         transactions={transactions}
         trades={trades}
+        
+        <Prov />
       />*/}
       <Routes>
-        <Route path="watchlist" element={<Prov />} />
+        <Route
+          path="watchlist"
+          element={
+            <MainContent
+              setIsSidebarOpen={setIsSidebarOpen}
+              isSidebarOpen={isSidebarOpen}
+              setStonk={setStonk}
+              setSeries={setSeries}
+              setDetails={setDetails}
+              setWatchlist={setWatchlist}
+              watchlist={watchlist}
+              details={details}
+              series={series}
+              setTrades={setTrades}
+              stonk={stonk}
+              portfolio={portfolio}
+              setPortfolio={setPortfolio}
+              setTransactions={setTransactions}
+              transactions={transactions}
+              trades={trades}
+            />
+          }
+        />
         <Route
           path="trade"
           element={
