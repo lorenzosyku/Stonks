@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { auth, useAuth, signOut } from "../firebase";
 
-function Search({ setStonk, setSeries, setDetails, setWatchist, watchlist }) {
+function Search({ setStonk, setSeries, setDetails, setWatchlist, watchlist }) {
   const searchValue = useRef(null);
   const [readableTime, setReadableTime] = useState("-");
 
@@ -71,8 +71,9 @@ function Search({ setStonk, setSeries, setDetails, setWatchist, watchlist }) {
 
     const newStock = {
       symbol: searchValue.current.value,
+      id: new Date().getTime()
     };
-    setWatchist([newStock, ...watchlist]);
+    setWatchlist([newStock, ...watchlist]);
   };
 
   const reset = () => {

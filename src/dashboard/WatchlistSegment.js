@@ -20,20 +20,21 @@ function WatchlistSegment({ watchlist, setWatchlist }) {
   };
 
   return (
-    <div>
-      <h1 className="title">Watchlist:</h1>
-
-      {watchlist.map((stock) => {
-        return (
-          <div className="stock" key={stock.id}>
-            {stock.text}
-            {stock.close}
-            <button className="remove" onClick={() => deleteStock(stock.id)}>
-              remove
-            </button>
-          </div>
-        );
-      })}
+    <div className="ml-64 p-5">
+      <h1 className="text-lg font-semibold ">Watchlist:</h1>
+      <div className="flex bg-gray-100 rounded-md">
+        {watchlist.map((stock) => {
+          return (
+            <div className="flex flex-col " key={stock.id}>
+              {stock.symbol}
+              {/*stock.close*/}
+              <button className="remove" onClick={() => deleteStock(stock.id)}>
+                x
+              </button>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

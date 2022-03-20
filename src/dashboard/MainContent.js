@@ -3,7 +3,6 @@ import Datagraph from "../components/Datagraph";
 import Search from "../components/Search";
 import Details from "./Details";
 import WatchlistSegment from "./WatchlistSegment";
-import Trade from "../components/Trade";
 import { Outlet } from "react-router";
 
 function MainContent({
@@ -15,14 +14,7 @@ function MainContent({
   watchlist,
   setWatchlist,
   details,
-  series,
-  setTrades,
-  stonk,
-  portfolio,
-  setPortfolio,
-  setTransactions,
-  transactions,
-  trades
+  series
 }) {
   return (
     <div>
