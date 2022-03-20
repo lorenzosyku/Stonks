@@ -37,14 +37,14 @@ function MainContent({
           isSidebarOpen ? "left-64" : "left-0"
         }`}
       >
-        <div className="">
+        <div className="px-5">
           <WatchlistSegment watchlist={watchlist} setWatchlist={setWatchlist} />
         </div>
-        <div className="md:flex p-5 ">
-          <div className="md:ml-64 md:w-3/5 bg-gray-100 m-5 rounded-md">
+        <div className="md:flex p-5 space-x-5">
+          <div className="md:ml-64 md:w-3/5 bg-gray-100 rounded-md">
             <Datagraph series={series} />
           </div>
-          <div className="bg-gray-100 md:w-1/5 m-5 rounded-md">
+          <div className="bg-gray-100 md:w-1/5 rounded-md">
             <Details details={details} />
           </div>
         </div>

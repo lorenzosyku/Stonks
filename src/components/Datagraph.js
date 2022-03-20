@@ -18,7 +18,7 @@ function Datagraph({ series }) {
   };
 
   return (
-    <div>
+    <div className="">
       <Chart options={chart.options} series={series} type="candlestick" />
     </div>
   );
