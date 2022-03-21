@@ -140,7 +140,7 @@ function Search({ setStonk, setSeries, setDetails, setWatchlist, watchlist }) {
       <div className="flex justify-end items-center pr-5">
         <button
           onClick={handleLogout}
-          className="bg-shade-lightblue font-semibold text-gray-100 p-2 shadow-lg rounded-md"
+          className="bg-shade-lightblue text-md font-semibold text-gray-100 p-2 shadow-lg rounded-md"
         >
           LogOut
         </button>

@@ -37,7 +37,7 @@ function MainContent({
           isSidebarOpen ? "left-64" : "left-0"
         }`}
       >
-        <div className="px-5">
+        <div className="px-5 pt-3">
           <WatchlistSegment watchlist={watchlist} setWatchlist={setWatchlist} />
         </div>
         <div className="md:flex p-5 space-x-5">

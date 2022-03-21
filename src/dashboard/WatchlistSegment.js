@@ -21,7 +21,7 @@ function WatchlistSegment({ watchlist, setWatchlist }) {
 
   return (
     <div className="ml-64">
-      <h1 className="text-lg font-semibold ">Watchlist:</h1>
+      <h1 className="text-lg font-semibold ">Your Watchlist</h1>
       <div className="flex bg-gray-100 rounded-md">
         {watchlist.map((stock) => {
           return (
