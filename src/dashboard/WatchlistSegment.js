@@ -22,14 +22,33 @@ function WatchlistSegment({ watchlist, setWatchlist }) {
   return (
     <div className="ml-64">
       <h1 className="text-lg font-semibold ">Your Watchlist</h1>
-      <div className="flex bg-gray-100 rounded-md">
+      <div className="flex bg-gray-100 rounded-md overflow-x-scroll">
         {watchlist.map((stock) => {
           return (
-            <div className="flex flex-col p-3" key={stock.id}>
-              {stock.symbol}
+            <div
+              className="flex justify-between items-center p-3 bg-slate-200 m-3 rounded-md"
+              key={stock.id}
+            >
+              <h2 className="text-sm font-semibold uppercase">
+                {stock.symbol}
+              </h2>
               {/*stock.close*/}
-              <button className="remove" onClick={() => deleteStock(stock.id)}>
-                x
+              <button
+                className="p-1 mx-2"
+                onClick={() => deleteStock(stock.id)}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
               </button>
             </div>
           );
