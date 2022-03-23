@@ -1,7 +1,6 @@
 import { useRef, useState } from "react";
-import { auth, useAuth, signOut } from "../firebase";
 
-function Search({ setStonk, setSeries, setDetails, setWatchlist, watchlist }) {
+function Search({ setStonk, setSeries, setDetails, setWatchlist, watchlist, setIsSidebarOpen, isSidebarOpen }) {
   const searchValue = useRef(null);
   const [readableTime, setReadableTime] = useState("-");
 
@@ -74,21 +73,14 @@ function Search({ setStonk, setSeries, setDetails, setWatchlist, watchlist }) {
       id: new Date().getTime()
     };
     setWatchlist([newStock, ...watchlist]);
+
   };
 
-  const reset = () => {
-    searchValue.current.value = "";
-  };
-
-  const handleLogout = () => {
-    return signOut(auth);
-  };
-  const currentUser = useAuth();
 
   return (
-    <div className="bg-white grid grid-cols-2 ml-64 p-5 w-full">
+    <div className="bg-white ml-64 p-5 w-full">
       <div className="flex justify-between items-center">
-        <div className="flex justify-center items-center border-2 rounded-md flex-grow">
+        <div className="flex justify-center items-center border-2 rounded-md w-1/2">
           <button
             className="bg-zinc-400 md:inline-flex text-white rounded-full p-2 cursor-pointer md:mx-2"
             onClick={handleStonk}
@@ -134,15 +126,6 @@ function Search({ setStonk, setSeries, setDetails, setWatchlist, watchlist }) {
               d="M12 4v16m8-8H4"
             />
           </svg>
-        </button>
-      </div>
-
-      <div className="flex justify-end items-center pr-5">
-        <button
-          onClick={handleLogout}
-          className="bg-shade-lightblue text-md font-semibold text-gray-100 p-2 shadow-lg rounded-md"
-        >
-          LogOut
         </button>
       </div>
     </div>
