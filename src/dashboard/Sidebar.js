@@ -9,6 +9,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const navToBuySell = useNavigate();
 
   const handleLogout = () => {
+    navToTrx("/login");
     return signOut(auth);
   };
 
