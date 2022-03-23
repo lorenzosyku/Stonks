@@ -44,7 +44,7 @@ function MainContent({
           <div className="md:ml-64 md:w-3/5 bg-gray-100 rounded-md">
             <Datagraph series={series} />
           </div>
-          <div className="bg-gray-100 md:w-1/5 rounded-md">
+          <div className="bg-gray-800 md:w-1/5 rounded-md border dark:border-gray-700">
             <Details details={details} />
           </div>
         </div>

@@ -32,7 +32,7 @@ function WatchlistSegment({ watchlist, setWatchlist }) {
               <h2 className="text-sm font-semibold uppercase">
                 {stock.symbol}
               </h2>
-              {/*stock.close*/}
+              {/*TODO:need a function that when you click gives you the same result as search function and as a default has displaying the last element of the watchlist array*/}
               <button
                 className="p-1 mx-2"
                 onClick={() => deleteStock(stock.id)}

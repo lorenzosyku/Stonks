@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 import TeztnetLogo from "../LandingPageComponents/TeztnetLogo";
 import { signInWithEmailAndPassword, auth, useAuth } from "../firebase";
 import { useRef } from "react";
