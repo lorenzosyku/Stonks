@@ -1,6 +1,4 @@
-import SideBarBtn from "../dashboard/SideBarBtn";
 import Datagraph from "../components/Datagraph";
-import Search from "../components/Search";
 import Details from "./Details";
 import WatchlistSegment from "./WatchlistSegment";
 import { Outlet } from "react-router";
@@ -23,31 +21,21 @@ function MainContent({
   transactions,
   setTransactions,
   trades,
-  setTrades
+  setTrades,
 }) {
   return (
     <div>
-      <div className="flex">
-        <SideBarBtn
-          setIsSidebarOpen={setIsSidebarOpen}
-          isSidebarOpen={isSidebarOpen}
-        />
-
-        <Search
-          setStonk={setStonk}
-          setSeries={setSeries}
-          setDetails={setDetails}
-          setWatchlist={setWatchlist}
-          watchlist={watchlist}
-        />
-      </div>
       <div
         className={`transition-all duration-500 top-0 ${
           isSidebarOpen ? "left-64" : "left-0"
         }`}
       >
         <div className="px-5 pt-3">
-          <WatchlistSegment watchlist={watchlist} setWatchlist={setWatchlist} />
+          <WatchlistSegment
+            watchlist={watchlist}
+            setWatchlist={setWatchlist}
+            isSidebarOpen={isSidebarOpen}
+          />
         </div>
         <div className="md:flex p-5 space-x-5">
           <div className="md:ml-64 md:w-3/5 bg-gray-100 rounded-md">

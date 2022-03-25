@@ -62,30 +62,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                 className="hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md cursor-pointer"
               >
                 <div className="flex gap-4 text-gray-600 hover:text-gray-800 transition">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-                    <path
-                      fill-rule="evenodd"
-                      d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                  WatchList
-                </div>
-              </li>
-              <li
-                onClick={() => {
-                  navToBuySell("trade");
-                }}
-                className="hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md cursor-pointer"
-              >
-                <div className="flex gap-4 text-gray-600 hover:text-gray-800 transition">
-                  <svg
+                <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6"
                     fill="none"
@@ -99,9 +76,10 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                       d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
                     />
                   </svg>
-                  Buy/Sell
+                  WatchList
                 </div>
               </li>
+              
               <li
                 onClick={() => {
                   navToPortfolio("portfolio");
@@ -128,18 +106,17 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                 className="hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md cursor-pointer"
               >
                 <div className="flex gap-4 text-gray-600 hover:text-gray-800 transition">
-                  <svg
+                <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+                    className="h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
                   >
+                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                      fill-rule="evenodd"
+                      d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z"
+                      clip-rule="evenodd"
                     />
                   </svg>
                   Transactions

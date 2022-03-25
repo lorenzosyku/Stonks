@@ -1,6 +1,14 @@
 import { useRef, useState } from "react";
 
-function Search({ setStonk, setSeries, setDetails, setWatchlist, watchlist, setIsSidebarOpen, isSidebarOpen }) {
+function Search({
+  setStonk,
+  setSeries,
+  setDetails,
+  setWatchlist,
+  watchlist,
+  setIsSidebarOpen,
+  isSidebarOpen,
+}) {
   const searchValue = useRef(null);
   const [readableTime, setReadableTime] = useState("-");
 
@@ -70,15 +78,16 @@ function Search({ setStonk, setSeries, setDetails, setWatchlist, watchlist, setI
 
     const newStock = {
       symbol: searchValue.current.value,
-      id: new Date().getTime()
+      id: new Date().getTime(),
     };
     setWatchlist([newStock, ...watchlist]);
-
   };
 
-
   return (
-    <div className="bg-white ml-64 p-5 w-full">
+    <div className={`transition-all duration-500 pt-3 md:w-3/2 bg-white flex justify-between ${
+      isSidebarOpen ? "left-64" : "left-0"
+    }`}>
+      
       <div className="flex justify-between items-center">
         <div className="flex justify-center items-center border-2 rounded-md w-1/2">
           <button
@@ -110,7 +119,7 @@ function Search({ setStonk, setSeries, setDetails, setWatchlist, watchlist, setI
         </div>
         <button
           onClick={addToWatchlist}
-          className="flex justify-end bg-zinc-400 md:inline-flex text-white rounded-full p-2 cursor-pointer md:mx-2"
+          className="flex bg-zinc-400 md:inline-flex text-white rounded-full p-2 cursor-pointer md:mx-2"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

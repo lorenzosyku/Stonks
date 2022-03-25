@@ -6,6 +6,8 @@ import BuySell from "./dashboard/BuySell";
 import PortfolioSection from "./dashboard/PortfolioSection";
 import TransactionsSection from "./dashboard/TransactionsSection";
 import Prov from "./Prov";
+import Search from "./components/Search";
+import SideBarBtn from "./dashboard/SideBarBtn";
 
 function DashboardPage({
   portfolio,
@@ -31,26 +33,20 @@ function DashboardPage({
         setIsSidebarOpen={setIsSidebarOpen}
         isSidebarOpen={isSidebarOpen}
       />
-      {/*<MainContent
-        setIsSidebarOpen={setIsSidebarOpen}
-        isSidebarOpen={isSidebarOpen}
-        setStonk={setStonk}
-        setSeries={setSeries}
-        setDetails={setDetails}
-        setWatchlist={setWatchlist}
-        watchlist={watchlist}
-        details={details}
-        series={series}
-        setTrades={setTrades}
-        stonk={stonk}
-        portfolio={portfolio}
-        setPortfolio={setPortfolio}
-        setTransactions={setTransactions}
-        transactions={transactions}
-        trades={trades}
-        
-        <Prov />
-      />*/}
+      <div className="flex items-center">
+        <SideBarBtn
+          setIsSidebarOpen={setIsSidebarOpen}
+          isSidebarOpen={isSidebarOpen}
+        />
+        <Search
+          setStonk={setStonk}
+          setSeries={setSeries}
+          setDetails={setDetails}
+          setWatchlist={setWatchlist}
+          watchlist={watchlist}
+        />
+      </div>
+
       <Routes>
         <Route
           path="watchlist"
@@ -75,29 +71,7 @@ function DashboardPage({
             />
           }
         />
-        <Route
-          path="trade"
-          element={
-            <BuySell
-              setIsSidebarOpen={setIsSidebarOpen}
-              isSidebarOpen={isSidebarOpen}
-              setStonk={setStonk}
-              setSeries={setSeries}
-              setDetails={setDetails}
-              setWatchlist={setWatchlist}
-              watchlist={watchlist}
-              details={details}
-              series={series}
-              setTrades={setTrades}
-              stonk={stonk}
-              portfolio={portfolio}
-              setPortfolio={setPortfolio}
-              setTransactions={setTransactions}
-              transactions={transactions}
-              trades={trades}
-            />
-          }
-        />
+        
         <Route
           path="portfolio"
           element={<PortfolioSection portfolio={portfolio} />}

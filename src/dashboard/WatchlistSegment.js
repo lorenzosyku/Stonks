@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-function WatchlistSegment({ watchlist, setWatchlist }) {
+function WatchlistSegment({ watchlist, setWatchlist, isSidebarOpen }) {
   useEffect(() => {
     const temp = localStorage.getItem("watchlist");
     const storedStocks = JSON.parse(temp);
@@ -20,9 +20,11 @@ function WatchlistSegment({ watchlist, setWatchlist }) {
   };
 
   return (
-    <div className="ml-64">
+    <div className={`transition-all duration-500 top-0 ${
+      isSidebarOpen ? "left-64" : "left-0"
+    }`}>
       <h1 className="text-lg font-semibold ">Your Watchlist</h1>
-      <div className="flex bg-gray-100 rounded-md overflow-x-scroll">
+      <div className="flex bg-white items-center rounded-md overflow-scroll scrollbar-hide">
         {watchlist.map((stock) => {
           return (
             <div
