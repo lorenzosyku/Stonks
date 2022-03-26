@@ -3,7 +3,7 @@ import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 import TeztnetLogo from "../LandingPageComponents/TeztnetLogo";
 import { signInWithEmailAndPassword, auth, useAuth } from "../firebase";
 import { useRef } from "react";
-import DashboardPage from "../DashboardPage";
+import DashboardPage from "../dashboard/DashboardPage";
 
 function LoginPage({
   trades,

@@ -1,13 +1,13 @@
-import Sidebar from "./dashboard/Sidebar";
+import Sidebar from "./Sidebar";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import MainContent from "./dashboard/MainContent";
-import BuySell from "./dashboard/BuySell";
-import PortfolioSection from "./dashboard/PortfolioSection";
-import TransactionsSection from "./dashboard/TransactionsSection";
-import Prov from "./Prov";
-import Search from "./components/Search";
-import SideBarBtn from "./dashboard/SideBarBtn";
+import MainContent from "./MainContent";
+import BuySell from "./BuySell";
+import PortfolioSection from "./PortfolioSection";
+import TransactionsSection from "./TransactionsSection";
+import Prov from "../Prov";
+import Search from "../components/Search";
+import SideBarBtn from "./SideBarBtn";
 
 function DashboardPage({
   portfolio,
