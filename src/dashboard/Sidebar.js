@@ -42,7 +42,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
               />
             </svg>
           </button>
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center pl-5">
             <h2 className="font-poppins text-xl text-shade-lightblue italic font-semibold">
               TeztNet<span className="text-amber-400">-V1</span>
             </h2>

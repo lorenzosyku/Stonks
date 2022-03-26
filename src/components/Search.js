@@ -19,7 +19,9 @@ function Search({
     return response.json();
   };
 
-  const handleStonk = async () => {
+  const handleStonk = async (e) => {
+    e.preventDefault();
+
     try {
       const data = await fetchStonk();
       const stock = data.chart.result[0];
@@ -89,10 +91,10 @@ function Search({
     }`}>
       
       <div className="flex justify-between items-center">
-        <div className="flex justify-center items-center border-2 rounded-md w-1/2">
+        <form type="submit" className="flex justify-center items-center border-2 rounded-md w-1/2">
           <button
             className="bg-zinc-400 md:inline-flex text-white rounded-full p-2 cursor-pointer md:mx-2"
-            onClick={handleStonk}
+            onClick={(e)=>{handleStonk(e)}}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +118,7 @@ function Search({
             ref={searchValue}
             placeholder="Stock Ticker"
           />
-        </div>
+        </form>
         <button
           onClick={addToWatchlist}
           className="flex bg-zinc-400 md:inline-flex text-white rounded-full p-2 cursor-pointer md:mx-2"
