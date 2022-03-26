@@ -23,6 +23,7 @@ function LoginPage({
 }) {
   const navtoSignup = useNavigate();
   const navtoresetpass = useNavigate();
+  const navtodashboard = useNavigate()
 
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -38,6 +39,7 @@ function LoginPage({
     )
       .then((user) => {
         console.log(user);
+        navtodashboard("dashboard/watchlist")
       })
       .catch((err) => {
         console.log(err);
