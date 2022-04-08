@@ -2,10 +2,13 @@ import { Link } from "react-scroll";
 import { useState } from "react";
 import { Transition } from "@headlessui/react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../firebase";
 
 function Header() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+
+  const currentUser = useAuth();
 
   return (
     <nav className="fixed bg-white w-full z-20 shadow-md">
@@ -57,8 +60,8 @@ function Header() {
           <div className="hidden md:flex">
             <button
               className="cursor-pointer font-semibold bg-shade-lightblue px-3 mx-5 py-1 text-white hover:bg-shade-darkgrayblue rounded-md"
-              onClick={() => {
-                navigate("/login");
+              onClick={() => { !currentUser ?
+                navigate("/login"): navigate("/dashboard/watchlist")
               }}
             >
               Login

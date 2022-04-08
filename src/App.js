@@ -7,6 +7,7 @@ import SignupPage from "./authorizationComponents/SignupPage";
 import ResetPass from "./authorizationComponents/ResetPass";
 import { MantineProvider } from "@mantine/core";
 import { ModalsProvider } from "@mantine/modals";
+import DashboardPage from "./dashboard/DashboardPage";
 
 function App() {
   const [portfolio, setPortfolio] = useState({
@@ -62,7 +63,27 @@ function App() {
                   />
                 }
               />
-
+              <Route
+                path="/dashboard/*"
+                element={
+                  <DashboardPage
+                    portfolio={portfolio}
+                    setPortfolio={setPortfolio}
+                    trades={trades}
+                    setTrades={setTrades}
+                    stonk={stonk}
+                    setStonk={setStonk}
+                    series={series}
+                    setSeries={setSeries}
+                    details={details}
+                    setDetails={setDetails}
+                    transactions={transactions}
+                    setTransactions={setTransactions}
+                    watchlist={watchlist}
+                    setWatchlist={setWatchlist}
+                  />
+                }
+              />
               <Route path="/signup" element={<SignupPage />} />
               <Route path="/resetpass" element={<ResetPass />} />
             </Routes>
