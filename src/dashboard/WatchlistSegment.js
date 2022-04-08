@@ -1,28 +1,41 @@
 import { useEffect } from "react";
+import {
+  collection,
+  onSnapshot,
+  addDoc,
+  doc,
+  deleteDoc,
+  updateDoc,
+} from "firebase/firestore";
+import { db } from "../firebase";
 
 function WatchlistSegment({ watchlist, setWatchlist, isSidebarOpen }) {
-  useEffect(() => {
-    const temp = localStorage.getItem("watchlist");
-    const storedStocks = JSON.parse(temp);
-    if (storedStocks) {
-      setWatchlist(storedStocks);
-    }
-  }, [setWatchlist]);
 
   useEffect(() => {
-    const temp = JSON.stringify(watchlist);
-    localStorage.setItem("watchlist", temp);
-  }, [watchlist]);
+    const watchlistRef = collection(db, "watchlist");
 
-  const deleteStock = (id) => {
-    const updatedStockList = [...watchlist].filter((stock) => stock.id !== id);
-    setWatchlist(updatedStockList);
+    const getWatchlist = onSnapshot(watchlistRef, (snapshot) => {
+      let result = [];
+      snapshot.docs.map((doc) => {
+        result.push({ ...doc.data(), id: doc.id });
+      });
+      setWatchlist(result);
+    });
+    return () => getWatchlist();
+  }, []);
+
+
+  const deleteStock = async (id) => {
+    const watchlistDoc = doc(db, "watchlist", id);
+    await deleteDoc(watchlistDoc);
   };
 
   return (
-    <div className={`transition-all duration-500 top-0 ${
-      isSidebarOpen ? "left-64" : "left-0"
-    }`}>
+    <div
+      className={`transition-all duration-500 top-0 ${
+        isSidebarOpen ? "left-64" : "left-0"
+      }`}
+    >
       <h1 className="text-lg font-semibold ">Your Watchlist</h1>
       <div className="flex bg-white items-center rounded-md overflow-scroll scrollbar-hide">
         {watchlist.map((stock) => {

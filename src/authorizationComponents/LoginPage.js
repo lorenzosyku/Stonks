@@ -113,7 +113,7 @@ function LoginPage({
       ) : (
         <Routes>
           <Route
-            path="dashboard/*"
+            path="/dashboard/*"
             element={
               <DashboardPage
                 portfolio={portfolio}

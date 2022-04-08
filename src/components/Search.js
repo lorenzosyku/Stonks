@@ -1,4 +1,6 @@
+import { addDoc, collection } from "@firebase/firestore";
 import { useRef, useState } from "react";
+import { db } from "../firebase";
 
 function Search({
   setStonk,
@@ -75,26 +77,30 @@ function Search({
     }
   };
 
-  const addToWatchlist = (e) => {
+  const addToWatchlist = async (e) => {
     e.preventDefault();
 
-    const newStock = {
+    await addDoc(collection(db, "watchlist"), {
       symbol: searchValue.current.value,
-      id: new Date().getTime(),
-    };
-    setWatchlist([newStock, ...watchlist]);
+    });
   };
 
   return (
-    <div className={`transition-all duration-500 pt-3 md:w-3/2 bg-white flex justify-between ${
-      isSidebarOpen ? "left-64" : "left-0"
-    }`}>
-      
+    <div
+      className={`transition-all duration-500 pt-3 md:w-3/2 bg-white flex justify-between ${
+        isSidebarOpen ? "left-64" : "left-0"
+      }`}
+    >
       <div className="flex justify-between items-center">
-        <form type="submit" className="flex justify-center items-center border-2 rounded-md w-1/2">
+        <form
+          type="submit"
+          className="flex justify-center items-center border-2 rounded-md w-1/2"
+        >
           <button
             className="bg-zinc-400 md:inline-flex text-white rounded-full p-2 cursor-pointer md:mx-2"
-            onClick={(e)=>{handleStonk(e)}}
+            onClick={(e) => {
+              handleStonk(e);
+            }}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
