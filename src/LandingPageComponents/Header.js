@@ -151,8 +151,8 @@ function Header() {
               <div className="">
                 <button
                   className="cursor-pointer font-semibold bg-shade-lightblue px-3 mx-3 py-1 my-4 text-white hover:bg-blue-400 rounded-sm"
-                  onClick={() => {
-                    navigate("/login");
+                  onClick={() => { !currentUser ?
+                    navigate("/login"): navigate("/dashboard/watchlist")
                   }}
                 >
                   Login
