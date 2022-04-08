@@ -89,7 +89,7 @@ const navigation = {
 };
 function Footer() {
   return (
-    <footer className="bg-white" aria-labelledby="footer-heading">
+    <footer className="bg-white" aria-labelledby="footer-heading" id="contact">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
@@ -193,7 +193,7 @@ function Footer() {
               <div className="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
                 <button
                   type="submit"
-                  className="w-full bg-cyan-500 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-cyan-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-cyan-500"
+                  className="w-full bg-shade-lightblue border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-shade-grayblue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800"
                 >
                   Subscribe
                 </button>

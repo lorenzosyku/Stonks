@@ -1,14 +1,14 @@
 import { Link } from "react-scroll";
 import { useState } from "react";
 import { Transition } from "@headlessui/react";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
 function Header() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="">
+    <nav className="fixed bg-white w-full z-10">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex justify-center items-center">
@@ -26,7 +26,7 @@ function Header() {
                   <Link
                     to="about"
                     smooth={true}
-                    className="cursor-pointer py-2 hover:text-shade-lightblue"
+                    className="cursor-pointer py-2 "
                   >
                     Home
                   </Link>
@@ -36,7 +36,7 @@ function Header() {
                   <Link
                     to="markets"
                     smooth={true}
-                    className="cursor-pointer py-2 hover:text-shade-lightblue"
+                    className="cursor-pointer py-2 "
                   >
                     Markets
                   </Link>
@@ -46,7 +46,7 @@ function Header() {
                   <Link
                     to="services"
                     smooth={true}
-                    className="cursor-pointer py-2 hover:text-shade-lightblue"
+                    className="cursor-pointer py-2 "
                   >
                     Services
                   </Link>
@@ -56,24 +56,23 @@ function Header() {
                   <Link
                     to="contact"
                     smooth={true}
-                    className="cursor-pointer py-2 hover:text-shade-lightblue"
+                    className="cursor-pointer py-2 "
                   >
                     Contact Us
                   </Link>
                 </li>
-
-                <div className="">
-                  <button
-                    className="cursor-pointer font-semibold bg-shade-lightblue px-3 mx-5 py-1 text-white hover:bg-shade-darkgrayblue rounded-sm"
-                    onClick={() => {
-                      navigate("/login")
-                    }}
-                  >
-                    Login
-                  </button>
-                </div>
               </ul>
             </div>
+          </div>
+          <div className="hidden md:flex">
+            <button
+              className="cursor-pointer font-semibold bg-shade-lightblue px-3 mx-5 py-1 text-white hover:bg-shade-darkgrayblue rounded-sm"
+              onClick={() => {
+                navigate("/login");
+              }}
+            >
+              Login
+            </button>
           </div>
           <div className="-mr-2 flex md:hidden">
             <button
@@ -135,11 +134,7 @@ function Header() {
           <div className="md:hidden" id="mobile-menu">
             <ul refer={refer} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <li className=" hover:bg-gray-300 px-3 py-2 rounded-md text-sm font-medium">
-                <Link
-                  to="about"
-                  smooth={true}
-                  className="cursor-pointer py-2 hover:text-shade-lightblue"
-                >
+                <Link to="about" smooth={true} className="cursor-pointer py-2 ">
                   Home
                 </Link>
               </li>
@@ -148,7 +143,7 @@ function Header() {
                 <Link
                   to="services"
                   smooth={true}
-                  className="cursor-pointer py-2 hover:text-shade-lightblue"
+                  className="cursor-pointer py-2 "
                 >
                   Services
                 </Link>
@@ -158,7 +153,7 @@ function Header() {
                 <Link
                   to="markets"
                   smooth={true}
-                  className="cursor-pointer py-2 hover:text-shade-lightblue"
+                  className="cursor-pointer py-2 "
                 >
                   Markets
                 </Link>
@@ -168,7 +163,7 @@ function Header() {
                 <Link
                   to="contact"
                   smooth={true}
-                  className="cursor-pointer py-2 hover:text-shade-lightblue"
+                  className="cursor-pointer py-2 "
                 >
                   Contact Us
                 </Link>
@@ -178,7 +173,7 @@ function Header() {
                 <button
                   className="cursor-pointer font-semibold bg-shade-lightblue px-3 mx-3 py-1 my-4 text-white hover:bg-blue-400 rounded-sm"
                   onClick={() => {
-                    navigate("/login")
+                    navigate("/login");
                   }}
                 >
                   Login
