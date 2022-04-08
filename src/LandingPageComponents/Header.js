@@ -8,7 +8,7 @@ function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed bg-white w-full z-10">
+    <nav className="fixed bg-white w-full z-20 shadow-md">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex justify-center items-center">
@@ -22,51 +22,41 @@ function Header() {
             </div>
             <div className="hidden md:block">
               <ul className="ml-10 flex items-baseline space-x-4">
-                <li className=" hover:bg-gray-300 px-3 py-2 rounded-md text-sm font-medium">
-                  <Link
-                    to="about"
-                    smooth={true}
-                    className="cursor-pointer py-2 "
-                  >
-                    Home
-                  </Link>
-                </li>
+                <Link
+                  to="about"
+                  smooth={true}
+                  className=" hover:bg-gray-300 px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  <li className="cursor-pointer">Home</li>
+                </Link>
+                <Link
+                  to="markets"
+                  smooth={true}
+                  className=" hover:bg-gray-300 px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  <li className="cursor-pointer">Markets</li>
+                </Link>
+                <Link
+                  to="services"
+                  smooth={true}
+                  className=" hover:bg-gray-300 px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  <li className="cursor-pointer">Services</li>
+                </Link>
 
-                <li className=" hover:bg-gray-300 px-3 py-2 rounded-md text-sm font-medium">
-                  <Link
-                    to="markets"
-                    smooth={true}
-                    className="cursor-pointer py-2 "
-                  >
-                    Markets
-                  </Link>
-                </li>
-
-                <li className=" hover:bg-gray-300 px-3 py-2 rounded-md text-sm font-medium">
-                  <Link
-                    to="services"
-                    smooth={true}
-                    className="cursor-pointer py-2 "
-                  >
-                    Services
-                  </Link>
-                </li>
-
-                <li className=" hover:bg-gray-300 px-3 py-2 rounded-md text-sm font-medium">
-                  <Link
-                    to="contact"
-                    smooth={true}
-                    className="cursor-pointer py-2 "
-                  >
-                    Contact Us
-                  </Link>
-                </li>
+                <Link
+                  to="contact"
+                  smooth={true}
+                  className=" hover:bg-gray-300 px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  <li className="cursor-pointer">Contact Us</li>
+                </Link>
               </ul>
             </div>
           </div>
           <div className="hidden md:flex">
             <button
-              className="cursor-pointer font-semibold bg-shade-lightblue px-3 mx-5 py-1 text-white hover:bg-shade-darkgrayblue rounded-sm"
+              className="cursor-pointer font-semibold bg-shade-lightblue px-3 mx-5 py-1 text-white hover:bg-shade-darkgrayblue rounded-md"
               onClick={() => {
                 navigate("/login");
               }}
@@ -133,41 +123,27 @@ function Header() {
         {(refer) => (
           <div className="md:hidden" id="mobile-menu">
             <ul refer={refer} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <li className=" hover:bg-gray-300 px-3 py-2 rounded-md text-sm font-medium">
-                <Link to="about" smooth={true} className="cursor-pointer py-2 ">
+              <Link to="about" smooth={true}>
+                <li className="hover:bg-gray-300 px-3 py-2 rounded-md text-sm font-medium cursor-pointer">
                   Home
-                </Link>
-              </li>
-
-              <li className=" hover:bg-gray-300 px-3 py-2 rounded-md text-sm font-medium">
-                <Link
-                  to="services"
-                  smooth={true}
-                  className="cursor-pointer py-2 "
-                >
+                </li>
+              </Link>
+              <Link to="markets" smooth={true}>
+                <li className="cursor-pointer hover:bg-gray-300 px-3 py-2 rounded-md text-sm font-medium">
+                  Markets
+                </li>
+              </Link>
+              <Link to="services" smooth={true}>
+                <Link className="cursor-pointer hover:bg-gray-300 px-3 py-2 rounded-md text-sm font-medium">
                   Services
                 </Link>
-              </li>
+              </Link>
 
-              <li className=" hover:bg-gray-300 px-3 py-2 rounded-md text-sm font-medium">
-                <Link
-                  to="markets"
-                  smooth={true}
-                  className="cursor-pointer py-2 "
-                >
-                  Markets
-                </Link>
-              </li>
-
-              <li className=" hover:bg-gray-300 px-3 py-2 rounded-md text-sm font-medium">
-                <Link
-                  to="contact"
-                  smooth={true}
-                  className="cursor-pointer py-2 "
-                >
+              <Link to="contact" smooth={true}>
+                <li className="cursor-pointer hover:bg-gray-300 px-3 py-2 rounded-md text-sm font-medium">
                   Contact Us
-                </Link>
-              </li>
+                </li>
+              </Link>
 
               <div className="">
                 <button
