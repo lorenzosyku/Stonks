@@ -5,8 +5,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoginPage from "./authorizationComponents/LoginPage";
 import SignupPage from "./authorizationComponents/SignupPage";
 import ResetPass from "./authorizationComponents/ResetPass";
-import { MantineProvider } from "@mantine/core";
-import { ModalsProvider } from "@mantine/modals";
 import DashboardPage from "./dashboard/DashboardPage";
 
 function App() {
@@ -36,8 +34,7 @@ function App() {
   const [watchlist, setWatchlist] = useState([]);
 
   return (
-    <MantineProvider>
-      <ModalsProvider>
+   
         <div className="">
           <Router>
             <Routes>
@@ -89,8 +86,7 @@ function App() {
             </Routes>
           </Router>
         </div>
-      </ModalsProvider>
-    </MantineProvider>
+      
   );
 }
 

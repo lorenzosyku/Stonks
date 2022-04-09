@@ -2,10 +2,8 @@ import Sidebar from "./Sidebar";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import MainContent from "./MainContent";
-import BuySell from "./BuySell";
 import PortfolioSection from "./PortfolioSection";
 import TransactionsSection from "./TransactionsSection";
-import Prov from "../Prov";
 import Search from "../components/Search";
 import SideBarBtn from "./SideBarBtn";
 
@@ -33,18 +31,21 @@ function DashboardPage({
         setIsSidebarOpen={setIsSidebarOpen}
         isSidebarOpen={isSidebarOpen}
       />
-      <div className="flex items-center">
+
+      <div className="pb-2">
         <SideBarBtn
           setIsSidebarOpen={setIsSidebarOpen}
           isSidebarOpen={isSidebarOpen}
         />
-        <Search
-          setStonk={setStonk}
-          setSeries={setSeries}
-          setDetails={setDetails}
-          setWatchlist={setWatchlist}
-          watchlist={watchlist}
-        />
+        <div>
+          <Search
+            setStonk={setStonk}
+            setSeries={setSeries}
+            setDetails={setDetails}
+            setWatchlist={setWatchlist}
+            watchlist={watchlist}
+          />
+        </div>
       </div>
 
       <Routes>
@@ -71,7 +72,7 @@ function DashboardPage({
             />
           }
         />
-        
+
         <Route
           path="portfolio"
           element={<PortfolioSection portfolio={portfolio} />}

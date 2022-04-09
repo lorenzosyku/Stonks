@@ -88,13 +88,13 @@ function Search({
   return (
     <div
       className={`transition-all duration-500 pt-3 md:w-3/2 bg-white flex justify-between ${
-        isSidebarOpen ? "left-64" : "left-0"
+        isSidebarOpen ? "ml-64" : "ml-0"
       }`}
     >
-      <div className="flex justify-between items-center">
+      <div className="flex w-full justify-between items-center">
         <form
           type="submit"
-          className="flex justify-center items-center border-2 rounded-md w-1/2"
+          className="flex flex-grow justify-center items-center rounded-md w-1/2 ml-20"
         >
           <button
             className="bg-zinc-400 md:inline-flex text-white rounded-full p-2 cursor-pointer md:mx-2"
@@ -120,7 +120,7 @@ function Search({
           </button>
 
           <input
-            className="p-2 rounded-md flex-grow bg-transparent outline-none text-sm text-grey-400 placeholder-gray-400"
+            className="p-2 rounded-md flex-grow bg-transparent outline-none text-sm text-grey-400 placeholder-gray-400 border-none"
             type="text"
             ref={searchValue}
             placeholder="Stock Ticker"
@@ -128,7 +128,7 @@ function Search({
         </form>
         <button
           onClick={addToWatchlist}
-          className="flex bg-zinc-400 md:inline-flex text-white rounded-full p-2 cursor-pointer md:mx-2"
+          className="flex bg-zinc-400 md:inline-flex text-white rounded-full p-2 cursor-pointer mx-2"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

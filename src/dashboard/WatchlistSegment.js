@@ -1,14 +1,8 @@
 import { useEffect } from "react";
-import {
-  collection,
-  onSnapshot,
-  doc,
-  deleteDoc,
-} from "firebase/firestore";
+import { collection, onSnapshot, doc, deleteDoc } from "firebase/firestore";
 import { db } from "../firebase";
 
 function WatchlistSegment({ watchlist, setWatchlist, isSidebarOpen }) {
-
   useEffect(() => {
     const watchlistRef = collection(db, "watchlist");
 
@@ -22,7 +16,6 @@ function WatchlistSegment({ watchlist, setWatchlist, isSidebarOpen }) {
     return () => getWatchlist();
   }, []);
 
-
   const deleteStock = async (id) => {
     const watchlistDoc = doc(db, "watchlist", id);
     await deleteDoc(watchlistDoc);
@@ -31,7 +24,7 @@ function WatchlistSegment({ watchlist, setWatchlist, isSidebarOpen }) {
   return (
     <div
       className={`transition-all duration-500 top-0 ${
-        isSidebarOpen ? "left-64" : "left-0"
+        isSidebarOpen ? "ml-64" : "ml-0"
       }`}
     >
       <h1 className="text-lg font-semibold ">Your Watchlist</h1>
