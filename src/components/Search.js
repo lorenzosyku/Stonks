@@ -1,18 +1,18 @@
 import { addDoc, collection } from "@firebase/firestore";
 import { useRef, useState } from "react";
 import { db } from "../firebase";
-
+import { useNavigate } from "react-router-dom";
 function Search({
   setStonk,
   setSeries,
   setDetails,
-  setWatchlist,
-  watchlist,
   setIsSidebarOpen,
   isSidebarOpen,
 }) {
   const searchValue = useRef(null);
   const [readableTime, setReadableTime] = useState("-");
+
+  const navtodashboard = useNavigate()
 
   const fetchStonk = async () => {
     const response = await fetch(
@@ -100,6 +100,7 @@ function Search({
             className="bg-zinc-400 md:inline-flex text-white rounded-full p-2 cursor-pointer md:mx-2"
             onClick={(e) => {
               handleStonk(e);
+              navtodashboard("watchlist")
             }}
           >
             <svg
