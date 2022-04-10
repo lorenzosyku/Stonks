@@ -25,11 +25,7 @@ function MainContent({
 }) {
   return (
     <div>
-      <div
-        className={`transition-all duration-500 top-0 ${
-          isSidebarOpen ? "left-64" : "left-0"
-        }`}
-      >
+      <div>
         <div className="px-5 pt-3">
           <WatchlistSegment
             watchlist={watchlist}
@@ -37,8 +33,12 @@ function MainContent({
             isSidebarOpen={isSidebarOpen}
           />
         </div>
-        <div className="md:flex p-5 space-x-5">
-          <div className="md:ml-64 md:w-3/5 bg-gray-100 rounded-md">
+        <div
+          className={`md:flex p-5 space-x-5 transition-all duration-500 top-0 ${
+            isSidebarOpen ? "ml-64" : "ml-0"
+          }`}
+        >
+          <div className=" md:w-3/5 lg:w-4/5 bg-gray-100 rounded-md">
             <Datagraph series={series} />
             <Trade
               stonk={stonk}
@@ -50,7 +50,7 @@ function MainContent({
               setTrades={setTrades}
             />
           </div>
-          <div className="bg-gray-800 shadow-md md:w-1/5 rounded-md border dark:border-gray-700">
+          <div className="bg-gray-800 shadow-md md:w-2/5 lg:w-1/5 rounded-md border dark:border-gray-700">
             <Details details={details} />
           </div>
         </div>

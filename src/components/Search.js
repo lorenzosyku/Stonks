@@ -12,7 +12,7 @@ function Search({
   const searchValue = useRef(null);
   const [readableTime, setReadableTime] = useState("-");
 
-  const navtodashboard = useNavigate()
+  const navtodashboard = useNavigate();
 
   const fetchStonk = async () => {
     const response = await fetch(
@@ -86,21 +86,17 @@ function Search({
   };
 
   return (
-    <div
-      className={`transition-all duration-500 pt-3 md:w-3/2 bg-white flex justify-between ${
-        isSidebarOpen ? "ml-64" : "ml-0"
-      }`}
-    >
+    <div className=" p-3 md:w-3/2 bg-white flex justify-between">
       <div className="flex w-full justify-between items-center">
         <form
           type="submit"
-          className="flex flex-grow justify-center items-center rounded-md w-1/2 ml-20"
+          className={`flex flex-grow justify-center items-center rounded-md w-1/2 md:ml-15${isSidebarOpen ? "ml-15" : "ml-20"}`}
         >
           <button
             className="bg-zinc-400 md:inline-flex text-white rounded-full p-2 cursor-pointer md:mx-2"
             onClick={(e) => {
               handleStonk(e);
-              navtodashboard("watchlist")
+              navtodashboard("watchlist");
             }}
           >
             <svg

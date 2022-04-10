@@ -37,7 +37,11 @@ function DashboardPage({
           setIsSidebarOpen={setIsSidebarOpen}
           isSidebarOpen={isSidebarOpen}
         />
-        <div>
+        <div
+          className={`transition-all duration-500 ${
+            isSidebarOpen ? "ml-64" : "ml-0"
+          }`}
+        >
           <Search
             setStonk={setStonk}
             setSeries={setSeries}
