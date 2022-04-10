@@ -86,11 +86,11 @@ function Search({
   };
 
   return (
-    <div className=" p-3 md:w-3/2 bg-white flex justify-between">
+    <div className="px-1 py-3 md:w-3/2 bg-white flex justify-between">
       <div className="flex w-full justify-between items-center">
         <form
           type="submit"
-          className={`flex flex-grow justify-center items-center rounded-md w-1/2 md:ml-15${isSidebarOpen ? "ml-15" : "ml-20"}`}
+          className="flex flex-grow justify-center items-center rounded-md w-1/2"
         >
           <button
             className="bg-zinc-400 md:inline-flex text-white rounded-full p-2 cursor-pointer md:mx-2"

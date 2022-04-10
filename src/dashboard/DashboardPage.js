@@ -32,14 +32,14 @@ function DashboardPage({
         isSidebarOpen={isSidebarOpen}
       />
 
-      <div className="pb-2">
+      <div className="flex bg-white items-center ">
         <SideBarBtn
           setIsSidebarOpen={setIsSidebarOpen}
           isSidebarOpen={isSidebarOpen}
         />
         <div
-          className={`transition-all duration-500 ${
-            isSidebarOpen ? "ml-64" : "ml-0"
+          className={`transition-all duration-500 flex-grow ${
+            isSidebarOpen ? "ml-56" : "ml-0"
           }`}
         >
           <Search
