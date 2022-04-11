@@ -10,7 +10,7 @@ function TransactionList({ transactions }) {
 
   return (
     <div className="flex flex-col p-5 space-y-5">
-      <div className="">
+      <div className="flex justify-between items-center">
         {!isOpenSold ? (<button
           className="py-3 px-6 text-xs font-medium tracking-wider bg-gray-700 rounded-md text-left text-gray-700 uppercase dark:text-gray-400"
           onClick={() => {
@@ -30,6 +30,7 @@ function TransactionList({ transactions }) {
           Sold
         </button>)}
       </div>
+      <button className="py-3 px-6 text-xs font-medium tracking-wider bg-gray-700 rounded-md text-left text-gray-700 uppercase dark:text-gray-400">Clear All</button>
       {isOpenBought ? (
         <div className="flex flex-col">
           <div className="overflow-x-auto shadow-md sm:rounded-lg">
