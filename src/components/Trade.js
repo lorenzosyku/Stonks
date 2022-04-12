@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 function Trade({
   stonk,
@@ -71,8 +72,27 @@ function Trade({
           ...newStockArr,
         ];
         newPortfolio.cash = portfolio.cash - amountToInvest;
+        toast("HOORAY...You successfully Minted!!", {
+          duration: 5000,
+          style: {
+            background: "green",
+            color: "white",
+            fontWeight: "bolder",
+            fontSize: "17px",
+            padding: "20px",
+          },
+        });
         return newStockArr;
       } else {
+        toast("Whoops...Something went wrong!", {
+          style: {
+            background: "red",
+            color: "white",
+            fontWeight: "bolder",
+            fontSize: "17px",
+            padding: "20px",
+          },
+        });
         console.log("you dont have enough funds");
         return newStockArr;
       }
@@ -104,6 +124,15 @@ function Trade({
       for (let i = 0; i < arr.length; i++) {
         if (arr[i].stockName === stonk.symbol) {
           if (shares > arr[i].shares) {
+            toast("Whoops...you can not sell sheres you dont have!", {
+              style: {
+                background: "red",
+                color: "white",
+                fontWeight: "bolder",
+                fontSize: "17px",
+                padding: "20px",
+              },
+            });
             console.log("you cant sell sheres you dont have");
           }
           if (shares <= arr[i].shares) {
@@ -135,6 +164,16 @@ function Trade({
           }
         }
       }
+      toast("HOORAY...You successfully sold!!", {
+        duration: 5000,
+        style: {
+          background: "green",
+          color: "white",
+          fontWeight: "bolder",
+          fontSize: "17px",
+          padding: "20px",
+        },
+      });
       return newStockArr;
     };
     const list = [...portfolio.stocks];
@@ -212,6 +251,7 @@ function Trade({
 
   return (
     <div className="flex justify-between items-center border-2 p-5">
+      <Toaster position="bottom-center" />
       <div className="flex items-center">
         <input
           type="number"
@@ -219,7 +259,12 @@ function Trade({
           placeholder={`Buy ${stonk.symbol} shares`}
           className="border-2 bg-transparent border-cyan-600 rounded-md p-1 text-sm font-semibold outline-none"
         />
-        <button className="p-1 bg-orange-300 rounded-md text-sm text-white font-bold ml-2" onClick={buyShares}>buy</button>
+        <button
+          className="p-1 bg-orange-300 rounded-md text-sm text-white font-bold ml-2"
+          onClick={buyShares}
+        >
+          buy
+        </button>
       </div>
       <div className="flex items-center">
         <input
@@ -228,7 +273,12 @@ function Trade({
           placeholder={`Sell ${stonk.symbol} shares`}
           className="border-2 bg-transparent border-cyan-600 rounded-md p-1 text-sm font-semibold outline-none"
         />
-        <button className="p-1 bg-orange-300 rounded-md text-sm text-white font-bold ml-2" onClick={sellShares}>sell</button>
+        <button
+          className="p-1 bg-orange-300 rounded-md text-sm text-white font-bold ml-2"
+          onClick={sellShares}
+        >
+          sell
+        </button>
         {/*<button onClick={getLatestPrice}>updateToLatestPrices</button>*/}
       </div>
     </div>
