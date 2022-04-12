@@ -79,11 +79,21 @@ function DashboardPage({
 
         <Route
           path="portfolio"
-          element={<PortfolioSection portfolio={portfolio} />}
+          element={
+            <PortfolioSection
+              portfolio={portfolio}
+              isSidebarOpen={isSidebarOpen}
+            />
+          }
         />
         <Route
           path="transactions"
-          element={<TransactionsSection transactions={transactions} />}
+          element={
+            <TransactionsSection
+              transactions={transactions}
+              isSidebarOpen={isSidebarOpen}
+            />
+          }
         />
       </Routes>
     </div>
