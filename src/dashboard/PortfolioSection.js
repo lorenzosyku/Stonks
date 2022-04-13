@@ -7,7 +7,7 @@ function PortfolioSection({ portfolio, isSidebarOpen }) {
     <div className={`transition-all duration-500 flex-grow ${
       isSidebarOpen ? "ml-64" : "ml-0"
     }`}>
-      <div className="flex justify-between items-center">
+      <div className="md:flex md:items-center md:justify-center">
         <PortfolioGraph portfolio={portfolio} />
         <div className="w-3/5 bg-gray-100 p-5 rounded-md m-5">
           <Balance portfolio={portfolio} />

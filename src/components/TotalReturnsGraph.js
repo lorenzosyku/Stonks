@@ -104,7 +104,7 @@ function TotalReturnsGraph({ portfolio }) {
   };
 
   return (
-    <div>
+    <div className="px-5 bg-slate-600">
       <button onClick={newDataPoints}>total</button>
       <ReactApexChart
         options={chart.options}
