@@ -72,7 +72,7 @@ function Trade({
           ...newStockArr,
         ];
         newPortfolio.cash = portfolio.cash - amountToInvest;
-        toast("HOORAY...You successfully Minted!!", {
+        toast("HOORAY...You successfully Bought!!", {
           duration: 5000,
           style: {
             background: "green",
@@ -84,7 +84,7 @@ function Trade({
         });
         return newStockArr;
       } else {
-        toast("Whoops...Something went wrong!", {
+        toast("Whoops...you dont have enough funds!", {
           style: {
             background: "red",
             color: "white",
@@ -161,19 +161,21 @@ function Trade({
               entryPrice: arr[i].entryPrice,
             });
             newPortfolio.cash = portfolio.cash + amountToSell;
+
+            toast("HOORAY...You successfully sold!!", {
+              duration: 5000,
+              style: {
+                background: "green",
+                color: "white",
+                fontWeight: "bolder",
+                fontSize: "17px",
+                padding: "20px",
+              },
+            });
           }
         }
       }
-      toast("HOORAY...You successfully sold!!", {
-        duration: 5000,
-        style: {
-          background: "green",
-          color: "white",
-          fontWeight: "bolder",
-          fontSize: "17px",
-          padding: "20px",
-        },
-      });
+
       return newStockArr;
     };
     const list = [...portfolio.stocks];
