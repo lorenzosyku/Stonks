@@ -247,6 +247,17 @@ function Trade({
   });
 
   console.log(portfolio);
+
+  useEffect(() => {
+    const temp = localStorage.getItem("tnxAllocation");
+    if (temp) {
+      setTransactions(JSON.parse(temp));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("tnxAllocation", JSON.stringify(transactions));
+  });
   //console.log(transactions);
 
   return (
