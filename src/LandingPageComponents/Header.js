@@ -137,9 +137,9 @@ function Header() {
                 </li>
               </Link>
               <Link to="services" smooth={true}>
-                <Link className="cursor-pointer hover:bg-gray-300 px-3 py-2 rounded-md text-sm font-medium">
+                <li className="cursor-pointer hover:bg-gray-300 px-3 py-2 rounded-md text-sm font-medium">
                   Services
-                </Link>
+                </li>
               </Link>
 
               <Link to="contact" smooth={true}>
