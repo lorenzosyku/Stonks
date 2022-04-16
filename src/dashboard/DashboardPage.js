@@ -92,6 +92,7 @@ function DashboardPage({
             <TransactionsSection
               transactions={transactions}
               isSidebarOpen={isSidebarOpen}
+              setTransactions={setTransactions}
             />
           }
         />

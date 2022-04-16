@@ -1,12 +1,19 @@
 import moment from "moment";
 import { useState } from "react";
 
-function TransactionList({ transactions }) {
+function TransactionList({ transactions, setTransactions }) {
   const listBoughtStocks = [...transactions.stocksBought];
   const listSoldStocks = [...transactions.stocksSold];
 
   const [isOpenBought, setIsOpenBought] = useState(true);
   const [isOpenSold, setIsOpenSold] = useState(false);
+
+  function deleteTnx(id) {
+    const updatedTransactions = [...transactions].filter(
+      (tnx) => tnx.id !== id
+    );
+    setTransactions(updatedTransactions);
+  }
 
   return (
     <div className="flex flex-col p-5 space-y-5">
@@ -71,7 +78,23 @@ function TransactionList({ transactions }) {
                         key={rowData.id}
                       >
                         <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                          {rowData.stockName}
+                          <div className="flex space-x-3 items-center">
+                            <div onClick={deleteTnx} className="bg-slate-800 p-2 rounded-md cursor-pointer">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-3 w-3"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                              >
+                                <path
+                                  fill-rule="evenodd"
+                                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                  clip-rule="evenodd"
+                                />
+                              </svg>
+                            </div>
+                            <div>{rowData.stockName}</div>
+                          </div>
                         </td>
                         <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                           {rowData.shares}
