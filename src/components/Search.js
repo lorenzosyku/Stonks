@@ -79,7 +79,7 @@ function Search({
 
   const addToWatchlist = async (e) => {
     e.preventDefault();
-    if (searchValue.current.value === "" || " ") return;
+    if (searchValue.current.value === "") return;
 
     await addDoc(collection(db, "watchlist"), {
       symbol: searchValue.current.value,
