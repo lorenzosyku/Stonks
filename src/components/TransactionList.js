@@ -8,11 +8,20 @@ function TransactionList({ transactions, setTransactions }) {
   const [isOpenBought, setIsOpenBought] = useState(true);
   const [isOpenSold, setIsOpenSold] = useState(false);
 
-  function deleteTnx(id) {
-    const updatedTransactions = [...transactions].filter(
+  function deleteBoughtTnx(id) {
+    const updatedBuyTransactions = [...listBoughtStocks].filter(
       (tnx) => tnx.id !== id
     );
-    setTransactions(updatedTransactions);
+    transactions.stocksBought = updatedBuyTransactions;
+    setTransactions(transactions);
+  }
+
+  function deleteSoldTnx(id) {
+    const updatedSellTransactions = [...listSoldStocks].filter(
+      (tnx) => tnx.id !== id
+    );
+    transactions.stocksSold = updatedSellTransactions;
+    setTransactions(transactions);
   }
 
   return (
@@ -80,7 +89,7 @@ function TransactionList({ transactions, setTransactions }) {
                         <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                           <div className="flex space-x-3 items-center">
                             <div
-                              onClick={deleteTnx}
+                              onClick={deleteBoughtTnx}
                               className="bg-slate-800 p-2 rounded-md cursor-pointer"
                             >
                               <svg
@@ -156,7 +165,7 @@ function TransactionList({ transactions, setTransactions }) {
                         <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                           <div className="flex space-x-3 items-center">
                             <div
-                              onClick={deleteTnx}
+                              onClick={deleteSoldTnx}
                               className="bg-slate-800 p-2 rounded-md cursor-pointer"
                             >
                               <svg

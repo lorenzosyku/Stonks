@@ -38,7 +38,7 @@ function MainContent({
             isSidebarOpen ? "ml-64" : "ml-0"
           }`}
         >
-          <div className=" md:w-3/5 lg:w-4/5 bg-gray-100 rounded-md">
+          <div className=" md:w-3/5 lg:w-4/6 bg-gray-100 rounded-md">
             <Datagraph series={series} />
             <Trade
               stonk={stonk}
@@ -50,7 +50,7 @@ function MainContent({
               setTrades={setTrades}
             />
           </div>
-          <div className="bg-gray-800 shadow-md md:w-2/5 lg:w-1/5 rounded-md border dark:border-gray-700">
+          <div className="bg-gray-800 shadow-md md:w-2/5 lg:w-2/6 rounded-md border dark:border-gray-700">
             <Details details={details} />
           </div>
         </div>
