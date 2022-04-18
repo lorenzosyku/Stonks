@@ -57,11 +57,7 @@ function DashboardPage({
           path="watchlist"
           element={
             <MainContent
-              setIsSidebarOpen={setIsSidebarOpen}
               isSidebarOpen={isSidebarOpen}
-              setStonk={setStonk}
-              setSeries={setSeries}
-              setDetails={setDetails}
               setWatchlist={setWatchlist}
               watchlist={watchlist}
               details={details}

@@ -6,10 +6,6 @@ import Trade from "../components/Trade";
 
 function MainContent({
   isSidebarOpen,
-  setIsSidebarOpen,
-  setStonk,
-  setSeries,
-  setDetails,
   watchlist,
   setWatchlist,
   details,
