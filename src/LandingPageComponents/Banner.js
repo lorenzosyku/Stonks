@@ -114,7 +114,7 @@ function Banner() {
                 </p>
               </div>
               <div className="flex justify-end p-5">
-                <button className="bg-shade-lightblue text-gray-100 font-semibold p-2 shadow-lg rounded-md" onClick={signUp}>
+                <button className="bg-shade-lightblue text-gray-100 font-semibold p-2 shadow-lg rounded-md" onClick={(e)=>{signUp(e); navigate("/login/dashboard/watchlist")}}>
                   Register
                 </button>
               </div>

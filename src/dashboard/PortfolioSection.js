@@ -14,7 +14,7 @@ function PortfolioSection({ portfolio, isSidebarOpen }) {
         </div>
       </div>
 
-      <TotalReturnsGraph portfolio={portfolio} />
+      {/*<TotalReturnsGraph portfolio={portfolio} />*/}
     </div>
   );
 }
