@@ -2,7 +2,10 @@ import { useNavigate } from "react-router-dom";
 import {
   createUserWithEmailAndPassword,
   auth,
+  db,
 } from "../firebase";
+import { addDoc, collection,  } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore"; 
 import { useState } from "react";
 
 function Banner() {
@@ -18,7 +21,8 @@ function Banner() {
     if (password === confirmPassword) {
       createUserWithEmailAndPassword(auth, email, password)
         .then((user) => {
-          console.log(user);
+          addToUsers(user.user)
+          console.log(user.user);
         })
         .catch((err) => {
           console.log(err);
@@ -27,6 +31,14 @@ function Banner() {
       alert('password not matching')
     }
   };
+
+  const addToUsers = async (user) => {
+    await setDoc(doc(db, "users", user.uid), {
+      name: name,
+      email: user.email,
+      id: user.uid
+    })
+  }
   return (
     <section id="about" className="min-h-screen bg-pack-train">
       <div className="min-h-screen flex items-center">
