@@ -19,6 +19,7 @@ function SignupPage() {
     if (password === confirmPassword) {
       createUserWithEmailAndPassword(auth, email, password)
         .then((user) => {
+          addToUsers(user.user)
           console.log(user);
         })
         .catch((err) => {
@@ -28,6 +29,17 @@ function SignupPage() {
       alert('password not matching')
     }
   };
+
+  const addToUsers = async (user) => {
+    await setDoc(doc(db, "users", user.uid), {
+      name: name,
+      email: user.email,
+      id: user.uid,
+      portfolio: portfolio,
+      transactions: transactions
+    })
+  };
+
   return (
     <div className="min-h-screen ">
       <TeztnetLogo />
