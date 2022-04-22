@@ -74,7 +74,7 @@ function Trade({
           ...newStockArr,
         ];
         newPortfolio.cash = portfolio.cash - amountToInvest;
-        
+
         toast("HOORAY...You successfully Bought!!", {
           duration: 5000,
           style: {
@@ -112,11 +112,12 @@ function Trade({
       const docRef = doc(db, "users", "NvMHvTXqjtdl7YWxqXWLsC3O6vP2");
       await updateDoc(docRef, {
         "portfolio.cash": newCash,
-        "portfolio.stocks": newStockList
+        "portfolio.stocks": newStockList,
+        "transactions.stocksBought": transactions.stocksBought,
       });
     };
 
-    updateFirestore()
+    updateFirestore();
 
     noSharesToBuy.current.value = "";
   };
@@ -214,11 +215,12 @@ function Trade({
       const docRef = doc(db, "users", "NvMHvTXqjtdl7YWxqXWLsC3O6vP2");
       await updateDoc(docRef, {
         "portfolio.cash": newCash,
-        "portfolio.stocks": newStockList
+        "portfolio.stocks": newStockList,
+        "transactions.stocksSold": transactions.stocksSold,
       });
     };
 
-    updateFirestore()
+    updateFirestore();
 
     noSharesToSell.current.value = "";
   };
@@ -285,7 +287,7 @@ function Trade({
   useEffect(() => {
     localStorage.setItem("tnxAllocation", JSON.stringify(transactions));
   });*/
-  
+
   //console.log(transactions);
 
   return (
