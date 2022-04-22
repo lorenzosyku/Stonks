@@ -6,7 +6,7 @@ import {
   auth,
 } from "../firebase";
 
-function SignupPage() {
+function SignupPage({portfolio, transactions}) {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");

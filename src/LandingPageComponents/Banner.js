@@ -4,7 +4,6 @@ import {
   auth,
   db,
 } from "../firebase";
-import { addDoc, collection,  } from "firebase/firestore";
 import { doc, setDoc } from "firebase/firestore"; 
 import { useState } from "react";
 
