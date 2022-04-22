@@ -1,4 +1,4 @@
-import { doc, updateDoc } from "@firebase/firestore";
+import { doc, onSnapshot, updateDoc } from "@firebase/firestore";
 import { useRef, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { db } from "../firebase";
@@ -102,7 +102,7 @@ function Trade({
     };
 
     const list = [...portfolio.stocks];
-
+    let tnxs = newTrasactions.stocksBought;
     const newStockList = filterStocks(list);
     let newCash = portfolio.cash - amountToInvest;
     newPortfolio.stocks = newStockList;
@@ -113,7 +113,7 @@ function Trade({
       await updateDoc(docRef, {
         "portfolio.cash": newCash,
         "portfolio.stocks": newStockList,
-        "transactions.stocksBought": transactions.stocksBought,
+        "transactions.stocksBought": tnxs,
       });
     };
 
@@ -208,6 +208,7 @@ function Trade({
     noZeroShares(newStockList);
 
     newPortfolio.stocks = newStockList;
+    let tnxs = newTrasactions.stocksSold;
     let newCash = portfolio.cash + amountToSell;
     setPortfolio(newPortfolio);
 
@@ -216,7 +217,7 @@ function Trade({
       await updateDoc(docRef, {
         "portfolio.cash": newCash,
         "portfolio.stocks": newStockList,
-        "transactions.stocksSold": transactions.stocksSold,
+        "transactions.stocksSold": tnxs,
       });
     };
 
@@ -263,6 +264,19 @@ function Trade({
       clearTimeout(timeoutId);
     };
   }, [])*/
+
+  useEffect(() => {
+    const docRef = doc(db, "users", "NvMHvTXqjtdl7YWxqXWLsC3O6vP2");
+
+    /*const getBooks = onSnapshot(docRef, (snapshot) => {
+      let result = [];
+      snapshot.docs.map((doc) => {
+        result.push({ ...doc.data(), id: doc.id });
+      });
+      //setBooks(result);
+    });
+    return () => getBooks();*/
+  }, []);
 
   /*useEffect(() => {
     const temp = localStorage.getItem("portfolioAllocation");
