@@ -8,7 +8,7 @@ import { addDoc, collection,  } from "firebase/firestore";
 import { doc, setDoc } from "firebase/firestore"; 
 import { useState } from "react";
 
-function Banner() {
+function Banner({portfolio, transactions}) {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -36,7 +36,9 @@ function Banner() {
     await setDoc(doc(db, "users", user.uid), {
       name: name,
       email: user.email,
-      id: user.uid
+      id: user.uid,
+      portfolio: portfolio,
+      transactions: transactions
     })
   }
   return (

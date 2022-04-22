@@ -5,13 +5,12 @@ import LandingSecTwo from "./LandingSecTwo";
 import Footer from "./Footer";
 import OnlineSupport from "./OnlineSupport";
 
-function LandingPage() {
-
+function LandingPage({ portfolio, transactions }) {
   return (
     <div className="min-h-screen ">
       <Header />
       <OnlineSupport />
-      <Banner />
+      <Banner portfolio={portfolio} transactions={transactions} />
       <LandingSecTwo />
       <LandingSecOne />
       <Footer />

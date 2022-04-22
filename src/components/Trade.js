@@ -1,5 +1,7 @@
+import { doc, updateDoc } from "@firebase/firestore";
 import { useRef, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { db } from "../firebase";
 
 function Trade({
   stonk,
@@ -72,6 +74,7 @@ function Trade({
           ...newStockArr,
         ];
         newPortfolio.cash = portfolio.cash - amountToInvest;
+        
         toast("HOORAY...You successfully Bought!!", {
           duration: 5000,
           style: {
@@ -101,8 +104,19 @@ function Trade({
     const list = [...portfolio.stocks];
 
     const newStockList = filterStocks(list);
+    let newCash = portfolio.cash - amountToInvest;
     newPortfolio.stocks = newStockList;
     setPortfolio(newPortfolio);
+
+    const updateFirestore = async () => {
+      const docRef = doc(db, "users", "NvMHvTXqjtdl7YWxqXWLsC3O6vP2");
+      await updateDoc(docRef, {
+        "portfolio.cash": newCash,
+        "portfolio.stocks": newStockList
+      });
+    };
+
+    updateFirestore()
 
     noSharesToBuy.current.value = "";
   };
@@ -193,7 +207,18 @@ function Trade({
     noZeroShares(newStockList);
 
     newPortfolio.stocks = newStockList;
+    let newCash = portfolio.cash + amountToSell;
     setPortfolio(newPortfolio);
+
+    const updateFirestore = async () => {
+      const docRef = doc(db, "users", "NvMHvTXqjtdl7YWxqXWLsC3O6vP2");
+      await updateDoc(docRef, {
+        "portfolio.cash": newCash,
+        "portfolio.stocks": newStockList
+      });
+    };
+
+    updateFirestore()
 
     noSharesToSell.current.value = "";
   };
@@ -237,7 +262,7 @@ function Trade({
     };
   }, [])*/
 
-  useEffect(() => {
+  /*useEffect(() => {
     const temp = localStorage.getItem("portfolioAllocation");
     if (temp) {
       setPortfolio(JSON.parse(temp));
@@ -246,11 +271,11 @@ function Trade({
 
   useEffect(() => {
     localStorage.setItem("portfolioAllocation", JSON.stringify(portfolio));
-  });
+  });*/
 
   console.log(portfolio);
 
-  useEffect(() => {
+  /*useEffect(() => {
     const temp = localStorage.getItem("tnxAllocation");
     if (temp) {
       setTransactions(JSON.parse(temp));
@@ -259,7 +284,8 @@ function Trade({
 
   useEffect(() => {
     localStorage.setItem("tnxAllocation", JSON.stringify(transactions));
-  });
+  });*/
+  
   //console.log(transactions);
 
   return (
