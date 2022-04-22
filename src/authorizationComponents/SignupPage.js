@@ -4,7 +4,9 @@ import TeztnetLogo from "../LandingPageComponents/TeztnetLogo";
 import {
   createUserWithEmailAndPassword,
   auth,
+  db,
 } from "../firebase";
+import { doc, setDoc } from "@firebase/firestore";
 
 function SignupPage({portfolio, transactions}) {
   const navigate = useNavigate();
