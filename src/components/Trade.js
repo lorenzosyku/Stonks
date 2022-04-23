@@ -1,4 +1,4 @@
-import { doc, onSnapshot, updateDoc } from "@firebase/firestore";
+import { doc, getDoc, updateDoc } from "@firebase/firestore";
 import { useRef, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { db } from "../firebase";
@@ -14,6 +14,8 @@ function Trade({
 }) {
   const noSharesToBuy = useRef(null);
   const noSharesToSell = useRef(null);
+
+  const [items, setItems] = useState({});
 
   const buyShares = () => {
     const shares = parseInt(noSharesToBuy.current.value);
@@ -267,15 +269,18 @@ function Trade({
 
   useEffect(() => {
     const docRef = doc(db, "users", "NvMHvTXqjtdl7YWxqXWLsC3O6vP2");
+    //const docRef = doc(db, "cities", "SF");
+    const getData = async () => {
+      const docSnap = await getDoc(docRef);
 
-    /*const getBooks = onSnapshot(docRef, (snapshot) => {
-      let result = [];
-      snapshot.docs.map((doc) => {
-        result.push({ ...doc.data(), id: doc.id });
-      });
-      //setBooks(result);
-    });
-    return () => getBooks();*/
+      if (docSnap.exists()) {
+        console.log("Document data:", docSnap.data());
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+    };
+    return () => getData();
   }, []);
 
   /*useEffect(() => {
@@ -289,7 +294,7 @@ function Trade({
     localStorage.setItem("portfolioAllocation", JSON.stringify(portfolio));
   });*/
 
-  console.log(portfolio);
+  //console.log(portfolio);
 
   /*useEffect(() => {
     const temp = localStorage.getItem("tnxAllocation");
