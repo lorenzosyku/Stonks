@@ -1,11 +1,13 @@
 import Sidebar from "./Sidebar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import MainContent from "./MainContent";
 import PortfolioSection from "./PortfolioSection";
 import TransactionsSection from "./TransactionsSection";
 import Search from "../components/Search";
 import SideBarBtn from "./SideBarBtn";
+import { doc, getDoc } from "@firebase/firestore";
+import { db } from "../firebase";
 
 function DashboardPage({
   portfolio,
@@ -24,6 +26,23 @@ function DashboardPage({
   setTransactions,
 }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  /*useEffect(() => {
+    const docRef = doc(db, "users", "NvMHvTXqjtdl7YWxqXWLsC3O6vP2");
+    //const docRef = doc(db, "cities", "SF");
+    const getData = async () => {
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        console.log("Document data:", docSnap.data());
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+    };
+    return () => getData();
+  }, []);*/
+
 
   return (
     <div className="min-h-screen bg-gray-200">

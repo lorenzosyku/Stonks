@@ -1,4 +1,4 @@
-import { doc, getDoc, updateDoc } from "@firebase/firestore";
+import { doc, getDoc, onSnapshot, updateDoc } from "@firebase/firestore";
 import { useRef, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { db } from "../firebase";
@@ -270,16 +270,9 @@ function Trade({
   useEffect(() => {
     const docRef = doc(db, "users", "NvMHvTXqjtdl7YWxqXWLsC3O6vP2");
     //const docRef = doc(db, "cities", "SF");
-    const getData = async () => {
-      const docSnap = await getDoc(docRef);
-
-      if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
-      } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-      }
-    };
+    const getData = onSnapshot(docRef, (doc) => {
+      console.log("Current data: ", doc.data())
+    });
     return () => getData();
   }, []);
 
