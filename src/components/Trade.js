@@ -1,5 +1,5 @@
-import { doc, getDoc, onSnapshot, updateDoc } from "@firebase/firestore";
-import { useRef, useEffect, useState } from "react";
+import { doc, updateDoc } from "@firebase/firestore";
+import { useRef,  useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { db } from "../firebase";
 
@@ -267,40 +267,6 @@ function Trade({
     };
   }, [])*/
 
-  useEffect(() => {
-    const docRef = doc(db, "users", "NvMHvTXqjtdl7YWxqXWLsC3O6vP2");
-    //const docRef = doc(db, "cities", "SF");
-    const getData = onSnapshot(docRef, (doc) => {
-      console.log("Current data: ", doc.data())
-    });
-    return () => getData();
-  }, []);
-
-  /*useEffect(() => {
-    const temp = localStorage.getItem("portfolioAllocation");
-    if (temp) {
-      setPortfolio(JSON.parse(temp));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("portfolioAllocation", JSON.stringify(portfolio));
-  });*/
-
-  //console.log(portfolio);
-
-  /*useEffect(() => {
-    const temp = localStorage.getItem("tnxAllocation");
-    if (temp) {
-      setTransactions(JSON.parse(temp));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("tnxAllocation", JSON.stringify(transactions));
-  });*/
-
-  //console.log(transactions);
 
   return (
     <div className="flex justify-between items-center border-2 p-5">
