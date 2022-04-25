@@ -15,8 +15,6 @@ function Trade({
   const noSharesToBuy = useRef(null);
   const noSharesToSell = useRef(null);
 
-  const [items, setItems] = useState({});
-
   const buyShares = () => {
     const shares = parseInt(noSharesToBuy.current.value);
     if (shares <= 0) return;

@@ -26,15 +26,28 @@ function DashboardPage({
   setTransactions,
 }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [dbPortfolio, setDbPortfolio] = useState({});
+  const [dbTnxs, setDbTnxs] = useState({})
 
   useEffect(() => {
     const docRef = doc(db, "users", "NvMHvTXqjtdl7YWxqXWLsC3O6vP2");
     const getData = onSnapshot(docRef, (doc) => {
       console.log("Current data: ", doc.data())
+      const dbData = doc.data();
+
+      const portfolioDbData = dbData.portfolio;
+      const transactionsdbData = dbData.transactions;
+
+      setDbPortfolio(portfolioDbData);
+      setDbTnxs(transactionsdbData);
+
+      
     });
     return () => getData();
   }, []);
 
+  console.log(dbPortfolio);
+  console.log(dbTnxs);
 
   return (
     <div className="min-h-screen bg-gray-200">
@@ -88,6 +101,7 @@ function DashboardPage({
           path="portfolio"
           element={
             <PortfolioSection
+              dbPortfolio={dbPortfolio}
               portfolio={portfolio}
               isSidebarOpen={isSidebarOpen}
             />
@@ -97,6 +111,7 @@ function DashboardPage({
           path="transactions"
           element={
             <TransactionsSection
+              dbTnxs={dbTnxs}
               transactions={transactions}
               isSidebarOpen={isSidebarOpen}
               setTransactions={setTransactions}
