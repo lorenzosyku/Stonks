@@ -33,9 +33,9 @@ function DashboardPage({
   useEffect(() => {
     //console.log(currentUser);
     const id = currentUser?.uid;
-    //console.log(id);
+    console.log(id);
 
-    const docRef = doc(db, "users", id);
+    const docRef = doc(db, "users", "L9y27TYivKQ3Lv619CP59XwOeY32");
     const getData = onSnapshot(docRef, (doc) => {
       //console.log("Current data: ", doc.data());
       const dbData = doc.data();

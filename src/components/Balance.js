@@ -1,7 +1,7 @@
 import PortfolioItem from "./PortfolioItem";
 
-function Balance({ portfolio }) {
-  const cashBalance = portfolio.cash;
+function Balance({ dbPortfolio }) {
+  const cashBalance = dbPortfolio.cash;
 
   const percentage = (prevPrice, currPrice) => {
     return (currPrice-prevPrice)/prevPrice * 100
@@ -11,7 +11,7 @@ function Balance({ portfolio }) {
     <div>
       <div className="flex justify-between">
         <h2 className="font-semibold">CASH BALANCE</h2>
-        <h3 className="font-bold italic">${cashBalance.toFixed(2)}</h3>
+        <h3 className="font-bold italic">${cashBalance}</h3>
       </div>
       <div className="mt-5">
         <div className="grid grid-cols-3">
@@ -20,7 +20,7 @@ function Balance({ portfolio }) {
           <h2 className="flex justify-end">Percentage</h2>
         </div>
         
-        {portfolio?.stocks.map((stock) => (
+        {dbPortfolio?.stocks?.map((stock) => (
           <PortfolioItem
             key={stock.id}
             stock={stock.stockName}
