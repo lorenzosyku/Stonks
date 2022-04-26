@@ -5,6 +5,7 @@ import { Outlet } from "react-router";
 import Trade from "../components/Trade";
 
 function MainContent({
+  currentUser,
   isSidebarOpen,
   watchlist,
   setWatchlist,
@@ -37,6 +38,7 @@ function MainContent({
           <div className=" md:w-3/5 lg:w-4/6 bg-gray-100 rounded-md">
             <Datagraph series={series} />
             <Trade
+              currentUser={currentUser}
               stonk={stonk}
               portfolio={portfolio}
               setPortfolio={setPortfolio}

@@ -7,7 +7,7 @@ import TransactionsSection from "./TransactionsSection";
 import Search from "../components/Search";
 import SideBarBtn from "./SideBarBtn";
 import { doc, getDoc, onSnapshot } from "@firebase/firestore";
-import { db } from "../firebase";
+import { db, useAuth } from "../firebase";
 
 function DashboardPage({
   portfolio,
@@ -26,11 +26,14 @@ function DashboardPage({
   setTransactions,
 }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  const currentUser = useAuth();
+  //console.log(currentUser.uid);
   const [dbPortfolio, setDbPortfolio] = useState({});
   const [dbTnxs, setDbTnxs] = useState({})
 
-  useEffect(() => {
-    const docRef = doc(db, "users", "NvMHvTXqjtdl7YWxqXWLsC3O6vP2");
+  /*useEffect(() => {
+    const docRef = doc(db, "users", "k5kLlr5hLqY4n0T5i89eQZOLfgu1");
     const getData = onSnapshot(docRef, (doc) => {
       console.log("Current data: ", doc.data())
       const dbData = doc.data();
@@ -44,10 +47,10 @@ function DashboardPage({
       
     });
     return () => getData();
-  }, []);
+  }, []);*/
 
-  console.log(dbPortfolio);
-  console.log(dbTnxs);
+  //console.log(dbPortfolio);
+  //console.log(dbTnxs);
 
   return (
     <div className="min-h-screen bg-gray-200">
@@ -81,6 +84,7 @@ function DashboardPage({
           path="watchlist"
           element={
             <MainContent
+              currentUser={currentUser}
               isSidebarOpen={isSidebarOpen}
               setWatchlist={setWatchlist}
               watchlist={watchlist}

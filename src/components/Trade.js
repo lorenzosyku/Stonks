@@ -9,6 +9,7 @@ function Trade({
   setPortfolio,
   transactions,
   setTransactions,
+  currentUser,
   trades,
   setTrades,
 }) {
@@ -109,7 +110,7 @@ function Trade({
     setPortfolio(newPortfolio);
 
     const updateFirestore = async () => {
-      const docRef = doc(db, "users", "NvMHvTXqjtdl7YWxqXWLsC3O6vP2");
+      const docRef = doc(db, "users", currentUser.uid);
       await updateDoc(docRef, {
         "portfolio.cash": newCash,
         "portfolio.stocks": newStockList,
@@ -213,14 +214,14 @@ function Trade({
     setPortfolio(newPortfolio);
 
     const updateFirestore = async () => {
-      const docRef = doc(db, "users", "NvMHvTXqjtdl7YWxqXWLsC3O6vP2");
+      const docRef = doc(db, "users", currentUser.uid);
       await updateDoc(docRef, {
         "portfolio.cash": newCash,
         "portfolio.stocks": newStockList,
         "transactions.stocksSold": tnxs,
       });
     };
-
+    
     updateFirestore();
 
     noSharesToSell.current.value = "";
