@@ -26,16 +26,18 @@ function DashboardPage({
   setTransactions,
 }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-
   const currentUser = useAuth();
-  //console.log(currentUser.uid);
   const [dbPortfolio, setDbPortfolio] = useState({});
-  const [dbTnxs, setDbTnxs] = useState({})
+  const [dbTnxs, setDbTnxs] = useState({});
 
-  /*useEffect(() => {
-    const docRef = doc(db, "users", "k5kLlr5hLqY4n0T5i89eQZOLfgu1");
+  useEffect(() => {
+    //console.log(currentUser);
+    const id = currentUser?.uid;
+    //console.log(id);
+
+    const docRef = doc(db, "users", id);
     const getData = onSnapshot(docRef, (doc) => {
-      console.log("Current data: ", doc.data())
+      //console.log("Current data: ", doc.data());
       const dbData = doc.data();
 
       const portfolioDbData = dbData.portfolio;
@@ -43,14 +45,12 @@ function DashboardPage({
 
       setDbPortfolio(portfolioDbData);
       setDbTnxs(transactionsdbData);
-
-      
     });
     return () => getData();
-  }, []);*/
+  }, []);
 
-  //console.log(dbPortfolio);
-  //console.log(dbTnxs);
+  console.log(dbPortfolio);
+  console.log(dbTnxs);
 
   return (
     <div className="min-h-screen bg-gray-200">
