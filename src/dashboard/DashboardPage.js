@@ -34,10 +34,10 @@ function DashboardPage({
   //const userId = user?.id;
 
   useEffect(() => {
-    onAuthStateChanged(auth, async (user) => {
+    const unsub = onAuthStateChanged(auth, async (user) => {
       if (user) {
-        const snapshot = await getDoc(doc(db, "users", user.uid))
-        console.log(snapshot.data())
+        const snapshot = await getDoc(doc(db, "users", user.uid));
+        console.log(snapshot.data());
         const dbData = snapshot.data();
         const portfolioDbData = dbData.portfolio;
         const transactionDbData = dbData.transactions;
@@ -45,9 +45,8 @@ function DashboardPage({
         setDbTnxs(transactionDbData);
       }
     });
+    return () => unsub();
   }, []);
-
-  
 
   console.log(dbPortfolio);
   console.log(dbTnxs);
@@ -116,9 +115,7 @@ function DashboardPage({
           element={
             <TransactionsSection
               dbTnxs={dbTnxs}
-              transactions={transactions}
               isSidebarOpen={isSidebarOpen}
-              setTransactions={setTransactions}
             />
           }
         />

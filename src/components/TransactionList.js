@@ -1,14 +1,12 @@
 import moment from "moment";
 import { useState } from "react";
 
-function TransactionList({ transactions, setTransactions, dbTnxs }) {
+function TransactionList({ dbTnxs }) {
   const listBoughtStocks = [...dbTnxs.stocksBought];
   const listSoldStocks = [...dbTnxs.stocksSold];
 
   const [isOpenBought, setIsOpenBought] = useState(true);
   const [isOpenSold, setIsOpenSold] = useState(false);
-
-  
 
   return (
     <div className="flex flex-col p-5 space-y-5">

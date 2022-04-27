@@ -1,12 +1,13 @@
 import TransactionList from "../components/TransactionList";
 
-function TransactionsSection({ transactions,
-  isSidebarOpen, setTransactions, dbTnxs }) {
+function TransactionsSection({ isSidebarOpen, dbTnxs }) {
   return (
-    <div className={`transition-all duration-500 ${
-      isSidebarOpen ? "ml-64" : "ml-0"
-    }`}>
-      <TransactionList dbTnxs={dbTnxs} transactions={transactions} setTransactions={setTransactions}/>
+    <div
+      className={`transition-all duration-500 ${
+        isSidebarOpen ? "ml-64" : "ml-0"
+      }`}
+    >
+      <TransactionList dbTnxs={dbTnxs} />
     </div>
   );
 }

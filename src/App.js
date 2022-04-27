@@ -85,7 +85,12 @@ function App() {
               />
             }
           />
-          <Route path="/signup" element={<SignupPage portfolio={portfolio} transactions={transactions}/>} />
+          <Route
+            path="/signup"
+            element={
+              <SignupPage portfolio={portfolio} transactions={transactions} />
+            }
+          />
           <Route path="/resetpass" element={<ResetPass />} />
         </Routes>
       </Router>
