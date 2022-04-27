@@ -1,28 +1,14 @@
 import moment from "moment";
 import { useState } from "react";
 
-function TransactionList({ transactions, setTransactions }) {
-  const listBoughtStocks = [...transactions.stocksBought];
-  const listSoldStocks = [...transactions.stocksSold];
+function TransactionList({ transactions, setTransactions, dbTnxs }) {
+  const listBoughtStocks = [...dbTnxs.stocksBought];
+  const listSoldStocks = [...dbTnxs.stocksSold];
 
   const [isOpenBought, setIsOpenBought] = useState(true);
   const [isOpenSold, setIsOpenSold] = useState(false);
 
-  function deleteBoughtTnx(id) {
-    const updatedBuyTransactions = [...listBoughtStocks].filter(
-      (tnx) => tnx.id !== id
-    );
-    transactions.stocksBought = updatedBuyTransactions;
-    setTransactions(transactions);
-  }
-
-  function deleteSoldTnx(id) {
-    const updatedSellTransactions = [...listSoldStocks].filter(
-      (tnx) => tnx.id !== id
-    );
-    transactions.stocksSold = updatedSellTransactions;
-    setTransactions(transactions);
-  }
+  
 
   return (
     <div className="flex flex-col p-5 space-y-5">
@@ -89,7 +75,7 @@ function TransactionList({ transactions, setTransactions }) {
                         <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                           <div className="flex space-x-3 items-center">
                             <div
-                              onClick={deleteBoughtTnx}
+                              //onClick={deleteBoughtTnx}
                               className="bg-slate-800 p-2 rounded-md cursor-pointer"
                             >
                               <svg
@@ -165,7 +151,7 @@ function TransactionList({ transactions, setTransactions }) {
                         <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                           <div className="flex space-x-3 items-center">
                             <div
-                              onClick={deleteSoldTnx}
+                              //onClick={deleteSoldTnx}
                               className="bg-slate-800 p-2 rounded-md cursor-pointer"
                             >
                               <svg

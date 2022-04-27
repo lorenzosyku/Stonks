@@ -6,10 +6,12 @@ import PortfolioSection from "./PortfolioSection";
 import TransactionsSection from "./TransactionsSection";
 import Search from "../components/Search";
 import SideBarBtn from "./SideBarBtn";
-import { doc, getDoc, onSnapshot } from "@firebase/firestore";
-import { db, useAuth } from "../firebase";
+import { collection, doc, getDoc, onSnapshot } from "@firebase/firestore";
+import { auth, db, useAuth } from "../firebase";
+import { onAuthStateChanged } from "@firebase/auth";
 
 function DashboardPage({
+  //user,
   portfolio,
   trades,
   setTrades,
@@ -29,25 +31,23 @@ function DashboardPage({
   const currentUser = useAuth();
   const [dbPortfolio, setDbPortfolio] = useState({});
   const [dbTnxs, setDbTnxs] = useState({});
+  //const userId = user?.id;
 
   useEffect(() => {
-    //console.log(currentUser);
-    const id = currentUser?.uid;
-    console.log(id);
-
-    const docRef = doc(db, "users", "L9y27TYivKQ3Lv619CP59XwOeY32");
-    const getData = onSnapshot(docRef, (doc) => {
-      //console.log("Current data: ", doc.data());
-      const dbData = doc.data();
-
-      const portfolioDbData = dbData.portfolio;
-      const transactionsdbData = dbData.transactions;
-
-      setDbPortfolio(portfolioDbData);
-      setDbTnxs(transactionsdbData);
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const snapshot = await getDoc(doc(db, "users", user.uid))
+        console.log(snapshot.data())
+        const dbData = snapshot.data();
+        const portfolioDbData = dbData.portfolio;
+        const transactionDbData = dbData.transactions;
+        setDbPortfolio(portfolioDbData);
+        setDbTnxs(transactionDbData);
+      }
     });
-    return () => getData();
   }, []);
+
+  
 
   console.log(dbPortfolio);
   console.log(dbTnxs);

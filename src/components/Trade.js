@@ -117,7 +117,7 @@ function Trade({
         "transactions.stocksBought": tnxs,
       });
     };
-
+    console.log(currentUser.uid);
     updateFirestore();
 
     noSharesToBuy.current.value = "";
