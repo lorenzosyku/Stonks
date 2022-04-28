@@ -36,20 +36,21 @@ function DashboardPage({
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, async (user) => {
       if (user) {
-        const snapshot = await getDoc(doc(db, "users", user.uid));
-        console.log(snapshot.data());
-        const dbData = snapshot.data();
-        const portfolioDbData = dbData.portfolio;
-        const transactionDbData = dbData.transactions;
-        setDbPortfolio(portfolioDbData);
-        setDbTnxs(transactionDbData);
+        onSnapshot(doc(db, "users", user.uid), (doc) => {
+          console.log("Current data: ", doc.data());
+          const dbData = doc.data();
+          const portfolioDbData = dbData.portfolio;
+          const transactionDbData = dbData.transactions;
+          setDbPortfolio(portfolioDbData);
+          setDbTnxs(transactionDbData);
+        });
       }
     });
     return () => unsub();
   }, []);
 
-  console.log(dbPortfolio);
-  console.log(dbTnxs);
+  //console.log(dbPortfolio);
+  //console.log(dbTnxs);
 
   return (
     <div className="min-h-screen bg-gray-200">

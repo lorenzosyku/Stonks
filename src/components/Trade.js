@@ -77,7 +77,7 @@ function Trade({
         newPortfolio.cash = portfolio.cash - amountToInvest;
 
         toast("HOORAY...You successfully Bought!!", {
-          duration: 5000,
+          duration: 2000,
           style: {
             background: "green",
             color: "white",
@@ -108,9 +108,10 @@ function Trade({
     let newCash = portfolio.cash - amountToInvest;
     newPortfolio.stocks = newStockList;
     setPortfolio(newPortfolio);
+    //console.log(portfolio)
 
-    const updateFirestore = async () => {
-      const docRef = doc(db, "users", currentUser.uid);
+    const updateFirestore = async (user) => {
+      const docRef = doc(db, "users", user.uid);
       await updateDoc(docRef, {
         "portfolio.cash": newCash,
         "portfolio.stocks": newStockList,
@@ -118,7 +119,7 @@ function Trade({
       });
     };
     console.log(currentUser.uid);
-    updateFirestore();
+    updateFirestore(currentUser);
 
     noSharesToBuy.current.value = "";
   };
@@ -179,7 +180,7 @@ function Trade({
             newPortfolio.cash = portfolio.cash + amountToSell;
 
             toast("HOORAY...You successfully sold!!", {
-              duration: 5000,
+              duration: 2000,
               style: {
                 background: "green",
                 color: "white",
@@ -213,8 +214,8 @@ function Trade({
     let newCash = portfolio.cash + amountToSell;
     setPortfolio(newPortfolio);
 
-    const updateFirestore = async () => {
-      const docRef = doc(db, "users", currentUser.uid);
+    const updateFirestore = async (user) => {
+      const docRef = doc(db, "users", user.uid);
       await updateDoc(docRef, {
         "portfolio.cash": newCash,
         "portfolio.stocks": newStockList,
@@ -222,7 +223,7 @@ function Trade({
       });
     };
     
-    updateFirestore();
+    updateFirestore(currentUser);
 
     noSharesToSell.current.value = "";
   };
@@ -257,14 +258,20 @@ function Trade({
     }
     //timeoutId = setTimeout(getLatestPrice, 24000 * 2);
   };
+  console.log(portfolio)
+  console.log(transactions)
 
-  /*useEffect(() => {
-    getLatestPrice()
+  /*const updateFirestore = async (user) => {
+    const docRef = doc(db, "users", user.uid);
+    await updateDoc(docRef, {
+      "portfolio.cash": portfolio.cash,
+      "portfolio.stocks": portfolio.stocks,
+      "transactions.stocksSold": transactions.stocksSold,
+      "transactions.stocksBought": transactions.stocksBought,
+    });
+  };
 
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, [])*/
+  updateFirestore(currentUser);*/
 
 
   return (
