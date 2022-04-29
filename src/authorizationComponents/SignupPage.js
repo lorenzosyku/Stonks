@@ -37,8 +37,14 @@ function SignupPage({portfolio, transactions}) {
       name: name,
       email: user.email,
       id: user.uid,
-      portfolio: portfolio,
-      transactions: transactions
+      portfolio: {
+        cash: 10000,
+        stocks: [],
+      },
+      transactions: {
+        stocksBought: [],
+        stocksSold: [],
+      }
     })
   };
 
@@ -90,7 +96,7 @@ function SignupPage({portfolio, transactions}) {
               <span
                 className="text-blue-500 px-1 cursor-pointer hover:underline"
                 onClick={() => {
-                  navigate("/login");
+                  navigate("/login/dashboard/watchlist");
                 }}
               >
                 Login

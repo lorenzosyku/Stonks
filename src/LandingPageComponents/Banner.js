@@ -36,8 +36,14 @@ function Banner({portfolio, transactions}) {
       name: name,
       email: user.email,
       id: user.uid,
-      portfolio: portfolio,
-      transactions: transactions
+      portfolio: {
+        cash: 10000,
+        stocks: [],
+      },
+      transactions: {
+        stocksBought: [],
+        stocksSold: [],
+      }
     })
   }
   return (
