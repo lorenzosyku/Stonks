@@ -1,16 +1,17 @@
 import Chart from "react-apexcharts";
 
-function PortfolioGraph({ portfolio, setTrades, trades, dbPortfolio }) {
+function PortfolioGraph({ setTrades, trades, dbPortfolio }) {
   //const dbArr = [...dbPortfolio]
-  const arr = [...portfolio?.stocks];
-  console.log(arr)
-  const arrOfStocks = arr.map((stock) => stock.stockName);
-  const valueOfEachInvesment = arr.map(
+  const arr = dbPortfolio.stocks;
+  //console.log(arr)
+  const arrOfStocks = arr?.map((stock) => stock.stockName);
+  const valueOfEachInvesment = arr?.map(
     (stock) => stock.shares * stock.currentPrice
   );
+  console.log(valueOfEachInvesment);
 
   let labelsArray = ["CASH"];
-  let seriesArray = [portfolio.cash];
+  let seriesArray = [dbPortfolio.cash];
 
   labelsArray = labelsArray.concat(arrOfStocks);
   seriesArray = seriesArray.concat(valueOfEachInvesment);

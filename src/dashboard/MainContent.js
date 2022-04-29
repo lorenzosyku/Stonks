@@ -13,10 +13,10 @@ function MainContent({
   series,
   //------,
   stonk,
-  portfolio,
-  setPortfolio,
-  transactions,
-  setTransactions,
+  dbPortfolio,
+  dbTnxs,
+  setDbPortfolio,
+  setDbTnxs,
   trades,
   setTrades,
 }) {
@@ -38,12 +38,12 @@ function MainContent({
           <div className=" md:w-3/5 lg:w-4/6 bg-gray-100 rounded-md">
             <Datagraph series={series} />
             <Trade
+              dbPortfolio={dbPortfolio}
+              dbTnxs={dbTnxs}
+              setDbPortfolio={setDbPortfolio}
+              setDbTnxs={setDbTnxs}
               currentUser={currentUser}
               stonk={stonk}
-              portfolio={portfolio}
-              setPortfolio={setPortfolio}
-              transactions={transactions}
-              setTransactions={setTransactions}
               trades={trades}
               setTrades={setTrades}
             />

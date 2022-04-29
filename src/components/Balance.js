@@ -4,8 +4,8 @@ function Balance({ dbPortfolio }) {
   const cashBalance = dbPortfolio.cash;
 
   const percentage = (prevPrice, currPrice) => {
-    return (currPrice-prevPrice)/prevPrice * 100
-  }
+    return ((currPrice - prevPrice) / prevPrice) * 100;
+  };
 
   return (
     <div>
@@ -19,7 +19,7 @@ function Balance({ dbPortfolio }) {
           <h2 className="flex justify-center">Shares</h2>
           <h2 className="flex justify-end">Percentage</h2>
         </div>
-        
+
         {dbPortfolio?.stocks?.map((stock) => (
           <PortfolioItem
             key={stock.id}

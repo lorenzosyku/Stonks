@@ -1,15 +1,15 @@
 import { doc, updateDoc } from "@firebase/firestore";
-import { useRef,  useState } from "react";
+import { useRef, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { db } from "../firebase";
 
 function Trade({
   stonk,
-  portfolio,
-  setPortfolio,
-  transactions,
-  setTransactions,
   currentUser,
+  dbPortfolio,
+  dbTnxs,
+  setDbPortfolio,
+  setDbTnxs,
   trades,
   setTrades,
 }) {
@@ -22,13 +22,13 @@ function Trade({
     const price = stonk.regularMarketPrice;
     const amountToInvest = shares * price;
 
-    const newPortfolio = { ...portfolio };
-    const newTrasactions = { ...transactions };
+    const newPortfolio = { ...dbPortfolio };
+    const newTrasactions = { ...dbTnxs };
     //const newTrades = { ...trades};
 
     const transactionListStocksBought = newTrasactions.stocksBought;
 
-    if (portfolio.cash - amountToInvest > 0) {
+    if (dbPortfolio.cash - amountToInvest > 0) {
       newTrasactions.stocksBought = [
         {
           stockName: stonk.symbol,
@@ -40,11 +40,11 @@ function Trade({
         ...transactionListStocksBought,
       ];
     }
-    setTransactions(newTrasactions);
+    setDbTnxs(newTrasactions);
 
     const filterStocks = (arr) => {
       let newStockArr = [...arr];
-      if (portfolio.cash - amountToInvest > 0) {
+      if (dbPortfolio.cash - amountToInvest > 0) {
         let newAmountShares = shares;
         let newAmountSpentOnStock = parseFloat(amountToInvest);
         let newPrice = parseFloat(price);
@@ -74,7 +74,7 @@ function Trade({
           },
           ...newStockArr,
         ];
-        newPortfolio.cash = portfolio.cash - amountToInvest;
+        newPortfolio.cash = dbPortfolio.cash - amountToInvest;
 
         toast("HOORAY...You successfully Bought!!", {
           duration: 2000,
@@ -102,12 +102,12 @@ function Trade({
       }
     };
 
-    const list = [...portfolio.stocks];
+    const list = [...dbPortfolio.stocks];
     let tnxs = newTrasactions.stocksBought;
     const newStockList = filterStocks(list);
-    let newCash = portfolio.cash - amountToInvest;
+    let newCash = dbPortfolio.cash - amountToInvest;
     newPortfolio.stocks = newStockList;
-    setPortfolio(newPortfolio);
+    setDbPortfolio(newPortfolio);
     //console.log(portfolio)
 
     const updateFirestore = async (user) => {
@@ -130,8 +130,8 @@ function Trade({
     const price = stonk.regularMarketPrice;
     const amountToSell = shares * price;
 
-    const newPortfolio = { ...portfolio };
-    const newTrasactions = { ...transactions };
+    const newPortfolio = { ...dbPortfolio };
+    const newTrasactions = { ...dbTnxs };
 
     const transactionListStocksSold = newTrasactions.stocksSold;
 
@@ -164,7 +164,7 @@ function Trade({
               ...transactionListStocksSold,
             ];
 
-            setTransactions(newTrasactions);
+            setDbTnxs(newTrasactions);
 
             const newAmountShares = arr[i].shares - shares;
             //const entryPointOfTrade = arr[i].entryPrice;
@@ -177,7 +177,7 @@ function Trade({
               amountSpent: arr[i].amountSpent,
               entryPrice: arr[i].entryPrice,
             });
-            newPortfolio.cash = portfolio.cash + amountToSell;
+            newPortfolio.cash = dbPortfolio.cash + amountToSell;
 
             toast("HOORAY...You successfully sold!!", {
               duration: 2000,
@@ -195,7 +195,7 @@ function Trade({
 
       return newStockArr;
     };
-    const list = [...portfolio.stocks];
+    const list = [...dbPortfolio.stocks];
 
     const newStockList = filterStocks(list);
 
@@ -211,8 +211,8 @@ function Trade({
 
     newPortfolio.stocks = newStockList;
     let tnxs = newTrasactions.stocksSold;
-    let newCash = portfolio.cash + amountToSell;
-    setPortfolio(newPortfolio);
+    let newCash = dbPortfolio.cash + amountToSell;
+    setDbPortfolio(newPortfolio);
 
     const updateFirestore = async (user) => {
       const docRef = doc(db, "users", user.uid);
@@ -222,13 +222,13 @@ function Trade({
         "transactions.stocksSold": tnxs,
       });
     };
-    
+
     updateFirestore(currentUser);
 
     noSharesToSell.current.value = "";
   };
 
-  const arr = [...portfolio.stocks];
+  /*const arr = [...dbPortfolio.stocks];
   const arrOfStocks = arr.map((stock) => stock.stockName);
 
   const fetchStockPortfolioPrices = async (symbol) => {
@@ -236,10 +236,10 @@ function Trade({
       `https://yahoo-finance-api.vercel.app/${symbol}`
     );
     return response.json();
-  };
+  };*/
 
   //let timeoutId;
-  const getLatestPrice = async () => {
+  /*const getLatestPrice = async () => {
     try {
       for (let i = 0; i < arrOfStocks.length; i++) {
         const data = await fetchStockPortfolioPrices(arrOfStocks[i]);
@@ -257,22 +257,9 @@ function Trade({
       console.log(error);
     }
     //timeoutId = setTimeout(getLatestPrice, 24000 * 2);
-  };
-  console.log(portfolio)
-  console.log(transactions)
-
-  /*const updateFirestore = async (user) => {
-    const docRef = doc(db, "users", user.uid);
-    await updateDoc(docRef, {
-      "portfolio.cash": portfolio.cash,
-      "portfolio.stocks": portfolio.stocks,
-      "transactions.stocksSold": transactions.stocksSold,
-      "transactions.stocksBought": transactions.stocksBought,
-    });
-  };
-
-  updateFirestore(currentUser);*/
-
+  };*/
+  //console.log(portfolio)
+  //console.log(transactions)
 
   return (
     <div className="flex justify-between items-center border-2 p-5">

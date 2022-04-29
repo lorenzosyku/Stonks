@@ -2,8 +2,10 @@ import moment from "moment";
 import { useState } from "react";
 
 function TransactionList({ dbTnxs }) {
-  const listBoughtStocks = [...dbTnxs.stocksBought];
-  const listSoldStocks = [...dbTnxs.stocksSold];
+  const listBoughtStocks = dbTnxs.stocksBought;
+  const listSoldStocks = dbTnxs.stocksSold;
+  console.log(listBoughtStocks);
+  console.log(listSoldStocks)
 
   const [isOpenBought, setIsOpenBought] = useState(true);
   const [isOpenSold, setIsOpenSold] = useState(false);
@@ -65,7 +67,7 @@ function TransactionList({ dbTnxs }) {
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
-                    {listBoughtStocks.map((rowData) => (
+                    {listBoughtStocks?.map((rowData) => (
                       <tr
                         className="hover:bg-gray-100 dark:hover:bg-gray-700"
                         key={rowData.id}
@@ -124,7 +126,7 @@ function TransactionList({ dbTnxs }) {
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
-                    {listSoldStocks.map((rowData) => (
+                    {listSoldStocks?.map((rowData) => (
                       <tr
                         className="hover:bg-gray-100 dark:hover:bg-gray-700"
                         key={rowData.id}

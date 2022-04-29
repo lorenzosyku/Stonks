@@ -1,13 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import {
-  createUserWithEmailAndPassword,
-  auth,
-  db,
-} from "../firebase";
-import { doc, setDoc } from "firebase/firestore"; 
+import { createUserWithEmailAndPassword, auth, db } from "../firebase";
+import { doc, setDoc } from "firebase/firestore";
 import { useState } from "react";
 
-function Banner({portfolio, transactions}) {
+function Banner() {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -20,14 +16,14 @@ function Banner({portfolio, transactions}) {
     if (password === confirmPassword) {
       createUserWithEmailAndPassword(auth, email, password)
         .then((user) => {
-          addToUsers(user.user)
+          addToUsers(user.user);
           console.log(user.user);
         })
         .catch((err) => {
           console.log(err);
         });
     } else {
-      alert('password not matching')
+      alert("password not matching");
     }
   };
 
@@ -43,9 +39,9 @@ function Banner({portfolio, transactions}) {
       transactions: {
         stocksBought: [],
         stocksSold: [],
-      }
-    })
-  }
+      },
+    });
+  };
   return (
     <section id="about" className="min-h-screen bg-pack-train">
       <div className="min-h-screen flex items-center">
@@ -89,7 +85,7 @@ function Banner({portfolio, transactions}) {
               </div>
               <label className="block mb-5 mt-5 px-5">
                 <input
-                  onChange={(e)=>setName(e.target.value)}
+                  onChange={(e) => setName(e.target.value)}
                   className="shadow border rounded py-2 px-3 form-input mt-1 block w-full outline-none"
                   type="text"
                   placeholder="Name"
@@ -97,7 +93,7 @@ function Banner({portfolio, transactions}) {
               </label>
               <label className="block mb-5 px-5">
                 <input
-                  onChange={(e)=>setEmail(e.target.value)}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="shadow border rounded py-2 px-3 form-input mt-1 block w-full outline-none"
                   type="email"
                   placeholder="Email"
@@ -105,7 +101,7 @@ function Banner({portfolio, transactions}) {
               </label>
               <label className="block mb-5 px-5">
                 <input
-                  onChange={(e)=>setPassword(e.target.value)}
+                  onChange={(e) => setPassword(e.target.value)}
                   className="shadow border rounded py-2 px-3 form-input mt-1 block w-full outline-none"
                   type="password"
                   placeholder="Password"
@@ -113,7 +109,7 @@ function Banner({portfolio, transactions}) {
               </label>
               <label className="block mb-5 px-5">
                 <input
-                  onChange={(e)=>setConfirmPassword(e.target.value)}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
                   className="shadow border rounded py-2 px-3 form-input mt-1 block w-full outline-none"
                   type="password"
                   placeholder="Confirm password"
@@ -133,7 +129,13 @@ function Banner({portfolio, transactions}) {
                 </p>
               </div>
               <div className="flex justify-end p-5">
-                <button className="bg-shade-lightblue text-gray-100 font-semibold p-2 shadow-lg rounded-md" onClick={(e)=>{signUp(e); navigate("/login/dashboard/watchlist")}}>
+                <button
+                  className="bg-shade-lightblue text-gray-100 font-semibold p-2 shadow-lg rounded-md"
+                  onClick={(e) => {
+                    signUp(e);
+                    navigate("/login/dashboard/watchlist");
+                  }}
+                >
                   Register
                 </button>
               </div>

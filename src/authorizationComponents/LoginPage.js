@@ -8,18 +8,14 @@ import DashboardPage from "../dashboard/DashboardPage";
 function LoginPage({
   trades,
   setTrades,
-  portfolio,
   stonk,
   setStonk,
   setSeries,
   series,
   details,
   setDetails,
-  transactions,
   watchlist,
-  setWatchlist,
-  setPortfolio,
-  setTransactions,
+  setWatchlist
 }) {
   const navtoSignup = useNavigate();
   const navtoresetpass = useNavigate();
@@ -116,8 +112,6 @@ function LoginPage({
             path="/dashboard/*"
             element={
               <DashboardPage
-                portfolio={portfolio}
-                setPortfolio={setPortfolio}
                 trades={trades}
                 setTrades={setTrades}
                 stonk={stonk}
@@ -126,8 +120,6 @@ function LoginPage({
                 setSeries={setSeries}
                 details={details}
                 setDetails={setDetails}
-                transactions={transactions}
-                setTransactions={setTransactions}
                 watchlist={watchlist}
                 setWatchlist={setWatchlist}
               />

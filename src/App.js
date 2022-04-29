@@ -8,14 +8,14 @@ import ResetPass from "./authorizationComponents/ResetPass";
 import DashboardPage from "./dashboard/DashboardPage";
 
 function App() {
-  const [portfolio, setPortfolio] = useState({
+  /*const [portfolio, setPortfolio] = useState({
     cash: 10000,
     stocks: [],
   });
   const [transactions, setTransactions] = useState({
     stocksBought: [],
     stocksSold: [],
-  });
+  });*/
   const [stonk, setStonk] = useState({
     symbol: "-",
     regularMarketPrice: "-.--",
@@ -40,15 +40,13 @@ function App() {
           <Route
             path="/"
             element={
-              <LandingPage portfolio={portfolio} transactions={transactions} />
+              <LandingPage  />
             }
           />
           <Route
             path="/login/*"
             element={
               <LoginPage
-                portfolio={portfolio}
-                setPortfolio={setPortfolio}
                 trades={trades}
                 setTrades={setTrades}
                 series={series}
@@ -57,8 +55,6 @@ function App() {
                 setSeries={setSeries}
                 details={details}
                 setDetails={setDetails}
-                transactions={transactions}
-                setTransactions={setTransactions}
                 watchlist={watchlist}
                 setWatchlist={setWatchlist}
               />
@@ -68,8 +64,6 @@ function App() {
             path="/dashboard/*"
             element={
               <DashboardPage
-                portfolio={portfolio}
-                setPortfolio={setPortfolio}
                 trades={trades}
                 setTrades={setTrades}
                 stonk={stonk}
@@ -78,8 +72,6 @@ function App() {
                 setSeries={setSeries}
                 details={details}
                 setDetails={setDetails}
-                transactions={transactions}
-                setTransactions={setTransactions}
                 watchlist={watchlist}
                 setWatchlist={setWatchlist}
               />
@@ -88,7 +80,7 @@ function App() {
           <Route
             path="/signup"
             element={
-              <SignupPage portfolio={portfolio} transactions={transactions} />
+              <SignupPage  />
             }
           />
           <Route path="/resetpass" element={<ResetPass />} />

@@ -11,8 +11,6 @@ import { auth, db, useAuth } from "../firebase";
 import { onAuthStateChanged } from "@firebase/auth";
 
 function DashboardPage({
-  //user,
-  portfolio,
   trades,
   setTrades,
   series,
@@ -23,15 +21,11 @@ function DashboardPage({
   setDetails,
   watchlist,
   setWatchlist,
-  setPortfolio,
-  transactions,
-  setTransactions,
 }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const currentUser = useAuth();
   const [dbPortfolio, setDbPortfolio] = useState({});
   const [dbTnxs, setDbTnxs] = useState({});
-  //const userId = user?.id;
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, async (user) => {
@@ -84,6 +78,10 @@ function DashboardPage({
           path="watchlist"
           element={
             <MainContent
+              dbPortfolio={dbPortfolio}
+              dbTnxs={dbTnxs}
+              setDbPortfolio={setDbPortfolio}
+              setDbTnxs={setDbTnxs}
               currentUser={currentUser}
               isSidebarOpen={isSidebarOpen}
               setWatchlist={setWatchlist}
@@ -92,10 +90,6 @@ function DashboardPage({
               series={series}
               setTrades={setTrades}
               stonk={stonk}
-              portfolio={portfolio}
-              setPortfolio={setPortfolio}
-              setTransactions={setTransactions}
-              transactions={transactions}
               trades={trades}
             />
           }
@@ -106,7 +100,6 @@ function DashboardPage({
           element={
             <PortfolioSection
               dbPortfolio={dbPortfolio}
-              portfolio={portfolio}
               isSidebarOpen={isSidebarOpen}
             />
           }
