@@ -4,8 +4,8 @@ import { useState } from "react";
 function TransactionList({ dbTnxs }) {
   const listBoughtStocks = dbTnxs.stocksBought;
   const listSoldStocks = dbTnxs.stocksSold;
-  console.log(listBoughtStocks);
-  console.log(listSoldStocks)
+  //console.log(listBoughtStocks);
+  //console.log(listSoldStocks)
 
   const [isOpenBought, setIsOpenBought] = useState(true);
   const [isOpenSold, setIsOpenSold] = useState(false);

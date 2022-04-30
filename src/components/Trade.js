@@ -97,6 +97,7 @@ function Trade({
             padding: "20px",
           },
         });
+        //newPortfolio.cash = dbPortfolio.cash;
         console.log("you dont have enough funds");
         return newStockArr;
       }
@@ -118,7 +119,7 @@ function Trade({
         "transactions.stocksBought": tnxs,
       });
     };
-    console.log(currentUser.uid);
+    //console.log(currentUser.uid);
     updateFirestore(currentUser);
 
     noSharesToBuy.current.value = "";

@@ -8,14 +8,6 @@ import ResetPass from "./authorizationComponents/ResetPass";
 import DashboardPage from "./dashboard/DashboardPage";
 
 function App() {
-  /*const [portfolio, setPortfolio] = useState({
-    cash: 10000,
-    stocks: [],
-  });
-  const [transactions, setTransactions] = useState({
-    stocksBought: [],
-    stocksSold: [],
-  });*/
   const [stonk, setStonk] = useState({
     symbol: "-",
     regularMarketPrice: "-.--",
@@ -37,12 +29,7 @@ function App() {
     <div className="">
       <Router>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <LandingPage  />
-            }
-          />
+          <Route path="/" element={<LandingPage />} />
           <Route
             path="/login/*"
             element={
@@ -77,12 +64,7 @@ function App() {
               />
             }
           />
-          <Route
-            path="/signup"
-            element={
-              <SignupPage  />
-            }
-          />
+          <Route path="/signup" element={<SignupPage />} />
           <Route path="/resetpass" element={<ResetPass />} />
         </Routes>
       </Router>

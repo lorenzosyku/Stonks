@@ -6,7 +6,7 @@ import PortfolioSection from "./PortfolioSection";
 import TransactionsSection from "./TransactionsSection";
 import Search from "../components/Search";
 import SideBarBtn from "./SideBarBtn";
-import { collection, doc, getDoc, onSnapshot } from "@firebase/firestore";
+import { doc, onSnapshot } from "@firebase/firestore";
 import { auth, db, useAuth } from "../firebase";
 import { onAuthStateChanged } from "@firebase/auth";
 

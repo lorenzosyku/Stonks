@@ -8,7 +8,7 @@ function PortfolioGraph({ setTrades, trades, dbPortfolio }) {
   const valueOfEachInvesment = arr?.map(
     (stock) => stock.shares * stock.currentPrice
   );
-  console.log(valueOfEachInvesment);
+  //console.log(valueOfEachInvesment);
 
   let labelsArray = ["CASH"];
   let seriesArray = [dbPortfolio.cash];

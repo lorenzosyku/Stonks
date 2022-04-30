@@ -10,7 +10,7 @@ function LandingPage() {
     <div className="min-h-screen ">
       <Header />
       <OnlineSupport />
-      <Banner  />
+      <Banner />
       <LandingSecTwo />
       <LandingSecOne />
       <Footer />
