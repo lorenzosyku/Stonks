@@ -38,7 +38,7 @@ function Search({
       const timeZone = stock.meta.timezone;
       const quotes = stock.indicators.quote[0];
       const exchangeTimeZone = stock.meta.exchangeTimezoneName;
-      const arrPrices = stock.timestamp.map((timestamp, index) => ({
+      const arrPrices = stock?.timestamp?.map((timestamp, index) => ({
         x: new Date(timestamp * 1000),
         y: [
           quotes.open[index],
