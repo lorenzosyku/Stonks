@@ -2,6 +2,7 @@ import { doc, updateDoc } from "@firebase/firestore";
 import { useRef, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { db } from "../firebase";
+import PortfolioGraph from "./PortfolioGraph";
 
 function Trade({
   stonk,
@@ -104,23 +105,10 @@ function Trade({
     };
 
     const list = [...dbPortfolio.stocks];
-    let tnxs = newTrasactions.stocksBought;
     const newStockList = filterStocks(list);
-    let newCash = dbPortfolio.cash - amountToInvest;
     newPortfolio.stocks = newStockList;
     setDbPortfolio(newPortfolio);
-    //console.log(portfolio)
-
-    const updateFirestore = async (user) => {
-      const docRef = doc(db, "users", user.uid);
-      await updateDoc(docRef, {
-        "portfolio.cash": newCash,
-        "portfolio.stocks": newStockList,
-        "transactions.stocksBought": tnxs,
-      });
-    };
-    //console.log(currentUser.uid);
-    updateFirestore(currentUser);
+    //console.log(dbPortfolio)
 
     noSharesToBuy.current.value = "";
   };
@@ -211,23 +199,25 @@ function Trade({
     noZeroShares(newStockList);
 
     newPortfolio.stocks = newStockList;
-    let tnxs = newTrasactions.stocksSold;
-    let newCash = dbPortfolio.cash + amountToSell;
     setDbPortfolio(newPortfolio);
-
-    const updateFirestore = async (user) => {
-      const docRef = doc(db, "users", user.uid);
-      await updateDoc(docRef, {
-        "portfolio.cash": newCash,
-        "portfolio.stocks": newStockList,
-        "transactions.stocksSold": tnxs,
-      });
-    };
-
-    updateFirestore(currentUser);
+    //console.log(dbPortfolio)
 
     noSharesToSell.current.value = "";
   };
+
+  const updateFirestore = async (user) => {
+    const docRef = doc(db, "users", user.uid);
+    await updateDoc(docRef, {
+      "portfolio.cash": dbPortfolio.cash,
+      "portfolio.stocks": dbPortfolio.stocks,
+      "transactions.stocksBought": dbTnxs?.stocksBought,
+      "transactions.stocksSold": dbTnxs?.stocksSold,
+    });
+  };
+
+  updateFirestore(currentUser);
+
+  console.log(dbPortfolio);
 
   /*const arr = [...dbPortfolio.stocks];
   const arrOfStocks = arr.map((stock) => stock.stockName);
