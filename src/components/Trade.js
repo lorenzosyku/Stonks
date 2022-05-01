@@ -219,18 +219,18 @@ function Trade({
 
   console.log(dbPortfolio);
 
-  /*const arr = [...dbPortfolio.stocks];
-  const arrOfStocks = arr.map((stock) => stock.stockName);
+  const arr = dbPortfolio.stocks;
+  const arrOfStocks = arr?.map((stock) => stock.stockName);
 
   const fetchStockPortfolioPrices = async (symbol) => {
     const response = await fetch(
       `https://yahoo-finance-api.vercel.app/${symbol}`
     );
     return response.json();
-  };*/
+  };
 
   //let timeoutId;
-  /*const getLatestPrice = async () => {
+  const getLatestPrice = async () => {
     try {
       for (let i = 0; i < arrOfStocks.length; i++) {
         const data = await fetchStockPortfolioPrices(arrOfStocks[i]);
@@ -241,16 +241,14 @@ function Trade({
         console.log(arr[i].stockName);
         console.log(price);
         arr[i].currentPrice = price;
-        portfolio.stocks = arr;
-        console.log(portfolio);
+        dbPortfolio.stocks = arr;
+        console.log(dbPortfolio);
       }
     } catch (error) {
       console.log(error);
     }
     //timeoutId = setTimeout(getLatestPrice, 24000 * 2);
-  };*/
-  //console.log(portfolio)
-  //console.log(transactions)
+  };
 
   return (
     <div className="flex justify-between items-center border-2 p-5">
@@ -282,7 +280,7 @@ function Trade({
         >
           sell
         </button>
-        {/*<button onClick={getLatestPrice}>updateToLatestPrices</button>*/}
+        <button onClick={getLatestPrice}>updateToLatestPrices</button>
       </div>
     </div>
   );
