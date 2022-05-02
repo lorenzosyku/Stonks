@@ -1,34 +1,34 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TeztnetLogo from "../LandingPageComponents/TeztnetLogo";
-import {
-  createUserWithEmailAndPassword,
-  auth,
-  db,
-} from "../firebase";
+import { createUserWithEmailAndPassword, auth, db, useAuth } from "../firebase";
 import { doc, setDoc } from "@firebase/firestore";
 
-function SignupPage({portfolio, transactions}) {
+function SignupPage() {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const currentUser = useAuth();
 
   const signUp = (e) => {
     e.preventDefault();
+    if (currentUser) {
+      signOut(auth);
+    }
     if (password === confirmPassword) {
       createUserWithEmailAndPassword(auth, email, password)
         .then((user) => {
-          addToUsers(user.user)
-          console.log(user);
+          addToUsers(user.user);
+          console.log(user.user);
         })
         .catch((err) => {
           console.log(err);
         });
     } else {
-      alert('password not matching')
+      alert("password not matching");
     }
   };
 
@@ -44,8 +44,8 @@ function SignupPage({portfolio, transactions}) {
       transactions: {
         stocksBought: [],
         stocksSold: [],
-      }
-    })
+      },
+    });
   };
 
   return (
