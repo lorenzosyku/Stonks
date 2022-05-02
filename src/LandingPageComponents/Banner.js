@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword, auth, db } from "../firebase";
+import { createUserWithEmailAndPassword, auth, db, useAuth, signOut } from "../firebase";
 import { doc, setDoc } from "firebase/firestore";
 import { useState } from "react";
 
@@ -10,9 +10,13 @@ function Banner() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const currentUser = useAuth();
 
   const signUp = (e) => {
     e.preventDefault();
+    if(currentUser){
+      signOut(auth)
+    }
     if (password === confirmPassword) {
       createUserWithEmailAndPassword(auth, email, password)
         .then((user) => {
