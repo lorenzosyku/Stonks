@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TeztnetLogo from "../LandingPageComponents/TeztnetLogo";
-import { createUserWithEmailAndPassword, auth, db, useAuth } from "../firebase";
+import { createUserWithEmailAndPassword, auth, db, useAuth, signOut } from "../firebase";
 import { doc, setDoc } from "@firebase/firestore";
 
 function SignupPage() {
