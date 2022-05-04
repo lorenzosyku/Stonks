@@ -2,7 +2,6 @@ import { doc, updateDoc } from "@firebase/firestore";
 import { useRef, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { db } from "../firebase";
-import PortfolioGraph from "./PortfolioGraph";
 
 function Trade({
   stonk,
@@ -98,7 +97,6 @@ function Trade({
             padding: "20px",
           },
         });
-        //newPortfolio.cash = dbPortfolio.cash;
         console.log("you dont have enough funds");
         return newStockArr;
       }

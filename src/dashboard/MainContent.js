@@ -11,7 +11,6 @@ function MainContent({
   setWatchlist,
   details,
   series,
-  //------,
   stonk,
   dbPortfolio,
   dbTnxs,
