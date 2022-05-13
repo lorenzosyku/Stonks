@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 import TeztnetLogo from "../LandingPageComponents/TeztnetLogo";
 import { signInWithEmailAndPassword, auth, useAuth } from "../firebase";
-import { useRef } from "react";
 import DashboardPage from "../dashboard/DashboardPage";
 
 function LoginPage({
@@ -12,14 +11,13 @@ function LoginPage({
   setStonk,
   setSeries,
   series,
-  details,
-  setDetails,
   watchlist,
   setWatchlist
 }) {
   const navtoSignup = useNavigate();
   const navtoresetpass = useNavigate();
-  const navtodashboard = useNavigate()
+  const navtodashboard = useNavigate();
+  const [details, setDetails] = useState({});
 
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -40,8 +38,6 @@ function LoginPage({
       .catch((err) => {
         console.log(err);
       });
-    //console.log(emailRef.current.value)
-    //console.log(passwordRef.current.value)
   };
 
   return (

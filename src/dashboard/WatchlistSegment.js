@@ -1,25 +1,36 @@
-import { useEffect } from "react";
-import { collection, onSnapshot, doc, deleteDoc } from "firebase/firestore";
+//import { useEffect } from "react";
+import { collection, onSnapshot, doc, deleteDoc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
 
-function WatchlistSegment({ watchlist, setWatchlist, isSidebarOpen }) {
-  useEffect(() => {
-    const watchlistRef = collection(db, "watchlist");
+function WatchlistSegment({ watchlist, setWatchlist, isSidebarOpen, currentUser }) {
+  // useEffect(() => {
+  //   const watchlistRef = doc(db, "users", user.uid);
 
-    const getWatchlist = onSnapshot(watchlistRef, (snapshot) => {
-      let result = [];
-      snapshot.docs.map((doc) => {
-        result.push({ ...doc.data(), id: doc.id });
-      });
-      setWatchlist(result);
-    });
-    return () => getWatchlist();
-  }, []);
+  //   const getWatchlist = onSnapshot(watchlistRef, (snapshot) => {
+  //     let result = [];
+  //     snapshot.docs.map((doc) => {
+  //       result.push({ ...doc.data(), id: doc.id });
+  //     });
+  //     setWatchlist(result);
+  //   });
+  //   return () => getWatchlist(currentUser);
+  // }, []);
 
-  const deleteStock = async (id) => {
-    const watchlistDoc = doc(db, "watchlist", id);
-    await deleteDoc(watchlistDoc);
+  const deleteStock = (id) => {
+    const updatedWatchlist = [...watchlist].filter((item) => item.id !== id);
+    setWatchlist(updatedWatchlist)
   };
+
+  const updateWatchList = async (user) => {
+    const docRef = doc(db, "users", user.uid);
+    let res = watchlist
+    await updateDoc(docRef, {
+      "watchList": res
+    });
+
+  };
+
+  updateWatchList(currentUser);
 
   return (
     <div

@@ -27,6 +27,7 @@ function MainContent({
             watchlist={watchlist}
             setWatchlist={setWatchlist}
             isSidebarOpen={isSidebarOpen}
+            currentUser={currentUser}
           />
         </div>
         <div

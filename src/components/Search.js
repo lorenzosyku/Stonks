@@ -6,8 +6,8 @@ function Search({
   setStonk,
   setSeries,
   setDetails,
-  setIsSidebarOpen,
-  isSidebarOpen,
+  watchlist,
+  setWatchlist
 }) {
   const searchValue = useRef(null);
   const [readableTime, setReadableTime] = useState("-");
@@ -81,9 +81,12 @@ function Search({
     e.preventDefault();
     if (searchValue.current.value === "") return;
 
-    await addDoc(collection(db, "watchlist"), {
+    const newItem = {
+      id: new Date().getTime(),
       symbol: searchValue.current.value,
-    });
+    }  
+
+    setWatchlist([newItem, ...watchlist]);
   };
 
   return (

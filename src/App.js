@@ -22,7 +22,7 @@ function App() {
       data: [],
     },
   ]);
-  const [details, setDetails] = useState({});
+  
   const [watchlist, setWatchlist] = useState([]);
 
   return (
@@ -40,8 +40,6 @@ function App() {
                 stonk={stonk}
                 setStonk={setStonk}
                 setSeries={setSeries}
-                details={details}
-                setDetails={setDetails}
                 watchlist={watchlist}
                 setWatchlist={setWatchlist}
               />
@@ -57,8 +55,6 @@ function App() {
                 setStonk={setStonk}
                 series={series}
                 setSeries={setSeries}
-                details={details}
-                setDetails={setDetails}
                 watchlist={watchlist}
                 setWatchlist={setWatchlist}
               />
