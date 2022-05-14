@@ -22,11 +22,11 @@ function App() {
       data: [],
     },
   ]);
-  
+
   const [watchlist, setWatchlist] = useState([]);
 
   return (
-    <div className="">
+    <div>
       <Router>
         <Routes>
           <Route path="/" element={<LandingPage />} />

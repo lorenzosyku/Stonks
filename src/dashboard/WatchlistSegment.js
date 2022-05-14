@@ -1,10 +1,24 @@
 //import { useEffect } from "react";
-import { collection, onSnapshot, doc, deleteDoc, updateDoc } from "firebase/firestore";
+import {
+  collection,
+  onSnapshot,
+  doc,
+  deleteDoc,
+  updateDoc,
+  arrayUnion,
+} from "firebase/firestore";
+import { useEffect } from "react";
 import { db } from "../firebase";
 
-function WatchlistSegment({ watchlist, setWatchlist, isSidebarOpen, currentUser }) {
+function WatchlistSegment({
+  watchlist,
+  setWatchlist,
+  isSidebarOpen,
+  currentUser,
+}) {
   // useEffect(() => {
-  //   const watchlistRef = doc(db, "users", user.uid);
+  //   const watchlistRef = doc(db, "users", currentUser.uid);
+  //   console.log(watchlistRef)
 
   //   const getWatchlist = onSnapshot(watchlistRef, (snapshot) => {
   //     let result = [];
@@ -13,24 +27,23 @@ function WatchlistSegment({ watchlist, setWatchlist, isSidebarOpen, currentUser 
   //     });
   //     setWatchlist(result);
   //   });
-  //   return () => getWatchlist(currentUser);
+  //   return () => getWatchlist();
   // }, []);
 
-  const deleteStock = (id) => {
-    const updatedWatchlist = [...watchlist].filter((item) => item.id !== id);
-    setWatchlist(updatedWatchlist)
-  };
+  // const deleteStock = (id) => {
+  //   const updatedWatchlist = [...watchlist].filter((item) => item.id !== id);
+  //   setWatchlist(updatedWatchlist);
+  // };
 
-  const updateWatchList = async (user) => {
-    const docRef = doc(db, "users", user.uid);
-    let res = watchlist
-    await updateDoc(docRef, {
-      "watchList": res
-    });
+  // const updateWatchList = async (user) => {
+  //   const docRef = doc(db, "users", user.uid);
+  //   let res = watchlist;
+  //   await updateDoc(docRef, {
+  //     watchList: res,
+  //   });
+  // };
 
-  };
-
-  updateWatchList(currentUser);
+  // updateWatchList(currentUser);
 
   return (
     <div
@@ -53,7 +66,7 @@ function WatchlistSegment({ watchlist, setWatchlist, isSidebarOpen, currentUser 
                 {/*TODO:need a function that when you click gives you the same result as search function and as a default has displaying the last element of the watchlist array*/}
                 <button
                   className="p-1 mx-2"
-                  onClick={() => deleteStock(stock.id)}
+                  //onClick={() => deleteStock(stock.id)}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
