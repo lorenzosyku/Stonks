@@ -22,7 +22,8 @@ function App() {
       data: [],
     },
   ]);
-
+  
+  const [details, setDetails] = useState({});
   const [watchlist, setWatchlist] = useState([]);
 
   return (
@@ -42,6 +43,8 @@ function App() {
                 setSeries={setSeries}
                 watchlist={watchlist}
                 setWatchlist={setWatchlist}
+                details={details}
+                setDetails={setDetails}
               />
             }
           />
@@ -57,6 +60,8 @@ function App() {
                 setSeries={setSeries}
                 watchlist={watchlist}
                 setWatchlist={setWatchlist}
+                details={details}
+                setDetails={setDetails}
               />
             }
           />

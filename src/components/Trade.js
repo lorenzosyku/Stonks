@@ -239,8 +239,8 @@ function Trade({
         console.log(arr[i].stockName);
         console.log(price);
         arr[i].currentPrice = price;
-        dbPortfolio.stocks = arr;
-        console.log(dbPortfolio);
+        console.log(arr);
+
       }
     } catch (error) {
       console.log(error);

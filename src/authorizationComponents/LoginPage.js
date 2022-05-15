@@ -12,12 +12,13 @@ function LoginPage({
   setSeries,
   series,
   watchlist,
-  setWatchlist
+  setWatchlist,
+  details,
+  setDetails,
 }) {
   const navtoSignup = useNavigate();
   const navtoresetpass = useNavigate();
   const navtodashboard = useNavigate();
-  const [details, setDetails] = useState({});
 
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -33,7 +34,7 @@ function LoginPage({
     )
       .then((user) => {
         console.log(user);
-        navtodashboard("dashboard/watchlist")
+        navtodashboard("dashboard/watchlist");
       })
       .catch((err) => {
         console.log(err);
