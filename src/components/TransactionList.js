@@ -34,11 +34,11 @@ function TransactionList({ dbTnxs }) {
             Sold
           </button>
         )}
-        <div className="">
+        {/* {<div className="">
           <button className="py-3 px-6 text-xs font-medium tracking-wider bg-gray-700 rounded-md text-left text-gray-700 uppercase dark:text-gray-400">
             Clear All
           </button>
-        </div>
+        </div>} */}
       </div>
 
       {isOpenBought ? (

@@ -245,7 +245,6 @@ function Trade({
     } catch (error) {
       console.log(error);
     }
-    //timeoutId = setTimeout(getLatestPrice, 24000 * 2);
   };
 
   return (
