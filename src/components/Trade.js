@@ -240,7 +240,11 @@ function Trade({
         console.log(price);
         arr[i].currentPrice = price;
         console.log(arr);
-
+        // for(const val in dbPortfolio){
+        //   console.log(dbPortfolio[val])
+        // }
+        const newVal = arr[i].shares * price;
+        console.log(arr[i].shares);
       }
     } catch (error) {
       console.log(error);
