@@ -226,7 +226,7 @@ function Trade({
     );
     return response.json();
   };
-
+  let tot = 0;
   //let timeoutId;
   const getLatestPrice = async () => {
     try {
@@ -237,19 +237,23 @@ function Trade({
         const price = stock.meta.regularMarketPrice;
 
         console.log(arr[i].stockName);
-        console.log(price);
+        //console.log(price);
         arr[i].currentPrice = price;
-        console.log(arr);
-        // for(const val in dbPortfolio){
-        //   console.log(dbPortfolio[val])
-        // }
-        const newVal = arr[i].shares * price;
-        console.log(arr[i].shares);
+
+        const newVal = arr[i].shares * arr[i].currentPrice;
+        //console.log(arr[i].shares);
+        console.log(newVal)
+        tot += newVal;
+        console.log(tot);
       }
     } catch (error) {
       console.log(error);
     }
+    return tot
   };
+
+   tot += dbPortfolio?.cash;
+  console.log(tot);
 
   return (
     <div className="flex justify-between items-center border-2 p-5">

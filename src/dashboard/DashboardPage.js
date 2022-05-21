@@ -43,8 +43,6 @@ function DashboardPage({
     return () => unsub();
   }, []);
 
-  //console.log(dbPortfolio);
-  //console.log(dbTnxs);
 
   return (
     <div className="min-h-screen bg-gray-200">
