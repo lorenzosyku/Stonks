@@ -236,15 +236,15 @@ function Trade({
         const stock = data.chart.result[0];
         const price = stock.meta.regularMarketPrice;
 
-        console.log(arr[i].stockName);
+        //console.log(arr[i].stockName);
         //console.log(price);
         arr[i].currentPrice = price;
 
         const newVal = arr[i].shares * arr[i].currentPrice;
         //console.log(arr[i].shares);
-        console.log(newVal)
+        //console.log(newVal)
         tot += newVal;
-        console.log(tot);
+        //console.log(tot);
       }
     } catch (error) {
       console.log(error);
