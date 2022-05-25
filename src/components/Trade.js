@@ -15,6 +15,7 @@ function Trade({
 }) {
   const noSharesToBuy = useRef(null);
   const noSharesToSell = useRef(null);
+  const [totPortfolio, setTotPortfolio] = useState();
 
   const buyShares = () => {
     const shares = parseInt(noSharesToBuy.current.value);
@@ -227,7 +228,7 @@ function Trade({
     return response.json();
   };
   let tot = 0;
-  //let timeoutId;
+
   const getLatestPrice = async () => {
     try {
       for (let i = 0; i < arrOfStocks.length; i++) {
@@ -236,25 +237,19 @@ function Trade({
         const stock = data.chart.result[0];
         const price = stock.meta.regularMarketPrice;
 
-        //console.log(arr[i].stockName);
-        //console.log(price);
         arr[i].currentPrice = price;
 
         const newVal = arr[i].shares * arr[i].currentPrice;
-        //console.log(arr[i].shares);
-        //console.log(newVal)
         tot += newVal;
-        //console.log(tot);
       }
+      tot += dbPortfolio?.cash;
+      setTotPortfolio(tot)
     } catch (error) {
       console.log(error);
     }
-    return tot
   };
 
-   tot += dbPortfolio?.cash;
-  console.log(tot);
-
+  console.log(totPortfolio)
   return (
     <div className="flex justify-between items-center border-2 p-5">
       <Toaster position="bottom-center" />

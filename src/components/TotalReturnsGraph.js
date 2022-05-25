@@ -2,7 +2,7 @@ import ReactApexChart from "react-apexcharts";
 import {useState, useEffect} from 'react';
 import moment from 'moment';
 
-function TotalReturnsGraph({ portfolio }) {
+function TotalReturnsGraph({ dbPortfolio }) {
 
   const [totalPortfolioValue, setTotalPortfolioValue] = useState([]);
   const [time, setTime] = useState([]);
@@ -16,11 +16,11 @@ function TotalReturnsGraph({ portfolio }) {
   let timeoutId;
   const newDataPoints = () => {
 
-    const arr = [...portfolio.stocks];
+    const arr = [...dbPortfolio.stocks];
     const valueOfEachInvesment = arr.map(
       (stock) => stock.shares * stock.currentPrice
     );
-    const cash = [portfolio.cash];
+    const cash = [dbPortfolio.cash];
     const total = cash.concat(valueOfEachInvesment);
     const stockListValue = total.reduce((acc, val) => acc + val);
     portfolioWorth.push(stockListValue.toFixed(2));
@@ -104,7 +104,7 @@ function TotalReturnsGraph({ portfolio }) {
   };
 
   return (
-    <div className="px-5 bg-slate-600">
+    <div className="px-5 ">
       <button onClick={newDataPoints}>total</button>
       <ReactApexChart
         options={chart.options}
