@@ -23,7 +23,7 @@ function TotalReturnsGraph({ dbPortfolio, totPortfolio, setTotPortfolio }) {
   const chart = {
     series: [
       {
-        name: "Stock Portfolio",
+        name: "Stock Portfolio + Cash",
         data: [10000,9822,9545,9389],
       },
     ],
@@ -41,9 +41,6 @@ function TotalReturnsGraph({ dbPortfolio, totPortfolio, setTotPortfolio }) {
       stroke: {
         curve: "straight",
       },
-      title: {
-        align: "left",
-      },
       grid: {
         row: {
           colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
@@ -54,7 +51,7 @@ function TotalReturnsGraph({ dbPortfolio, totPortfolio, setTotPortfolio }) {
   };
 
   return (
-    <div className="px-5 py-5">
+    <div className="px-5 ">
       {/* <button onClick={newDataPoints}>total</button> */}
       <ReactApexChart
         options={chart.options}
