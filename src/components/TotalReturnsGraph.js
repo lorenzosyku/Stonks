@@ -1,9 +1,43 @@
 import ReactApexChart from "react-apexcharts";
-//mport { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 //import moment from "moment";
 
 function TotalReturnsGraph({ dbPortfolio, totPortfolio, setTotPortfolio }) {
  
+  const arr = dbPortfolio.stocks;
+  const arrOfStocks = arr?.map((stock) => stock.stockName);
+
+  const fetchStockPortfolioPrices = async (symbol) => {
+    const response = await fetch(
+      `https://yahoo-finance-api.vercel.app/${symbol}`
+    );
+    return response.json();
+  };
+  let tot = 0;
+
+  const getLatestPrice = async () => {
+    try {
+      for (let i = 0; i < arrOfStocks.length; i++) {
+        const data = await fetchStockPortfolioPrices(arrOfStocks[i]);
+
+        const stock = data.chart.result[0];
+        const price = stock.meta.regularMarketPrice;
+
+        arr[i].currentPrice = price;
+
+        const newVal = arr[i].shares * arr[i].currentPrice;
+        tot += newVal;
+      }
+      tot += dbPortfolio?.cash;
+      setTotPortfolio(tot)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  console.log(totPortfolio)
+
+
 
 
   // useEffect(() => {
@@ -52,7 +86,7 @@ function TotalReturnsGraph({ dbPortfolio, totPortfolio, setTotPortfolio }) {
 
   return (
     <div className="px-5 ">
-      {/* <button onClick={newDataPoints}>total</button> */}
+      <button onClick={getLatestPrice}>total</button>
       <ReactApexChart
         options={chart.options}
         series={chart.series}

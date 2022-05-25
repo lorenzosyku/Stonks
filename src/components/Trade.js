@@ -1,5 +1,5 @@
 import { doc, updateDoc } from "@firebase/firestore";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { db } from "../firebase";
 
@@ -10,10 +10,6 @@ function Trade({
   dbTnxs,
   setDbPortfolio,
   setDbTnxs,
-  trades,
-  setTrades,
-  totPortfolio,
-  setTotPortfolio
 }) {
   const noSharesToBuy = useRef(null);
   const noSharesToSell = useRef(null);
@@ -219,38 +215,7 @@ function Trade({
 
   console.log(dbPortfolio);
 
-  const arr = dbPortfolio.stocks;
-  const arrOfStocks = arr?.map((stock) => stock.stockName);
-
-  const fetchStockPortfolioPrices = async (symbol) => {
-    const response = await fetch(
-      `https://yahoo-finance-api.vercel.app/${symbol}`
-    );
-    return response.json();
-  };
-  let tot = 0;
-
-  const getLatestPrice = async () => {
-    try {
-      for (let i = 0; i < arrOfStocks.length; i++) {
-        const data = await fetchStockPortfolioPrices(arrOfStocks[i]);
-
-        const stock = data.chart.result[0];
-        const price = stock.meta.regularMarketPrice;
-
-        arr[i].currentPrice = price;
-
-        const newVal = arr[i].shares * arr[i].currentPrice;
-        tot += newVal;
-      }
-      tot += dbPortfolio?.cash;
-      setTotPortfolio(tot)
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  console.log(totPortfolio)
+  
   return (
     <div className="flex justify-between items-center border-2 p-5">
       <Toaster position="bottom-center" />
@@ -281,7 +246,6 @@ function Trade({
         >
           sell
         </button>
-        <button onClick={getLatestPrice}>updateToLatestPrices</button>
       </div>
     </div>
   );
