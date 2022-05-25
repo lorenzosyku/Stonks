@@ -18,6 +18,8 @@ function MainContent({
   setDbTnxs,
   trades,
   setTrades,
+  totPortfolio,
+  setTotPortfolio
 }) {
   return (
     <div>
@@ -46,6 +48,8 @@ function MainContent({
               stonk={stonk}
               trades={trades}
               setTrades={setTrades}
+              totPortfolio={totPortfolio}
+              setTotPortfolio={setTotPortfolio}
             />
           </div>
           <div className="bg-gray-800 shadow-md md:w-2/5 lg:w-2/6 rounded-md border dark:border-gray-700">

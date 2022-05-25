@@ -1,66 +1,30 @@
 import ReactApexChart from "react-apexcharts";
-import {useState, useEffect} from 'react';
-import moment from 'moment';
+//mport { useState, useEffect } from "react";
+//import moment from "moment";
 
-function TotalReturnsGraph({ dbPortfolio }) {
+function TotalReturnsGraph({ dbPortfolio, totPortfolio, setTotPortfolio }) {
+ 
 
-  const [totalPortfolioValue, setTotalPortfolioValue] = useState([]);
-  const [time, setTime] = useState([]);
 
-  let arrData = ['10000'];
-  let portfolioWorth = arrData;
-  //
-  let start = moment(new Date()).format('L')
-  let timestamps = [start];
+  // useEffect(() => {
+  //   const temp = localStorage.getItem("totalPortfolioValueAllocation");
+  //   if (temp) {
+  //     setTotalPortfolioValue(JSON.parse(temp));
+  //   }
+  // }, []);
 
-  let timeoutId;
-  const newDataPoints = () => {
-
-    const arr = [...dbPortfolio.stocks];
-    const valueOfEachInvesment = arr.map(
-      (stock) => stock.shares * stock.currentPrice
-    );
-    const cash = [dbPortfolio.cash];
-    const total = cash.concat(valueOfEachInvesment);
-    const stockListValue = total.reduce((acc, val) => acc + val);
-    portfolioWorth.push(stockListValue.toFixed(2));
-
-    setTotalPortfolioValue(portfolioWorth);
-    //timeoutId = setTimeout(newDataPoints, 5000 * 2);
-    let d = moment(new Date()).format('L');
-    timestamps.push(d);
-    setTime(timestamps);
-    //console.log(timestamps)
-  };
-
-  console.log(totalPortfolioValue)
-  console.log(timestamps)
-
-  /*useEffect(() => {
-    newDataPoints()
-
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, [])*/
-  
-  useEffect(() => {
-    const temp = localStorage.getItem("totalPortfolioValueAllocation");
-    if (temp) {
-      setTotalPortfolioValue(JSON.parse(temp));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("totalPortfolioValueAllocation", JSON.stringify(totalPortfolioValue));
-  });
-  
+  // useEffect(() => {
+  //   localStorage.setItem(
+  //     "totalPortfolioValueAllocation",
+  //     JSON.stringify(totalPortfolioValue)
+  //   );
+  // });
 
   const chart = {
     series: [
       {
-        name: "Desktops",
-        data: totalPortfolioValue,
+        name: "Stock Portfolio",
+        data: [10000,9822,9545,9389],
       },
     ],
     options: {
@@ -78,7 +42,6 @@ function TotalReturnsGraph({ dbPortfolio }) {
         curve: "straight",
       },
       title: {
-        text: "Portfolio Value",
         align: "left",
       },
       grid: {
@@ -87,25 +50,12 @@ function TotalReturnsGraph({ dbPortfolio }) {
           opacity: 0.5,
         },
       },
-      xaxis: {
-        categories: [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-        ],
-      },
     },
   };
 
   return (
-    <div className="px-5 ">
-      <button onClick={newDataPoints}>total</button>
+    <div className="px-5 py-5">
+      {/* <button onClick={newDataPoints}>total</button> */}
       <ReactApexChart
         options={chart.options}
         series={chart.series}

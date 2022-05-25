@@ -12,10 +12,11 @@ function Trade({
   setDbTnxs,
   trades,
   setTrades,
+  totPortfolio,
+  setTotPortfolio
 }) {
   const noSharesToBuy = useRef(null);
   const noSharesToSell = useRef(null);
-  const [totPortfolio, setTotPortfolio] = useState();
 
   const buyShares = () => {
     const shares = parseInt(noSharesToBuy.current.value);

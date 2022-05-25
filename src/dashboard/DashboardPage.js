@@ -26,6 +26,7 @@ function DashboardPage({
   const currentUser = useAuth();
   const [dbPortfolio, setDbPortfolio] = useState({});
   const [dbTnxs, setDbTnxs] = useState({});
+  const [totPortfolio, setTotPortfolio] = useState();
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, async (user) => {
@@ -89,6 +90,8 @@ function DashboardPage({
               setTrades={setTrades}
               stonk={stonk}
               trades={trades}
+              totPortfolio={totPortfolio}
+              setTotPortfolio={setTotPortfolio}
             />
           }
         />
@@ -99,6 +102,8 @@ function DashboardPage({
             <PortfolioSection
               dbPortfolio={dbPortfolio}
               isSidebarOpen={isSidebarOpen}
+              totPortfolio={totPortfolio}
+              setTotPortfolio={setTotPortfolio}
             />
           }
         />
