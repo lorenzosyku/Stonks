@@ -81,13 +81,14 @@ function Search({
   const addToWatchlist = (e) => {
     e.preventDefault();
     if (searchValue.current.value === "") return;
-
+    //let arr = watchlist
     const newItem = {
       id: new Date().getTime(),
       symbol: searchValue.current.value,
     };
-
+    //arr.unshift(newItem)
     setWatchlist([newItem, ...watchlist]);
+    //let copy = watchlist
 
     const updateWatchList = async (user) => {
       const docRef = doc(db, "users", user.uid);

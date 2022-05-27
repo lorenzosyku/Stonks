@@ -22,6 +22,7 @@ function MainContent({
       <div>
         <div className="px-5 pt-3">
           <WatchlistSegment
+            currentUser={currentUser}
             dbWatchlist={dbWatchlist}
             isSidebarOpen={isSidebarOpen}
           />

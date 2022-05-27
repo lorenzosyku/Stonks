@@ -1,7 +1,22 @@
-function WatchlistSegment({
-  dbWatchlist,
-  isSidebarOpen,
-}) {
+import { doc, updateDoc } from "firebase/firestore";
+import { useState } from "react";
+import { db } from "../firebase";
+
+function WatchlistSegment({ dbWatchlist, isSidebarOpen, currentUser }) {
+  const [newList, setNewList] = useState([]);
+
+  const deleteStock = (id) => {
+    const updatedList = [...dbWatchlist].filter((stocks) => stocks.id !== id);
+    setNewList(updatedList);
+    const updateWatchList = async (user) => {
+      const docRef = doc(db, "users", user.uid);
+      await updateDoc(docRef, {
+        watchList: newList,
+      });
+    };
+
+    updateWatchList(currentUser);
+  };
   return (
     <div
       className={`transition-all duration-500 top-0 ${
@@ -23,7 +38,7 @@ function WatchlistSegment({
                 {/*TODO:need a function that when you click gives you the same result as search function and as a default has displaying the last element of the watchlist array*/}
                 <button
                   className="p-1 mx-2"
-                  //onClick={() => deleteStock(stock.id)}
+                  onClick={() => deleteStock(stock.id)}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

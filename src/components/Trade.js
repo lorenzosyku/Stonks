@@ -199,6 +199,7 @@ function Trade({
     //console.log(dbPortfolio)
 
     noSharesToSell.current.value = "";
+    
   };
 
   const updateFirestore = async (user) => {
