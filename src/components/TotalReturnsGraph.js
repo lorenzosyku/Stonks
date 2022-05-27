@@ -1,8 +1,9 @@
 import ReactApexChart from "react-apexcharts";
-import { useState, useEffect } from "react";
+//import { useState, useEffect } from "react";
 //import moment from "moment";
 
 function TotalReturnsGraph({ dbPortfolio, totPortfolio, setTotPortfolio }) {
+  let values = [];
  
   const arr = dbPortfolio.stocks;
   const arrOfStocks = arr?.map((stock) => stock.stockName);
@@ -30,12 +31,14 @@ function TotalReturnsGraph({ dbPortfolio, totPortfolio, setTotPortfolio }) {
       }
       tot += dbPortfolio?.cash;
       setTotPortfolio(tot)
+      values.push(tot)
     } catch (error) {
       console.log(error);
     }
   };
 
   console.log(totPortfolio)
+  console.log(values)
 
 
 

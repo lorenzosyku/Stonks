@@ -27,6 +27,7 @@ function DashboardPage({
   const [dbPortfolio, setDbPortfolio] = useState({});
   const [dbTnxs, setDbTnxs] = useState({});
   const [totPortfolio, setTotPortfolio] = useState();
+  const [dbWatchlist, setDbWatchlist] = useState([]);
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, async (user) => {
@@ -36,14 +37,15 @@ function DashboardPage({
           const dbData = doc.data();
           const portfolioDbData = dbData.portfolio;
           const transactionDbData = dbData.transactions;
+          const watchlistDbData = dbData.watchList;
           setDbPortfolio(portfolioDbData);
           setDbTnxs(transactionDbData);
+          setDbWatchlist(watchlistDbData);
         });
       }
     });
     return () => unsub();
   }, []);
-
 
   return (
     <div className="min-h-screen bg-gray-200">
@@ -63,6 +65,7 @@ function DashboardPage({
           }`}
         >
           <Search
+            currentUser={currentUser}
             setStonk={setStonk}
             setSeries={setSeries}
             setDetails={setDetails}
@@ -83,8 +86,8 @@ function DashboardPage({
               setDbTnxs={setDbTnxs}
               currentUser={currentUser}
               isSidebarOpen={isSidebarOpen}
-              setWatchlist={setWatchlist}
-              watchlist={watchlist}
+              setDbWatchlist={setDbWatchlist}
+              dbWatchlist={dbWatchlist}
               details={details}
               series={series}
               setTrades={setTrades}

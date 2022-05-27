@@ -7,8 +7,8 @@ import Trade from "../components/Trade";
 function MainContent({
   currentUser,
   isSidebarOpen,
-  watchlist,
-  setWatchlist,
+  dbWatchlist,
+  setDbWatchlist,
   details,
   series,
   stonk,
@@ -22,10 +22,8 @@ function MainContent({
       <div>
         <div className="px-5 pt-3">
           <WatchlistSegment
-            watchlist={watchlist}
-            setWatchlist={setWatchlist}
+            dbWatchlist={dbWatchlist}
             isSidebarOpen={isSidebarOpen}
-            currentUser={currentUser}
           />
         </div>
         <div

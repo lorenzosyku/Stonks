@@ -1,50 +1,7 @@
-//import { useEffect } from "react";
-import {
-  collection,
-  onSnapshot,
-  doc,
-  deleteDoc,
-  updateDoc,
-  arrayUnion,
-} from "firebase/firestore";
-import { useEffect } from "react";
-import { db } from "../firebase";
-
 function WatchlistSegment({
-  watchlist,
-  setWatchlist,
+  dbWatchlist,
   isSidebarOpen,
-  currentUser,
 }) {
-  // useEffect(() => {
-  //   const watchlistRef = doc(db, "users", currentUser.uid);
-  //   console.log(watchlistRef)
-
-  //   const getWatchlist = onSnapshot(watchlistRef, (snapshot) => {
-  //     let result = [];
-  //     snapshot.docs.map((doc) => {
-  //       result.push({ ...doc.data(), id: doc.id });
-  //     });
-  //     setWatchlist(result);
-  //   });
-  //   return () => getWatchlist();
-  // }, []);
-
-  // const deleteStock = (id) => {
-  //   const updatedWatchlist = [...watchlist].filter((item) => item.id !== id);
-  //   setWatchlist(updatedWatchlist);
-  // };
-
-  // const updateWatchList = async (user) => {
-  //   const docRef = doc(db, "users", user.uid);
-  //   let res = watchlist;
-  //   await updateDoc(docRef, {
-  //     watchList: res,
-  //   });
-  // };
-
-  // updateWatchList(currentUser);
-
   return (
     <div
       className={`transition-all duration-500 top-0 ${
@@ -54,7 +11,7 @@ function WatchlistSegment({
       <div className="bg-white items-center rounded-md overflow-scroll scrollbar-hide mt-2">
         <h1 className="pl-3 pt-1 text-lg font-semibold ">Watchlist</h1>
         <div className="flex ">
-          {watchlist.map((stock) => {
+          {dbWatchlist?.map((stock) => {
             return (
               <div
                 className="flex justify-between items-center p-3 bg-slate-200 m-3 rounded-md"

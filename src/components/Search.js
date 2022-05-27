@@ -1,4 +1,4 @@
-import { addDoc, collection } from "@firebase/firestore";
+import { addDoc, collection, doc, updateDoc } from "@firebase/firestore";
 import { useRef, useState } from "react";
 import { db } from "../firebase";
 import { useNavigate } from "react-router-dom";
@@ -7,7 +7,8 @@ function Search({
   setSeries,
   setDetails,
   watchlist,
-  setWatchlist
+  setWatchlist,
+  currentUser,
 }) {
   const searchValue = useRef(null);
   const [readableTime, setReadableTime] = useState("-");
@@ -77,18 +78,28 @@ function Search({
     }
   };
 
-  const addToWatchlist = async (e) => {
+  const addToWatchlist = (e) => {
     e.preventDefault();
     if (searchValue.current.value === "") return;
 
     const newItem = {
       id: new Date().getTime(),
       symbol: searchValue.current.value,
-    }  
+    };
 
     setWatchlist([newItem, ...watchlist]);
-  };
 
+    const updateWatchList = async (user) => {
+      const docRef = doc(db, "users", user.uid);
+      await updateDoc(docRef, {
+        watchList: watchlist,
+      });
+    };
+
+    updateWatchList(currentUser);
+  };
+  console.log(watchlist);
+  
   return (
     <div className="px-1 py-3 md:w-3/2 bg-white flex justify-between">
       <div className="flex w-full justify-between items-center">
