@@ -6,8 +6,8 @@ function Search({
   setStonk,
   setSeries,
   setDetails,
-  watchlist,
-  setWatchlist,
+  dbWatchlist,
+  setDbWatchlist,
   currentUser,
 }) {
   const searchValue = useRef(null);
@@ -81,14 +81,12 @@ function Search({
   const addToWatchlist = (e) => {
     e.preventDefault();
     if (searchValue.current.value === "") return;
-    //let arr = watchlist
+    const watchlist = dbWatchlist;
     const newItem = {
       id: new Date().getTime(),
       symbol: searchValue.current.value,
     };
-    //arr.unshift(newItem)
-    setWatchlist([newItem, ...watchlist]);
-    //let copy = watchlist
+    watchlist.unshift(newItem)
 
     const updateWatchList = async (user) => {
       const docRef = doc(db, "users", user.uid);
@@ -99,8 +97,7 @@ function Search({
 
     updateWatchList(currentUser);
   };
-  console.log(watchlist);
-  
+
   return (
     <div className="px-1 py-3 md:w-3/2 bg-white flex justify-between">
       <div className="flex w-full justify-between items-center">

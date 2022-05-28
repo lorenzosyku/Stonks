@@ -1,17 +1,14 @@
 import { doc, updateDoc } from "firebase/firestore";
-import { useState } from "react";
 import { db } from "../firebase";
 
 function WatchlistSegment({ dbWatchlist, isSidebarOpen, currentUser }) {
-  const [newList, setNewList] = useState([]);
-
   const deleteStock = (id) => {
     const updatedList = [...dbWatchlist].filter((stocks) => stocks.id !== id);
-    setNewList(updatedList);
+
     const updateWatchList = async (user) => {
       const docRef = doc(db, "users", user.uid);
       await updateDoc(docRef, {
-        watchList: newList,
+        watchList: updatedList,
       });
     };
 

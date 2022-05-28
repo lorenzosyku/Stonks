@@ -69,8 +69,8 @@ function DashboardPage({
             setStonk={setStonk}
             setSeries={setSeries}
             setDetails={setDetails}
-            setWatchlist={setWatchlist}
-            watchlist={watchlist}
+            setDbWatchlist={setWatchlist}
+            dbWatchlist={watchlist}
           />
         </div>
       </div>
