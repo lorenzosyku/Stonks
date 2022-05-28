@@ -11,8 +11,6 @@ function LoginPage({
   setStonk,
   setSeries,
   series,
-  watchlist,
-  setWatchlist,
   details,
   setDetails,
 }) {
@@ -117,8 +115,6 @@ function LoginPage({
                 setSeries={setSeries}
                 details={details}
                 setDetails={setDetails}
-                watchlist={watchlist}
-                setWatchlist={setWatchlist}
               />
             }
           />

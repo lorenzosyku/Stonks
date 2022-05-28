@@ -8,7 +8,6 @@ function MainContent({
   currentUser,
   isSidebarOpen,
   dbWatchlist,
-  setDbWatchlist,
   details,
   series,
   stonk,

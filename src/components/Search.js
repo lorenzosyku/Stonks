@@ -1,4 +1,4 @@
-import { addDoc, collection, doc, updateDoc } from "@firebase/firestore";
+import { doc, updateDoc } from "@firebase/firestore";
 import { useRef, useState } from "react";
 import { db } from "../firebase";
 import { useNavigate } from "react-router-dom";

@@ -24,7 +24,6 @@ function App() {
   ]);
   
   const [details, setDetails] = useState({});
-  const [watchlist, setWatchlist] = useState([]);
 
   return (
     <div>
@@ -41,8 +40,6 @@ function App() {
                 stonk={stonk}
                 setStonk={setStonk}
                 setSeries={setSeries}
-                watchlist={watchlist}
-                setWatchlist={setWatchlist}
                 details={details}
                 setDetails={setDetails}
               />
@@ -58,8 +55,6 @@ function App() {
                 setStonk={setStonk}
                 series={series}
                 setSeries={setSeries}
-                watchlist={watchlist}
-                setWatchlist={setWatchlist}
                 details={details}
                 setDetails={setDetails}
               />

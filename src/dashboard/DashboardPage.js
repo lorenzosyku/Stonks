@@ -19,8 +19,6 @@ function DashboardPage({
   setSeries,
   details,
   setDetails,
-  watchlist,
-  setWatchlist,
 }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const currentUser = useAuth();
@@ -69,8 +67,8 @@ function DashboardPage({
             setStonk={setStonk}
             setSeries={setSeries}
             setDetails={setDetails}
-            setDbWatchlist={setWatchlist}
-            dbWatchlist={watchlist}
+            setDbWatchlist={setDbWatchlist}
+            dbWatchlist={dbWatchlist}
           />
         </div>
       </div>
@@ -86,15 +84,12 @@ function DashboardPage({
               setDbTnxs={setDbTnxs}
               currentUser={currentUser}
               isSidebarOpen={isSidebarOpen}
-              setDbWatchlist={setDbWatchlist}
               dbWatchlist={dbWatchlist}
               details={details}
               series={series}
               setTrades={setTrades}
               stonk={stonk}
               trades={trades}
-              totPortfolio={totPortfolio}
-              setTotPortfolio={setTotPortfolio}
             />
           }
         />
