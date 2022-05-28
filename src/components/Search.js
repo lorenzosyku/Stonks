@@ -2,16 +2,8 @@ import { doc, updateDoc } from "@firebase/firestore";
 import { useRef, useState } from "react";
 import { db } from "../firebase";
 import { useNavigate } from "react-router-dom";
-function Search({
-  setStonk,
-  setSeries,
-  setDetails,
-  dbWatchlist,
-  setDbWatchlist,
-  currentUser,
-}) {
+function Search({ setStonk, setSeries, setDetails, dbWatchlist, currentUser }) {
   const searchValue = useRef(null);
-  const [readableTime, setReadableTime] = useState("-");
 
   const navtodashboard = useNavigate();
 
@@ -28,11 +20,11 @@ function Search({
     try {
       const data = await fetchStonk();
       const stock = data.chart.result[0];
-      console.log(stock);
+      //console.log(stock);
       const stockName = stock.meta.symbol;
       const price = stock.meta.regularMarketPrice.toFixed(2);
       const time = new Date(stock.meta.regularMarketTime * 1000);
-      setReadableTime(time);
+
       const prevClose = stock.meta.chartPreviousClose;
       const exchange = stock.meta.exchangeName;
       const range = stock.meta.range;
@@ -86,7 +78,7 @@ function Search({
       id: new Date().getTime(),
       symbol: searchValue.current.value,
     };
-    watchlist.unshift(newItem)
+    watchlist.unshift(newItem);
 
     const updateWatchList = async (user) => {
       const docRef = doc(db, "users", user.uid);
