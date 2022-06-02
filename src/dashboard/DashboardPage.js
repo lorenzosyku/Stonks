@@ -17,8 +17,8 @@ function DashboardPage({
   stonk,
   setStonk,
   setSeries,
-  details,
-  setDetails,
+  //details,
+  //setDetails,
 }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const currentUser = useAuth();
@@ -26,6 +26,7 @@ function DashboardPage({
   const [dbTnxs, setDbTnxs] = useState({});
   const [totPortfolio, setTotPortfolio] = useState();
   const [dbWatchlist, setDbWatchlist] = useState([]);
+  const [details, setDetails] = useState({});
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, async (user) => {

@@ -11,8 +11,8 @@ function LoginPage({
   setStonk,
   setSeries,
   series,
-  details,
-  setDetails,
+  // details,
+  // setDetails,
 }) {
   const navtoSignup = useNavigate();
   const navtoresetpass = useNavigate();
@@ -113,8 +113,8 @@ function LoginPage({
                 setStonk={setStonk}
                 series={series}
                 setSeries={setSeries}
-                details={details}
-                setDetails={setDetails}
+                // details={details}
+                // setDetails={setDetails}
               />
             }
           />
