@@ -1,6 +1,6 @@
 import Chart from "react-apexcharts";
 
-function PortfolioGraph({ setTrades, trades, dbPortfolio }) {
+function PortfolioGraph({ setTotto, dbPortfolio }) {
   //const dbArr = [...dbPortfolio]
   const arr = dbPortfolio.stocks;
   //console.log(arr)
@@ -15,6 +15,8 @@ function PortfolioGraph({ setTrades, trades, dbPortfolio }) {
 
   labelsArray = labelsArray.concat(arrOfStocks);
   seriesArray = seriesArray.concat(valueOfEachInvesment);
+  let z = seriesArray.reduce((a, b) => a + b);
+  setTotto(z);
 
   const chart = {
     series: seriesArray,
