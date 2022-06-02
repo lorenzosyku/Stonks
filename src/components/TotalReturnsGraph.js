@@ -1,6 +1,4 @@
 import ReactApexChart from "react-apexcharts";
-//import { useState, useEffect } from "react";
-//import moment from "moment";
 
 function TotalReturnsGraph({ dbPortfolio, totPortfolio, setTotPortfolio }) {
   let values = [];

@@ -22,7 +22,6 @@ function Trade({
 
     const newPortfolio = { ...dbPortfolio };
     const newTrasactions = { ...dbTnxs };
-    //const newTrades = { ...trades};
 
     const transactionListStocksBought = newTrasactions.stocksBought;
 
@@ -47,7 +46,7 @@ function Trade({
         let newAmountSpentOnStock = parseFloat(amountToInvest);
         let newPrice = parseFloat(price);
         let entryPointOfTrade = newPrice;
-        //console.log(entryPointOfTrade);
+        
         for (let i = 0; i < newStockArr.length; i++) {
           if (newStockArr[i].stockName === stonk.symbol) {
             newAmountShares = newStockArr[i].shares + newAmountShares;
@@ -74,28 +73,11 @@ function Trade({
         ];
         newPortfolio.cash = dbPortfolio.cash - amountToInvest;
 
-        toast("HOORAY...You successfully Bought!!", {
-          duration: 2000,
-          style: {
-            background: "green",
-            color: "white",
-            fontWeight: "bolder",
-            fontSize: "17px",
-            padding: "20px",
-          },
-        });
+        toast.success("You successfully Bought!!");
         return newStockArr;
       } else {
-        toast("Whoops...you dont have enough funds!", {
-          style: {
-            background: "red",
-            color: "white",
-            fontWeight: "bolder",
-            fontSize: "17px",
-            padding: "20px",
-          },
-        });
-        console.log("you dont have enough funds");
+        toast.error("Whoops...you dont have enough funds!");
+        //console.log("you dont have enough funds");
         return newStockArr;
       }
     };
@@ -126,15 +108,7 @@ function Trade({
       for (let i = 0; i < arr.length; i++) {
         if (arr[i].stockName === stonk.symbol) {
           if (shares > arr[i].shares) {
-            toast("Whoops...you can not sell sheres you dont have!", {
-              style: {
-                background: "red",
-                color: "white",
-                fontWeight: "bolder",
-                fontSize: "17px",
-                padding: "20px",
-              },
-            });
+            toast.error("Whoops...you can not sell sheres you dont have!");
             console.log("you cant sell sheres you dont have");
           }
           if (shares <= arr[i].shares) {
@@ -164,16 +138,7 @@ function Trade({
             });
             newPortfolio.cash = dbPortfolio.cash + amountToSell;
 
-            toast("HOORAY...You successfully sold!!", {
-              duration: 2000,
-              style: {
-                background: "green",
-                color: "white",
-                fontWeight: "bolder",
-                fontSize: "17px",
-                padding: "20px",
-              },
-            });
+            toast.success("You successfully sold!!");
           }
         }
       }
@@ -219,7 +184,7 @@ function Trade({
   
   return (
     <div className="flex justify-between items-center border-2 p-5">
-      <Toaster position="bottom-center" />
+      <Toaster />
       <div className="flex items-center">
         <input
           type="number"
