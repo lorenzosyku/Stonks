@@ -23,7 +23,6 @@ function App() {
     },
   ]);
   
-  // const [details, setDetails] = useState({});
 
   return (
     <div>
@@ -40,8 +39,6 @@ function App() {
                 stonk={stonk}
                 setStonk={setStonk}
                 setSeries={setSeries}
-                // details={details}
-                // setDetails={setDetails}
               />
             }
           />
@@ -55,8 +52,6 @@ function App() {
                 setStonk={setStonk}
                 series={series}
                 setSeries={setSeries}
-                // details={details}
-                // setDetails={setDetails}
               />
             }
           />

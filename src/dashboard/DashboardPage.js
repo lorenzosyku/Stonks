@@ -17,8 +17,6 @@ function DashboardPage({
   stonk,
   setStonk,
   setSeries,
-  //details,
-  //setDetails,
 }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const currentUser = useAuth();
