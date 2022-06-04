@@ -1,6 +1,7 @@
 import { useAuth, auth, signOut } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import Avatar from "../components/Avatar";
+import { ChartPieIcon, ClipboardListIcon, HomeIcon, UserIcon } from "@heroicons/react/solid";
 
 const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const currentUser = useAuth();
@@ -63,24 +64,11 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                 className="hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md cursor-pointer"
               >
                 <div className="flex gap-4 text-gray-600 hover:text-gray-800 transition">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
-                    />
-                  </svg>
+                <HomeIcon className="h-5 w-5 " />
                   WatchList
                 </div>
               </li>
-              
+
               <li
                 onClick={() => {
                   navToPortfolio("portfolio");
@@ -88,15 +76,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                 className="hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md cursor-pointer"
               >
                 <div className="flex gap-4 text-gray-600 hover:text-gray-800 transition">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
-                    <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
-                  </svg>
+                <ChartPieIcon className="h-5 w-5 " />
                   Portfolio
                 </div>
               </li>
@@ -107,19 +87,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                 className="hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md cursor-pointer"
               >
                 <div className="flex gap-4 text-gray-600 hover:text-gray-800 transition">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-                    <path
-                      fill-rule="evenodd"
-                      d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
+                  <ClipboardListIcon className="h-5 w-5 " />
                   Transactions
                 </div>
               </li>
@@ -128,18 +96,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                 className="hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md cursor-pointer"
               >
                 <div className="flex gap-4 text-gray-600 hover:text-gray-800 transition">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
+                  <UserIcon className="h-5 w-5 " />
                   Sign Out
                 </div>
               </li>
@@ -147,8 +104,8 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
           </div>
         </nav>
         <div className="flex items-center px-4 -mx-2 mt-5">
-          <Avatar currentUser={currentUser}/>
-          
+          <Avatar currentUser={currentUser} />
+
           <h4 className="mx-2 font-medium text-gray-800 hover:underline cursor-pointer">
             {currentUser?.email}
           </h4>

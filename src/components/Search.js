@@ -2,6 +2,8 @@ import { doc, updateDoc } from "@firebase/firestore";
 import { useRef, useState } from "react";
 import { db } from "../firebase";
 import { useNavigate } from "react-router-dom";
+import { SearchIcon, PlusIcon } from "@heroicons/react/solid";
+
 function Search({ setStonk, setSeries, setDetails, dbWatchlist, currentUser }) {
   const searchValue = useRef(null);
 
@@ -104,20 +106,7 @@ function Search({ setStonk, setSeries, setDetails, dbWatchlist, currentUser }) {
               navtodashboard("watchlist");
             }}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-3 w-3"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              />
-            </svg>
+            <SearchIcon className="h-5 w-5 " />
           </button>
 
           <input
@@ -131,20 +120,7 @@ function Search({ setStonk, setSeries, setDetails, dbWatchlist, currentUser }) {
           onClick={addToWatchlist}
           className="flex bg-zinc-400 md:inline-flex text-white rounded-full p-2 cursor-pointer mx-2"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-3 w-3"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M12 4v16m8-8H4"
-            />
-          </svg>
+          <PlusIcon className="h-5 w-5 " />
         </button>
       </div>
     </div>
