@@ -1,14 +1,13 @@
+import { useEffect } from "react";
 import Chart from "react-apexcharts";
 
-function PortfolioGraph({ setTotto, dbPortfolio }) {
-  //const dbArr = [...dbPortfolio]
+function PortfolioGraph({ setTotto, dbPortfolio, totto }) {
   const arr = dbPortfolio.stocks;
-  //console.log(arr)
+
   const arrOfStocks = arr?.map((stock) => stock.stockName);
   const valueOfEachInvesment = arr?.map(
     (stock) => stock.shares * stock.currentPrice
   );
-  //console.log(valueOfEachInvesment);
 
   let labelsArray = ["CASH"];
   let seriesArray = [dbPortfolio.cash];
@@ -16,7 +15,18 @@ function PortfolioGraph({ setTotto, dbPortfolio }) {
   labelsArray = labelsArray.concat(arrOfStocks);
   seriesArray = seriesArray.concat(valueOfEachInvesment);
   let z = seriesArray.reduce((a, b) => a + b);
-  setTotto(z);
+
+  const tot = () => {
+    let copy = totto;
+    copy.push(z);
+
+    const updatedList = [...copy].filter((val) => val !== NaN);
+
+    setTotto(updatedList);
+  };
+  useEffect(() => {
+    tot()
+  }, [])
 
   const chart = {
     series: seriesArray,

@@ -1,7 +1,6 @@
 import ReactApexChart from "react-apexcharts";
 
 function TotalReturnsGraph({ dbPortfolio, totPortfolio, setTotPortfolio, totto}) {
-  //let values = [];
  
   const arr = dbPortfolio.stocks;
   const arrOfStocks = arr?.map((stock) => stock.stockName);
@@ -12,7 +11,6 @@ function TotalReturnsGraph({ dbPortfolio, totPortfolio, setTotPortfolio, totto})
     );
     return response.json();
   };
-  //let tot = 0;
 
   const getLatestPrice = async () => {
     try {
@@ -23,20 +21,12 @@ function TotalReturnsGraph({ dbPortfolio, totPortfolio, setTotPortfolio, totto})
         const price = stock.meta.regularMarketPrice;
 
         arr[i].currentPrice = price;
-
-        //const newVal = arr[i].shares * arr[i].currentPrice;
-        //tot += newVal;
       }
-      //tot += dbPortfolio?.cash;
-      //setTotPortfolio(tot)
-      //values.push(tot)
     } catch (error) {
       console.log(error);
     }
   };
 
-  //console.log(totPortfolio)
-  //console.log(values)
   console.log(totto)
   let valarr = []
   valarr.push(totto)

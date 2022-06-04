@@ -100,6 +100,9 @@ function DashboardPage({
               isSidebarOpen={isSidebarOpen}
               totPortfolio={totPortfolio}
               setTotPortfolio={setTotPortfolio}
+              setTrades={setTrades}
+              trades={trades}
+
             />
           }
         />
