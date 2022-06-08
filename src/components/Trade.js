@@ -46,7 +46,7 @@ function Trade({
         let newAmountSpentOnStock = parseFloat(amountToInvest);
         let newPrice = parseFloat(price);
         let entryPointOfTrade = newPrice;
-        
+
         for (let i = 0; i < newStockArr.length; i++) {
           if (newStockArr[i].stockName === stonk.symbol) {
             newAmountShares = newStockArr[i].shares + newAmountShares;
@@ -164,7 +164,6 @@ function Trade({
     //console.log(dbPortfolio)
 
     noSharesToSell.current.value = "";
-    
   };
 
   const updateFirestore = async (user) => {
@@ -181,19 +180,18 @@ function Trade({
 
   console.log(dbPortfolio);
 
-  
   return (
-    <div className="flex justify-between items-center border-2 p-5">
+    <div className="flex justify-between items-center p-2 mt-2 border-2 md:p-5">
       <Toaster />
       <div className="flex items-center">
         <input
           type="number"
           ref={noSharesToBuy}
           placeholder={`Buy ${stonk.symbol} shares`}
-          className="border-2 bg-transparent border-cyan-600 rounded-md p-1 text-sm font-semibold outline-none"
+          className="w-[80px] text-xs border-2 bg-transparent border-cyan-600 rounded-md p-1 md:text-sm font-semibold outline-none"
         />
         <button
-          className="p-1 bg-orange-300 rounded-md text-sm text-white font-bold ml-2"
+          className="text-xs p-1 bg-orange-300 rounded-md md:text-sm text-white font-bold ml-2"
           onClick={buyShares}
         >
           buy
@@ -204,10 +202,10 @@ function Trade({
           type="number"
           ref={noSharesToSell}
           placeholder={`Sell ${stonk.symbol} shares`}
-          className="border-2 bg-transparent border-cyan-600 rounded-md p-1 text-sm font-semibold outline-none"
+          className="w-[80px] text-xs border-2 bg-transparent border-cyan-600 rounded-md p-1 md:text-sm font-semibold outline-none"
         />
         <button
-          className="p-1 bg-orange-300 rounded-md text-sm text-white font-bold ml-2"
+          className="text-xs p-1 bg-orange-300 rounded-md md:text-sm text-white font-bold ml-2"
           onClick={sellShares}
         >
           sell

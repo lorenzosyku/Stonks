@@ -27,7 +27,7 @@ function MainContent({
           />
         </div>
         <div
-          className={`md:flex p-5 space-x-5 transition-all duration-500 top-0 ${
+          className={`space-y-3 md:flex p-5 md:space-x-5 transition-all duration-500 top-0 ${
             isSidebarOpen ? "ml-64" : "ml-0"
           }`}
         >

@@ -22,7 +22,9 @@ function WatchlistSegment({ dbWatchlist, isSidebarOpen, currentUser }) {
       }`}
     >
       <div className="bg-white items-center rounded-md overflow-scroll scrollbar-hide mt-2">
-        <h1 className="pl-3 pt-1 text-lg font-semibold ">Watchlist</h1>
+        <h1 className="text-sm pl-3 pt-1 md:text-lg font-semibold ">
+          Watchlist
+        </h1>
         <div className="flex ">
           {dbWatchlist?.map((stock) => {
             return (
@@ -30,12 +32,12 @@ function WatchlistSegment({ dbWatchlist, isSidebarOpen, currentUser }) {
                 className="flex justify-between items-center p-3 bg-slate-200 m-3 rounded-md"
                 key={stock.id}
               >
-                <h2 className="text-sm font-semibold uppercase">
+                <h2 className="text-xs md:text-sm font-semibold uppercase">
                   {stock.symbol}
                 </h2>
                 {/*TODO:need a function that when you click gives you the same result as search function and as a default has displaying the last element of the watchlist array*/}
                 <button
-                  className="bg-zinc-400 md:inline-flex text-white rounded-full p-1 cursor-pointer md:mx-2"
+                  className="md:bg-zinc-400 text-red-400 md:inline-flex md:text-white rounded-full md:p-1 cursor-pointer mx-2"
                   onClick={() => deleteStock(stock.id)}
                 >
                   <XIcon className="h-3 w-3 " />
