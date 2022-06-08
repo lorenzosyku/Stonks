@@ -2,7 +2,7 @@ import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { XIcon } from "@heroicons/react/solid";
 
-function WatchlistSegment({ dbWatchlist, isSidebarOpen, currentUser }) {
+function WatchlistSegment({ dbWatchlist, currentUser }) {
   const deleteStock = (id) => {
     const updatedList = [...dbWatchlist].filter((stocks) => stocks.id !== id);
 
@@ -18,6 +18,7 @@ function WatchlistSegment({ dbWatchlist, isSidebarOpen, currentUser }) {
   return (
     <div
     >
+
       <div className="bg-white items-center rounded-md overflow-scroll scrollbar-hide mt-2">
         <h1 className="text-sm pl-3 pt-1 md:text-lg font-semibold ">
           Watchlist
