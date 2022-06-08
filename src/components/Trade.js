@@ -181,7 +181,7 @@ function Trade({
   console.log(dbPortfolio);
 
   return (
-    <div className="flex justify-between items-center p-2 mt-2 border-2 md:p-5">
+    <div className="flex md:justify-between items-center space-x-3 p-2 mt-2 border-2 md:p-5">
       <Toaster />
       <div className="flex items-center">
         <input

@@ -68,6 +68,8 @@ function DashboardPage({
             setDetails={setDetails}
             dbWatchlist={dbWatchlist}
           />
+
+          
         </div>
       </div>
 

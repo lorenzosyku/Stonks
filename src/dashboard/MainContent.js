@@ -17,8 +17,8 @@ function MainContent({
   setDbTnxs,
 }) {
   return (
-    <div>
-      <div>
+    <div className="">
+      <div className="">
         <div className="px-5 pt-3">
           <WatchlistSegment
             currentUser={currentUser}
