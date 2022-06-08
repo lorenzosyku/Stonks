@@ -100,13 +100,13 @@ function Search({ setStonk, setSeries, setDetails, dbWatchlist, currentUser }) {
           className="flex flex-grow justify-center items-center rounded-md w-1/2"
         >
           <button
-            className=" md:inline-flex rounded-full p-2 cursor-pointer md:mx-2"
+            className=" md:inline-flex rounded-full p-2 cursor-pointer md:mx-2 "
             onClick={(e) => {
               handleStonk(e);
               navtodashboard("watchlist");
             }}
           >
-            <SearchIcon className="h-5 w-5 " />
+            <SearchIcon className="h-5 w-5 hover:bg-gray-200 hover:text-gray-800 rounded-full" />
           </button>
 
           <input
@@ -118,9 +118,9 @@ function Search({ setStonk, setSeries, setDetails, dbWatchlist, currentUser }) {
         </form>
         <button
           onClick={addToWatchlist}
-          className="flex md:inline-flex rounded-full p-2 cursor-pointer mx-2"
+          className="flex md:inline-flex rounded-full p-2 cursor-pointer mx-2 "
         >
-          <PlusIcon className="h-5 w-5 " />
+          <PlusIcon className="h-5 w-5 hover:bg-gray-200 hover:text-gray-800 rounded-full" />
         </button>
       </div>
     </div>

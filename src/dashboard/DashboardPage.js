@@ -69,55 +69,52 @@ function DashboardPage({
             dbWatchlist={dbWatchlist}
           />
 
-          
+          <Routes>
+            <Route
+              path="watchlist"
+              element={
+                <MainContent
+                  dbPortfolio={dbPortfolio}
+                  dbTnxs={dbTnxs}
+                  setDbPortfolio={setDbPortfolio}
+                  setDbTnxs={setDbTnxs}
+                  currentUser={currentUser}
+                  isSidebarOpen={isSidebarOpen}
+                  dbWatchlist={dbWatchlist}
+                  details={details}
+                  series={series}
+                  setTrades={setTrades}
+                  stonk={stonk}
+                  trades={trades}
+                />
+              }
+            />
+
+            <Route
+              path="portfolio"
+              element={
+                <PortfolioSection
+                  dbPortfolio={dbPortfolio}
+                  isSidebarOpen={isSidebarOpen}
+                  totPortfolio={totPortfolio}
+                  setTotPortfolio={setTotPortfolio}
+                  setTrades={setTrades}
+                  trades={trades}
+                />
+              }
+            />
+            <Route
+              path="transactions"
+              element={
+                <TransactionsSection
+                  dbTnxs={dbTnxs}
+                  isSidebarOpen={isSidebarOpen}
+                />
+              }
+            />
+          </Routes>
         </div>
       </div>
-
-      <Routes>
-        <Route
-          path="watchlist"
-          element={
-            <MainContent
-              dbPortfolio={dbPortfolio}
-              dbTnxs={dbTnxs}
-              setDbPortfolio={setDbPortfolio}
-              setDbTnxs={setDbTnxs}
-              currentUser={currentUser}
-              isSidebarOpen={isSidebarOpen}
-              dbWatchlist={dbWatchlist}
-              details={details}
-              series={series}
-              setTrades={setTrades}
-              stonk={stonk}
-              trades={trades}
-            />
-          }
-        />
-
-        <Route
-          path="portfolio"
-          element={
-            <PortfolioSection
-              dbPortfolio={dbPortfolio}
-              isSidebarOpen={isSidebarOpen}
-              totPortfolio={totPortfolio}
-              setTotPortfolio={setTotPortfolio}
-              setTrades={setTrades}
-              trades={trades}
-
-            />
-          }
-        />
-        <Route
-          path="transactions"
-          element={
-            <TransactionsSection
-              dbTnxs={dbTnxs}
-              isSidebarOpen={isSidebarOpen}
-            />
-          }
-        />
-      </Routes>
     </div>
   );
 }

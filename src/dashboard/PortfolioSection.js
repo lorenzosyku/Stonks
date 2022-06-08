@@ -14,9 +14,6 @@ function PortfolioSection({
   const [totto,setTotto] = useState([10000])
   return (
     <div
-      className={`transition-all duration-500 flex-grow ${
-        isSidebarOpen ? "ml-64" : "ml-0"
-      }`}
     >
       <TotalReturnsGraph
         dbPortfolio={dbPortfolio}

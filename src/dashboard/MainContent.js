@@ -27,9 +27,7 @@ function MainContent({
           />
         </div>
         <div
-          className={`space-y-3 md:flex p-5 md:space-x-5 transition-all duration-500 top-0 ${
-            isSidebarOpen ? "ml-64" : "ml-0"
-          }`}
+          className="space-y-3 md:flex p-5 md:space-x-5 transition-all duration-500 top-0 "
         >
           <div className=" md:w-3/5 lg:w-4/6 bg-gray-100 rounded-md">
             <Datagraph series={series} />

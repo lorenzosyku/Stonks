@@ -17,9 +17,6 @@ function WatchlistSegment({ dbWatchlist, isSidebarOpen, currentUser }) {
   };
   return (
     <div
-      className={`transition-all duration-500 top-0 ${
-        isSidebarOpen ? "ml-64" : "ml-0"
-      }`}
     >
       <div className="bg-white items-center rounded-md overflow-scroll scrollbar-hide mt-2">
         <h1 className="text-sm pl-3 pt-1 md:text-lg font-semibold ">
@@ -37,10 +34,10 @@ function WatchlistSegment({ dbWatchlist, isSidebarOpen, currentUser }) {
                 </h2>
                 {/*TODO:need a function that when you click gives you the same result as search function and as a default has displaying the last element of the watchlist array*/}
                 <button
-                  className="md:bg-zinc-400 text-red-400 md:inline-flex md:text-white rounded-full md:p-1 cursor-pointer mx-2"
+                  className="md:bg-zinc-400 text-gray-800 md:inline-flex md:text-white rounded-full md:p-1 cursor-pointer mx-2"
                   onClick={() => deleteStock(stock.id)}
                 >
-                  <XIcon className="h-3 w-3 " />
+                  <XIcon className="h-3 w-3 hover:bg-gray-200 hover:text-red-400" />
                 </button>
               </div>
             );
