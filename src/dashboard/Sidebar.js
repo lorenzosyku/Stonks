@@ -1,14 +1,19 @@
 import { useAuth, auth, signOut } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import Avatar from "../components/Avatar";
-import { ChartPieIcon, ClipboardListIcon, HomeIcon, UserIcon } from "@heroicons/react/solid";
+import {
+  ChartPieIcon,
+  ClipboardListIcon,
+  HomeIcon,
+  UserIcon,
+  XIcon,
+} from "@heroicons/react/solid";
 
 const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const currentUser = useAuth();
   const navToTrx = useNavigate();
   const navToWatchList = useNavigate();
   const navToPortfolio = useNavigate();
-  const navToBuySell = useNavigate();
 
   const handleLogout = () => {
     navToTrx("/login");
@@ -29,20 +34,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
             }}
             className="md:hidden absolute top-8 right-1  text-gray-600 w-8 h-8 rounded-full flex items-center justify-center active:bg-gray-300 focus:outline-none ml-6 hover:bg-gray-200 hover:text-gray-800"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
+            <XIcon className="h-5 w-5 " />
           </button>
           <div className="flex flex-col items-center pl-5">
             <h2 className="font-poppins text-xl text-shade-lightblue italic font-semibold">
@@ -64,7 +56,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                 className="hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md cursor-pointer"
               >
                 <div className="flex gap-4 text-gray-600 hover:text-gray-800 transition">
-                <HomeIcon className="h-5 w-5 " />
+                  <HomeIcon className="h-5 w-5 " />
                   WatchList
                 </div>
               </li>
@@ -76,7 +68,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                 className="hover:bg-gray-200 hover:text-gray-800 p-2 rounded-md cursor-pointer"
               >
                 <div className="flex gap-4 text-gray-600 hover:text-gray-800 transition">
-                <ChartPieIcon className="h-5 w-5 " />
+                  <ChartPieIcon className="h-5 w-5 " />
                   Portfolio
                 </div>
               </li>
