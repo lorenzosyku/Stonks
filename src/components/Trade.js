@@ -109,7 +109,7 @@ function Trade({
         if (arr[i].stockName === stonk.symbol) {
           if (shares > arr[i].shares) {
             toast.error("Whoops...you can not sell sheres you dont have!");
-            console.log("you cant sell sheres you dont have");
+            //console.log("you cant sell sheres you dont have");
           }
           if (shares <= arr[i].shares) {
             newTrasactions.stocksSold = [
@@ -167,7 +167,7 @@ function Trade({
   };
 
   const updateFirestore = async (user) => {
-    const docRef = doc(db, "users", user.uid);
+    const docRef = doc(db, "users", user?.uid);
     await updateDoc(docRef, {
       "portfolio.cash": dbPortfolio.cash,
       "portfolio.stocks": dbPortfolio.stocks,

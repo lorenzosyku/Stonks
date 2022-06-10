@@ -46,7 +46,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
           </div>
         </div>
 
-        <nav role="navigation" class="p-6">
+        <nav role="navigation" className="p-6">
           <div className="mt-4 -mx-4 relative overflow-y-auto overflow-x-hidden h-[65vh]">
             <ul className="space-y-4 mb-6 mt-8">
               <li

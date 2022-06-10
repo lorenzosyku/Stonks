@@ -19,7 +19,7 @@ function WatchlistSegment({ dbWatchlist, currentUser }) {
     <div
     >
 
-      <div className="bg-white items-center rounded-md overflow-scroll scrollbar-hide mt-2">
+      <div className="bg-blue-50 items-center rounded-md overflow-scroll scrollbar-hide mt-2">
         <h1 className="text-sm pl-3 pt-1 md:text-lg font-semibold ">
           Watchlist
         </h1>
