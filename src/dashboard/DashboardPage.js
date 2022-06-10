@@ -51,7 +51,7 @@ function DashboardPage({
         isSidebarOpen={isSidebarOpen}
       />
 
-      <div className="flex bg-white items-center ">
+      <div className="flex bg-white min-h-screen ">
         <SideBarBtn
           setIsSidebarOpen={setIsSidebarOpen}
           isSidebarOpen={isSidebarOpen}
