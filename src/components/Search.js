@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { db } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import { SearchIcon, PlusIcon } from "@heroicons/react/solid";
+import toast, { Toaster } from "react-hot-toast";
 
 function Search({ setStonk, setSeries, setDetails, dbWatchlist, currentUser }) {
   const searchValue = useRef(null);
@@ -90,10 +91,12 @@ function Search({ setStonk, setSeries, setDetails, dbWatchlist, currentUser }) {
     };
 
     updateWatchList(currentUser);
+    toast.success("Added to watchlist");
   };
 
   return (
     <div className="px-1 py-3 md:w-3/2 bg-white flex justify-between">
+      <Toaster />
       <div className="flex w-full justify-between items-center">
         <form
           type="submit"
