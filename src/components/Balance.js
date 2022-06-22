@@ -14,12 +14,6 @@ function Balance({ dbPortfolio }) {
         <h3 className="font-bold italic">${cashBalance}</h3>
       </div>
       <div className="mt-5">
-        <div className="grid grid-cols-3">
-          <h2>Stock List</h2>
-          <h2 className="flex justify-center">Shares</h2>
-          <h2 className="flex justify-end">Percentage</h2>
-        </div>
-
         {dbPortfolio?.stocks?.map((stock) => (
           <PortfolioItem
             key={stock.id}

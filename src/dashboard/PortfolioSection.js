@@ -3,15 +3,7 @@ import Balance from "../components/Balance";
 import PortfolioGraph from "../components/PortfolioGraph";
 import TotalReturnsGraph from "../components/TotalReturnsGraph";
 
-
-function PortfolioSection({
-  isSidebarOpen,
-  dbPortfolio,
-  totPortfolio,
-  setTotPortfolio,
-  trades,
-  setTrades,
-}) {
+function PortfolioSection({ dbPortfolio, totPortfolio, setTotPortfolio }) {
   const [totto, setTotto] = useState([10000]);
   return (
     <div>
@@ -27,11 +19,10 @@ function PortfolioSection({
           setTotto={setTotto}
           totto={totto}
         /> */}
-        <div className="w-3/5 bg-gray-100 p-5 rounded-md m-5">
+        <div className="w-full bg-gray-100 p-5 rounded-md m-5">
           <Balance dbPortfolio={dbPortfolio} />
         </div>
       </div>
-      
     </div>
   );
 }
