@@ -6,8 +6,9 @@ function PortfolioItem({ stock, shares, percentage, prev, curr }) {
   }, [curr]);
   let change = percentage(prev, curr);
   let tot = shares * curr;
+  
   return (
-    <div className="flex bg-slate-50 m-5 border shadow-sm">
+    <div className="flex bg-slate-50 m-5 border shadow-sm rounded-md">
       <div className="flex justify-center items-center p-3">
         <p className={change >= 0 ? "text-green-600" : "text-red-600"}>
           {change.toFixed(2)}%
@@ -26,7 +27,7 @@ function PortfolioItem({ stock, shares, percentage, prev, curr }) {
         </div>
         <div className="px-5 pb-2">
           <div className="w-full bg-gray-200 rounded-full">
-            <div className="bg-blue-600 text-xs w-1/4 font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full">
+            <div className="bg-blue-600 text-xs w-2/6 font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" >
               {" "}
               25%
             </div>

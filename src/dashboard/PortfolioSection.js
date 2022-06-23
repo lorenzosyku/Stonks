@@ -5,8 +5,13 @@ import TotalReturnsGraph from "../components/TotalReturnsGraph";
 
 function PortfolioSection({ dbPortfolio, totPortfolio, setTotPortfolio }) {
   const [totto, setTotto] = useState([10000]);
+  const cashBalance = dbPortfolio.cash;
   return (
     <div>
+      <div className="flex justify-between p-5 ">
+        <h2 className="font-semibold">CASH BALANCE</h2>
+        <h3 className="font-bold italic">${cashBalance.toFixed(2)}</h3>
+      </div>
       <TotalReturnsGraph
         dbPortfolio={dbPortfolio}
         totPortfolio={totPortfolio}
@@ -19,7 +24,7 @@ function PortfolioSection({ dbPortfolio, totPortfolio, setTotPortfolio }) {
           setTotto={setTotto}
           totto={totto}
         /> */}
-        <div className="w-full bg-gray-100 p-5 rounded-md m-5">
+        <div className="w-full p-5 rounded-md m-5">
           <Balance dbPortfolio={dbPortfolio} />
         </div>
       </div>

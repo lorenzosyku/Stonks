@@ -4,8 +4,6 @@ import { useState } from "react";
 function TransactionList({ dbTnxs }) {
   const listBoughtStocks = dbTnxs.stocksBought;
   const listSoldStocks = dbTnxs.stocksSold;
-  //console.log(listBoughtStocks);
-  //console.log(listSoldStocks)
 
   const [isOpenBought, setIsOpenBought] = useState(true);
   const [isOpenSold, setIsOpenSold] = useState(false);
@@ -34,11 +32,6 @@ function TransactionList({ dbTnxs }) {
             Sold
           </button>
         )}
-        {/* {<div className="">
-          <button className="py-3 px-6 text-xs font-medium tracking-wider bg-gray-700 rounded-md text-left text-gray-700 uppercase dark:text-gray-400">
-            Clear All
-          </button>
-        </div>} */}
       </div>
 
       {isOpenBought ? (
