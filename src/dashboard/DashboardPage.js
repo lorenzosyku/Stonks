@@ -79,7 +79,6 @@ function DashboardPage({
                   setDbPortfolio={setDbPortfolio}
                   setDbTnxs={setDbTnxs}
                   currentUser={currentUser}
-                  isSidebarOpen={isSidebarOpen}
                   dbWatchlist={dbWatchlist}
                   details={details}
                   series={series}
@@ -102,12 +101,7 @@ function DashboardPage({
             />
             <Route
               path="transactions"
-              element={
-                <TransactionsSection
-                  dbTnxs={dbTnxs}
-                  isSidebarOpen={isSidebarOpen}
-                />
-              }
+              element={<TransactionsSection dbTnxs={dbTnxs} />}
             />
           </Routes>
         </div>

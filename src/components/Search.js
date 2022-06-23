@@ -95,7 +95,7 @@ function Search({ setStonk, setSeries, setDetails, dbWatchlist, currentUser }) {
   };
 
   return (
-    <div className="px-1 py-3 md:w-3/2 bg-white flex justify-between">
+    <div className="px-1 md:w-3/2 bg-white flex justify-between">
       <Toaster />
       <div className="flex w-full justify-between items-center">
         <form

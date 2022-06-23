@@ -1,6 +1,6 @@
 import TransactionList from "../components/TransactionList";
 
-function TransactionsSection({ isSidebarOpen, dbTnxs }) {
+function TransactionsSection({ dbTnxs }) {
   return (
     <div>
       <TransactionList dbTnxs={dbTnxs} />

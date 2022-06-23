@@ -10,7 +10,7 @@ function TransactionList({ dbTnxs }) {
 
   return (
     <div className="flex flex-col p-5 space-y-5">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-center items-center">
         {!isOpenSold ? (
           <button
             className="py-3 px-6 text-xs font-medium tracking-wider bg-gray-700 rounded-md text-left text-gray-700 uppercase dark:text-gray-400"
