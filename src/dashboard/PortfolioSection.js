@@ -10,7 +10,7 @@ function PortfolioSection({ dbPortfolio, totPortfolio, setTotPortfolio }) {
     <div>
       <div className="flex justify-between p-5 ">
         <h2 className="font-semibold">CASH BALANCE</h2>
-        <h3 className="font-bold italic">${cashBalance.toFixed(2)}</h3>
+        <h3 className="font-bold italic">${cashBalance}</h3>
       </div>
       <TotalReturnsGraph
         dbPortfolio={dbPortfolio}
@@ -19,11 +19,11 @@ function PortfolioSection({ dbPortfolio, totPortfolio, setTotPortfolio }) {
         totto={totto}
       />
       <div className="md:flex md:items-center md:justify-center">
-        {/* <PortfolioGraph
+        <PortfolioGraph
           dbPortfolio={dbPortfolio}
           setTotto={setTotto}
           totto={totto}
-        /> */}
+        />
         <div className="w-full p-5 rounded-md m-5">
           <Balance dbPortfolio={dbPortfolio} />
         </div>

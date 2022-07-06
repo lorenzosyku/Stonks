@@ -21,6 +21,7 @@ function TotalReturnsGraph({ dbPortfolio, totPortfolio, setTotPortfolio, totto})
         const price = stock.meta.regularMarketPrice;
 
         arr[i].currentPrice = price;
+        console.log(price)
       }
     } catch (error) {
       console.log(error);
@@ -33,13 +34,18 @@ function TotalReturnsGraph({ dbPortfolio, totPortfolio, setTotPortfolio, totto})
 
   console.log(valarr)
 
- 
+ const newFun = () => {
+  //const arrOfStocks = arr?.map((stock) => stock.stockName);
+  const valueOfEachInvesment = arr?.map(
+    (stock) => stock.shares * stock.currentPrice
+  );
+ }
 
   const chart = {
     series: [
       {
         name: "Stock Portfolio + Cash",
-        data: [10000,9822,9545,9389],
+        data: totto,
       },
     ],
     options: {
@@ -67,7 +73,7 @@ function TotalReturnsGraph({ dbPortfolio, totPortfolio, setTotPortfolio, totto})
 
   return (
     <div className="px-5 ">
-      <button onClick={getLatestPrice}>total</button>
+      <button onClick={()=>getLatestPrice()}>total</button>
       <ReactApexChart
         options={chart.options}
         series={chart.series}

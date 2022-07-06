@@ -27,7 +27,7 @@ function PortfolioGraph({ setTotto, dbPortfolio, totto }) {
   useEffect(() => {
     tot()
   }, [])
-
+  
   const chart = {
     series: seriesArray,
     options: {

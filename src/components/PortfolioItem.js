@@ -1,3 +1,4 @@
+import { ArrowDownIcon, ArrowUpIcon } from "@heroicons/react/solid";
 import { useEffect } from "react";
 
 function PortfolioItem({ stock, shares, percentage, prev, curr }) {
@@ -6,11 +7,16 @@ function PortfolioItem({ stock, shares, percentage, prev, curr }) {
   }, [curr]);
   let change = percentage(prev, curr);
   let tot = shares * curr;
-  
+
   return (
     <div className="flex bg-slate-50 m-5 border shadow-sm rounded-md">
       <div className="flex justify-center items-center p-3">
         <p className={change >= 0 ? "text-green-600" : "text-red-600"}>
+          {change >= 0 ? (
+            <ArrowUpIcon className="text-green-600 h-5 w-5" />
+          ) : (
+            <ArrowDownIcon className="text-red-600 h-5 w-5" />
+          )}
           {change.toFixed(2)}%
         </p>
       </div>
@@ -21,13 +27,15 @@ function PortfolioItem({ stock, shares, percentage, prev, curr }) {
             <p className="text-sm text-stone-500">${curr.toFixed(2)}</p>
           </div>
           <div>
-            <p className="font-semibold">{shares}</p>
+            <p className="font-semibold">
+              {shares} <span className="text-sm text-stone-900">shares</span>
+            </p>
             <p className="text-sm text-stone-500">${tot.toFixed(2)}</p>
           </div>
         </div>
         <div className="px-5 pb-2">
           <div className="w-full bg-gray-200 rounded-full">
-            <div className="bg-blue-600 text-xs w-2/6 font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" >
+            <div className="bg-blue-600 text-xs w-2/6 font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full">
               {" "}
               25%
             </div>

@@ -44,6 +44,8 @@ function DashboardPage({
     return () => unsub();
   }, []);
 
+  
+
   return (
     <div className="min-h-screen bg-gray-200">
       <Sidebar
@@ -68,6 +70,7 @@ function DashboardPage({
             setDetails={setDetails}
             dbWatchlist={dbWatchlist}
           />
+          <hr className="font-semibold shadow-md"/>
 
           <Routes>
             <Route
