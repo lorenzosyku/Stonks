@@ -35,7 +35,7 @@ function TotalReturnsGraph({ dbPortfolio, totPortfolio, setTotPortfolio, totto})
   console.log(valarr)
 
  const newFun = () => {
-  //const arrOfStocks = arr?.map((stock) => stock.stockName);
+  // const arrOfStocks = arr?.map((stock) => stock.stockName);
   const valueOfEachInvesment = arr?.map(
     (stock) => stock.shares * stock.currentPrice
   );

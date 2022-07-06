@@ -8,6 +8,7 @@ function PortfolioItem({ stock, shares, percentage, prev, curr }) {
   let change = percentage(prev, curr);
   let tot = shares * curr;
 
+  let spacing = 0
   return (
     <div className="flex bg-slate-50 m-5 border shadow-sm rounded-md">
       <div className="flex justify-center items-center p-3">
@@ -35,7 +36,7 @@ function PortfolioItem({ stock, shares, percentage, prev, curr }) {
         </div>
         <div className="px-5 pb-2">
           <div className="w-full bg-gray-200 rounded-full">
-            <div className="bg-blue-600 text-xs w-2/6 font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full">
+            <div style={{marginRight: spacing + 'em'}} className="bg-blue-600 text-xs  font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full">
               {" "}
               25%
             </div>

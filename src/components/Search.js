@@ -71,6 +71,7 @@ function Search({ setStonk, setSeries, setDetails, dbWatchlist, currentUser }) {
     } catch (error) {
       console.log(error);
     }
+    searchValue.current.value = "";
   };
 
   const addToWatchlist = (e) => {
@@ -92,6 +93,7 @@ function Search({ setStonk, setSeries, setDetails, dbWatchlist, currentUser }) {
 
     updateWatchList(currentUser);
     toast.success("Added to watchlist");
+    searchValue.current.value = "";
   };
 
   return (
@@ -109,7 +111,7 @@ function Search({ setStonk, setSeries, setDetails, dbWatchlist, currentUser }) {
               navtodashboard("watchlist");
             }}
           >
-            <SearchIcon className="h-5 w-5 hover:bg-gray-200 hover:text-gray-800 rounded-full" />
+            <SearchIcon className=" h-5 w-5 " />
           </button>
 
           <input

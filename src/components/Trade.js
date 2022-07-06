@@ -188,7 +188,7 @@ function Trade({
           type="number"
           ref={noSharesToBuy}
           placeholder={`Buy ${stonk.symbol} shares`}
-          className="w-[80px] text-xs border-2 bg-transparent border-cyan-600 rounded-md p-1 md:text-sm font-semibold outline-none"
+          className="w-[140px] text-xs border-2 bg-transparent border-cyan-600 rounded-md p-1 md:text-sm font-semibold outline-none"
         />
         <button
           className="text-xs p-1 bg-orange-300 rounded-md md:text-sm text-white font-bold ml-2"
@@ -202,7 +202,7 @@ function Trade({
           type="number"
           ref={noSharesToSell}
           placeholder={`Sell ${stonk.symbol} shares`}
-          className="w-[80px] text-xs border-2 bg-transparent border-cyan-600 rounded-md p-1 md:text-sm font-semibold outline-none"
+          className="w-[140px] text-xs border-2 bg-transparent border-cyan-600 rounded-md p-1 md:text-sm font-semibold outline-none"
         />
         <button
           className="text-xs p-1 bg-orange-300 rounded-md md:text-sm text-white font-bold ml-2"
