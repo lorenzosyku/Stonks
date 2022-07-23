@@ -35,6 +35,7 @@ function Banner() {
     } else {
       alert("password not matching");
     }
+    navigate("/login/dashboard/watchlist")
   };
 
   const addToUsers = async (user) => {
