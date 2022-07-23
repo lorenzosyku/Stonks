@@ -43,7 +43,7 @@ function LoginPage({
         <div className="min-h-screen">
           <TeztnetLogo />
           <div className="flex justify-center items-center">
-            <form className="md:flex flex-col shadow-lg rounded-md py-5 w-1/4">
+            <form className="md:flex flex-col shadow-lg rounded-md py-5 md:w-1/4">
               <div className="bg-shade-lightblue h-[60px]">
                 <h2 className="p-3 text-xl text-gray-100 font-semibold">
                   Login
