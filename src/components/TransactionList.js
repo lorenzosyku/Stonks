@@ -13,7 +13,7 @@ function TransactionList({ dbTnxs }) {
       <div className="flex justify-center items-center">
         {!isOpenSold ? (
           <button
-            className="py-3 px-6 text-xs font-medium tracking-wider bg-gray-700 rounded-md text-left text-gray-700 uppercase dark:text-gray-400 hover:bg-gray-600 hover:scale-105 transition transform duration-200 ease-out"
+            className="py-3 px-6 text-xs font-medium tracking-wider bg-gray-700 rounded-md text-left text-gray-200 uppercase dark:text-gray-400 hover:bg-gray-600 hover:scale-105 transition transform duration-200 ease-out"
             onClick={() => {
               setIsOpenBought(!isOpenBought);
               setIsOpenSold(!isOpenSold);
@@ -23,7 +23,7 @@ function TransactionList({ dbTnxs }) {
           </button>
         ) : (
           <button
-            className="py-3 px-6 text-xs font-medium tracking-wider bg-gray-700 rounded-md text-left text-gray-700 uppercase dark:text-gray-400 hover:bg-gray-600 hover:scale-105 transition transform duration-200 ease-out"
+            className="py-3 px-6 text-xs font-medium tracking-wider bg-gray-700 rounded-md text-left text-gray-200 uppercase dark:text-gray-400 hover:bg-gray-600 hover:scale-105 transition transform duration-200 ease-out"
             onClick={() => {
               setIsOpenBought(!isOpenBought);
               setIsOpenSold(!isOpenSold);
