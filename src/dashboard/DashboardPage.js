@@ -59,7 +59,7 @@ function DashboardPage({
           isSidebarOpen={isSidebarOpen}
         />
         <div
-          className={`transition-all duration-500 flex-grow ${
+          className={`transition-all duration-500 flex-grow mt-6 ${
             isSidebarOpen ? "ml-56" : "ml-0"
           }`}
         >

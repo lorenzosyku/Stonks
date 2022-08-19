@@ -23,19 +23,6 @@ function PortfolioGraph({ setTotto, dbPortfolio, totto, karamba }) {
   console.log(karamba)
 
 
-
-  // const tot = () => {
-  //   let copy = totto;
-  //   copy.push(z);
-  //   console.log(z)
-  //   const updatedList = [...copy].filter((val) => val !== NaN);
-
-  //   setTotto(updatedList);
-    
-  // };//console.log(totto)
-  // useEffect(() => {
-  //   tot()
-  // }, [])
   
   const chart = {
     series: seriesArray,
