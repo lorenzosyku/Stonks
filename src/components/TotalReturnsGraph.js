@@ -1,8 +1,14 @@
 import ReactApexChart from "react-apexcharts";
 
-function TotalReturnsGraph({ dbPortfolio, totPortfolio, setTotPortfolio, totto}) {
- 
+function TotalReturnsGraph({
+  dbPortfolio,
+  karamba,
+  totPortfolio,
+  setTotPortfolio,
+  totto,
+}) {
   const arr = dbPortfolio.stocks;
+  console.log(arr);
   const arrOfStocks = arr?.map((stock) => stock.stockName);
 
   const fetchStockPortfolioPrices = async (symbol) => {
@@ -21,31 +27,27 @@ function TotalReturnsGraph({ dbPortfolio, totPortfolio, setTotPortfolio, totto})
         const price = stock.meta.regularMarketPrice;
 
         arr[i].currentPrice = price;
-        console.log(price)
+        console.log(price);
       }
+      // const updateFirestore = async (user) => {
+      //   const docRef = doc(db, "users", user?.uid);
+      //   await updateDoc(docRef, {
+      //     "portfolio.cash": dbPortfolio.cash,
+      //     "portfolio.stocks": dbPortfolio.stocks,
+      //     "transactions.stocksBought": dbTnxs?.stocksBought,
+      //     "transactions.stocksSold": dbTnxs?.stocksSold,
+      //   });
+      // };
     } catch (error) {
       console.log(error);
     }
   };
 
-  console.log(totto)
-  let valarr = []
-  valarr.push(totto)
-
-  console.log(valarr)
-
- const newFun = () => {
-  // const arrOfStocks = arr?.map((stock) => stock.stockName);
-  const valueOfEachInvesment = arr?.map(
-    (stock) => stock.shares * stock.currentPrice
-  );
- }
-
   const chart = {
     series: [
       {
         name: "Stock Portfolio + Cash",
-        data: totto,
+        data: karamba,
       },
     ],
     options: {
@@ -73,7 +75,7 @@ function TotalReturnsGraph({ dbPortfolio, totPortfolio, setTotPortfolio, totto})
 
   return (
     <div className="px-5 ">
-      <button onClick={()=>getLatestPrice()}>total</button>
+      <button onClick={() => getLatestPrice()}>total</button>
       <ReactApexChart
         options={chart.options}
         series={chart.series}

@@ -4,8 +4,10 @@ import PortfolioGraph from "../components/PortfolioGraph";
 import TotalReturnsGraph from "../components/TotalReturnsGraph";
 
 function PortfolioSection({ dbPortfolio, totPortfolio, setTotPortfolio }) {
-  const [totto, setTotto] = useState([10000]);
+  const [totto, setTotto] = useState(0);
   const cashBalance = dbPortfolio.cash;
+
+  const karamba = [cashBalance];
   return (
     <div>
       <div className="flex justify-between p-5 ">
@@ -17,9 +19,11 @@ function PortfolioSection({ dbPortfolio, totPortfolio, setTotPortfolio }) {
         totPortfolio={totPortfolio}
         setTotPortfolio={setTotPortfolio}
         totto={totto}
+        karamba={karamba}
       />
       <div className="md:flex md:items-center md:justify-center">
         <PortfolioGraph
+          karamba={karamba}
           dbPortfolio={dbPortfolio}
           setTotto={setTotto}
           totto={totto}

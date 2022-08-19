@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Chart from "react-apexcharts";
 
-function PortfolioGraph({ setTotto, dbPortfolio, totto }) {
+function PortfolioGraph({ setTotto, dbPortfolio, totto, karamba }) {
   const arr = dbPortfolio.stocks;
 
   const arrOfStocks = arr?.map((stock) => stock.stockName);
@@ -14,19 +14,28 @@ function PortfolioGraph({ setTotto, dbPortfolio, totto }) {
 
   labelsArray = labelsArray.concat(arrOfStocks);
   seriesArray = seriesArray.concat(valueOfEachInvesment);
+  console.log(seriesArray)
   let z = seriesArray.reduce((a, b) => a + b);
+  console.log(z)
+  let o = [...karamba, z]
+  console.log(o)
+  karamba.push(z)
+  console.log(karamba)
 
-  const tot = () => {
-    let copy = totto;
-    copy.push(z);
 
-    const updatedList = [...copy].filter((val) => val !== NaN);
 
-    setTotto(updatedList);
-  };
-  useEffect(() => {
-    tot()
-  }, [])
+  // const tot = () => {
+  //   let copy = totto;
+  //   copy.push(z);
+  //   console.log(z)
+  //   const updatedList = [...copy].filter((val) => val !== NaN);
+
+  //   setTotto(updatedList);
+    
+  // };//console.log(totto)
+  // useEffect(() => {
+  //   tot()
+  // }, [])
   
   const chart = {
     series: seriesArray,

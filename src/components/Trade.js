@@ -165,7 +165,7 @@ function Trade({
 
     noSharesToSell.current.value = "";
   };
-
+  //you need to update the currentPrice in the db 
   const updateFirestore = async (user) => {
     const docRef = doc(db, "users", user?.uid);
     await updateDoc(docRef, {
